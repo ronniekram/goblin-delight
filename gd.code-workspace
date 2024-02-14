@@ -1,0 +1,24 @@
+{
+  "folders": [
+		{
+			"path": "studio"
+		},
+		{
+			"path": "web"
+		}
+	],
+  "settings": {
+		"prettier.configPath": "prettier.config.js",
+    "prettier.useTabs": false,
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.autoClosingQuotes": "always",
+    "tailwindCSS.includeLanguages": {
+      "typescript": "javascript",
+      "typescriptreact": "javascript"
+    }
+	}
+}
