@@ -3,5 +3,7 @@
 module.exports = {
   plugins: {
     tailwindcss: {},
+    "tailwindcss/forms": {},
+    "tailwindcss/nesting": {},
   },
 };

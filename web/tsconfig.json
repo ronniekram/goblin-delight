@@ -12,13 +12,16 @@
       "@components/*": [
         "components/*"
       ],
+      "@icons/*": [
+        "icons/*"
+      ],
       "@layouts/*": [
         "layouts/*"
       ],
       "@pages/*": [
         "pages/*"
       ],
-      "@style/*": [
+      "@styles/*": [
         "styles/*"
       ]
     },

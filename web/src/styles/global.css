@@ -4,9 +4,9 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'OpenSansPX',
+  font-family: 'OpenSansPX';
   src: url('/fonts/pixel.ttf') format('truetype');
-  font-weight: 400,
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -19,6 +19,51 @@
   font-display: swap;
 }
 
-.h1 {
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    /* turns off smooth-scrolling behavior (if turned on) when prefers-reduced-motion is active*/
+    scroll-behavior: auto;
 
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html, body {
+  height: 100%;
+  background: #FCFCFA;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+  padding: 0.75rem 5.3%;
+  @media (min-width: 640px) { padding: 1rem 5.2%; }
+  @media(min-width: 1536px) { padding: 1rem 0rem; }
+}
+
+.hidden {
+  display: none;
+}
+
+.inner {
+  margin: auto;
+  width: 100%;
+  max-width: 86rem;
+}
+
+.nav-item {
+  font-family: 'OpenSansPX', sans-serif;
 }
