@@ -1,0 +1,29 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  size: keyof typeof style;
+  name: (typeof Icon)["name"];
+  href: string;
+  label: string;
+}
+
+const { size, name, href, label } = Astro.props;
+
+const shared = `transition duration-200 ease-in-out rounded-full bg-green-700 hover:bg-green-600`;
+
+const style = {
+  sm: `w-8 h-8`,
+  lg: `w-11 h-11`,
+};
+---
+
+<a
+  href={href}
+  aria-label={label}
+  target="_blank"
+  rel="noreferrer"
+  class={`${shared} ${style[size]}`}
+>
+  <Icon name={name} size={size === `sm` ? 16 : 24} />
+</a>
