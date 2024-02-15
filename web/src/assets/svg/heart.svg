@@ -1,0 +1,20 @@
+<svg width="100%" height="100%" viewBox="0 0 112 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11 21H1V51H11V21Z" fill="#135D50"/>
+<path d="M21 51H11V61H21V51Z" fill="#135D50"/>
+<path d="M31 61H21V71H31V61Z" fill="#135D50"/>
+<path d="M41 71H31V81H41V71Z" fill="#135D50"/>
+<path d="M51 81H41V91H51V81Z" fill="#135D50"/>
+<path d="M61 91H51V101H61V91Z" fill="#135D50"/>
+<path d="M71 81H61V91H71V81Z" fill="#135D50"/>
+<path d="M81 71H71V81H81V71Z" fill="#135D50"/>
+<path d="M91 61H81V71H91V61Z" fill="#135D50"/>
+<path d="M101 51H91V61H101V51Z" fill="#135D50"/>
+<path d="M111 21H101V51H111V21Z" fill="#135D50"/>
+<path d="M101 11H91V21H101V11Z" fill="#135D50"/>
+<path d="M91 1H71V11H91V1Z" fill="#135D50"/>
+<path d="M71 11H61V21H71V11Z" fill="#135D50"/>
+<path d="M61 21H51V31H61V21Z" fill="#135D50"/>
+<path d="M51 11H41V21H51V11Z" fill="#135D50"/>
+<path d="M41 1H21V11H41V1Z" fill="#135D50"/>
+<path d="M21 11H11V21H21V11Z" fill="#135D50"/>
+</svg>
