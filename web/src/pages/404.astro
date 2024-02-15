@@ -1,0 +1,39 @@
+---
+import Page from "@layouts/page.astro";
+import Lottie404 from "@components/misc/lottie";
+
+import heart from "@assets/svg/heart.svg?raw";
+
+const heartBox = `flex w-11 sm:w-[3.4375rem] lg:w-[4.46875rem] xl:w-[6.875rem]`;
+---
+
+<Page title="Page not found">
+  <div
+    class="text-green-600 text-center flex flex-col items-center space-y-10 py-10 sm:space-y-12 lg:space-y-16 xl:space-y-[4.5rem]"
+  >
+    <h1
+      class="font-display font-bold uppercase text-[4.25rem] leading-[100%] sm:text-8xl lg:text-[8rem] xl:text-[9.25rem]"
+    >
+      Game Over
+    </h1>
+
+    <div class="flex space-x-4 sm:space-x-5 lg:space-x-8 xl:space-x-10">
+      <div class={heartBox}>
+        <Lottie404 client:load />
+      </div>
+      <div class={heartBox}>
+        <Fragment set:html={heart} />
+      </div>
+      <div class={heartBox}>
+        <Fragment set:html={heart} />
+      </div>
+      <div class={heartBox}>
+        <Fragment set:html={heart} />
+      </div>
+    </div>
+
+    <p class="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+      We can't find the page you're looking for.
+    </p>
+  </div>
+</Page>
