@@ -18,7 +18,7 @@
       "@pages/*": [
         "pages/*"
       ],
-      "@style/*": [
+      "@styles/*": [
         "styles/*"
       ]
     },

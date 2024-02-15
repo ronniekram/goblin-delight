@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  label: string;
+  url: string;
+}
+
+const { label, url } = Astro.props;
+
+const navLink = `transition duration-200 ease-in-out hover:text-green-800 sm:hover:text-green-300`;
+---
+
+<li class="flex items-center space-x-4 sm:space-x-0">
+  <div class="sm:hidden">
+    <Icon name="bullet" size={18} />
+  </div>
+  <a href={url} class={navLink}>
+    {label}
+  </a>
+</li>

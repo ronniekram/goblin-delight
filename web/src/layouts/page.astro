@@ -1,0 +1,54 @@
+---
+import { SEO } from "astro-seo";
+
+import Nav from "@components/layout/nav.astro";
+import Footer from "@components/layout/footer.astro";
+
+import global from "@styles/global.css";
+
+export interface Props {
+  title: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImgURL = new URL(`/opengraph.png`, Astro.site).toString();
+
+const { title = "Micro studio + yummy designs" } = Astro.props;
+
+const pageTitle = `${title} | Goblin Delight`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" type="text/css" href={global} />
+
+    <SEO
+      title={pageTitle}
+      description=""
+      canonical={canonicalURL}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: `website`,
+          title: `micro studio + yummy designs`,
+          image: ogImgURL,
+        },
+        image: {
+          alt: `Goblin Delight`,
+        },
+      }}
+    />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
