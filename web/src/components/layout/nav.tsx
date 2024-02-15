@@ -54,7 +54,7 @@ const Menu = () => (
 );
 
 const NavLink = ({ label, href }: NavLinkProps) => {
-  const navLink = `transition duration-200 ease-in-out text-green-700 sm:text-green-100 hover:text-green-800 sm:hover:text-green-300`;
+  const navLink = `settings text-green-700 sm:text-green-100 hover:text-green-800 sm:hover:text-green-300`;
 
   return (
     <li className="flex items-center space-x-4 sm:space-x-0">
