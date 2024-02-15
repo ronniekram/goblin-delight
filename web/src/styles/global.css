@@ -74,3 +74,7 @@ footer {
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.nowrap {
+  white-space: nowrap;
+}

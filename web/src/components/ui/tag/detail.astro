@@ -1,0 +1,18 @@
+---
+interface Props {
+  label: string;
+  href: string;
+}
+
+const { label, href } = Astro.props;
+
+const padding = `p-4 pt-[5px] sm:px-6 sm:pt-[7px] sm:pb-1.5 lg:py-1.5 xl:px-8 xl:py-2`;
+const text = `font-sans font-bold uppercase text-[12px] leading-[100%] tracking-[4%] sm:text-[14px] lg:text-[16px] xl:text-[18px]`;
+const base = `settings nowrap rounded-[2.75rem] bg-green-300 text-green-600 hover:bg-green-600 hover:text-green-200`;
+
+const style = `${padding} ${text} ${base}`;
+---
+
+<a href={href} class={style}>
+  {label}
+</a>
