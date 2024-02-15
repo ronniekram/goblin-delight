@@ -49,16 +49,13 @@ main {
 
 footer {
   flex-shrink: 0;
+  padding: 0.75rem 5.3%;
+  @media (min-width: 640px) { padding: 1rem 5.2%; }
+  @media(min-width: 1536px) { padding: 1rem 0rem; }
 }
 
 .hidden {
   display: none;
-}
-
-header, footer {
-  padding: 0.75rem 5.3%;
-  @media (min-width: 640px) { padding: 1rem 5.2%; }
-  @media(min-width: 1536px) { padding: 1rem 0rem; }
 }
 
 .inner {

@@ -12,6 +12,9 @@
       "@components/*": [
         "components/*"
       ],
+      "@icons/*": [
+        "icons/*"
+      ],
       "@layouts/*": [
         "layouts/*"
       ],

@@ -1,7 +1,7 @@
 ---
 import { SEO } from "astro-seo";
 
-import Nav from "@components/layout/nav.astro";
+import Navigation from "@components/layout/nav.tsx";
 import Footer from "@components/layout/footer.astro";
 
 import global from "@styles/global.css";
@@ -45,7 +45,8 @@ const pageTitle = `${title} | Goblin Delight`;
     />
   </head>
   <body>
-    <Nav />
+    <!-- <Nav /> -->
+    <Navigation client:visible />
     <main>
       <div
         class="mx-auto w-full max-w-[86rem] px-[5.3%] py-8 sm:px-[5.2%] sm:py-12 xl:py-24 2xl:px-0"
