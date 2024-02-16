@@ -14,6 +14,19 @@ interface MobileProps {
 }
 
 //! ----------> COMPONENTS <----------
+const Arrow = () => (
+  <svg width="34" height="34" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-green-700 sm:hidden">
+  <g clip-path="url(#clip0_8_5751)">
+  <path d="M14.48 9.0375H19.9188V11.7607H22.642V14.4764H25.3652V17.1995H28.0809V19.9227H30.8041V22.6384H33.5198V25.3616H30.8041V28.0773H28.0809V30.8005H25.3652V33.5236H22.642V36.2393H19.9188V38.9625H14.48V9.0375Z" fill="currentColor"/>
+  </g>
+  <defs>
+  <clipPath id="clip0_8_5751">
+  <rect width="19.0398" height="29.925" fill="white" transform="translate(14.48 9.0375)"/>
+  </clipPath>
+  </defs>
+  </svg>
+);
+
 const Bullet = () => (
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:hidden">
   <g clip-path="url(#clip0_97_1272)">
@@ -61,11 +74,16 @@ const Menu = () => (
 );
 
 const NavLink = ({ label, href }: NavLinkProps) => {
-  const navLink = `settings text-green-700 sm:text-green-100 hover:text-green-800 sm:hover:text-green-300`;
+  const [isHover, setIsHover] = useState<boolean>(false);
+  const navLink = `settings text-green-700 sm:text-green-100 hover:text-green-300 hover:bg-green-700  hover:rounded-sm sm:hover:text-green-600 sm:hover:bg-green-100`;
+
+  console.log(isHover)
 
   return (
-    <li className="flex items-center space-x-4 sm:space-x-0">
-      <Bullet />
+    <li className="flex items-center space-x-2 sm:space-x-0" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+      <div className={isHover ? `slide` : ``}>
+        <Arrow />
+      </div>
       <a href={href} className={navLink}>
         {label}
       </a>
@@ -83,7 +101,7 @@ const Mobile = ({ setHeight }: MobileProps) => {
   return (
     <nav
       ref={ref}
-      className="w-screen h-[95dvh] [flex: 1] px-[5.3%] pt-10 pb-20 bg-green-300 flex flex-col justify-between font-display"
+      className="w-screen h-[95dvh] [flex: 1] px-[5.3%] pt-10 pb-20 bg-green-300 flex flex-col justify-between font-display sm:hidden"
     >
       <ul className="flex flex-col space-y-8 text-6xl">
         <NavLink label="Blog" href="/blog" />

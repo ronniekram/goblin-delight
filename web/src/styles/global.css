@@ -31,6 +31,18 @@
   }
 }
 
+.slide {
+  animation-name: slide;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes slide {
+  0% {transform: translateX(0);}
+  50% {transform: translateX(4px);}
+  100% {transform: translateX(0);}
+}
+
 html, body {
   height: 100%;
   background: #FCFCFA;
