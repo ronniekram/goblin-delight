@@ -1,21 +1,16 @@
-<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_98_8956)">
-<path d="M5.15998 1.73999H3.41998V3.47999H5.15998V1.73999Z" fill="#FAFCF1"/>
-<path d="M8.57999 1.73999H5.15999V3.41999H1.73999V6.83999H3.41999V8.57999H6.83999V6.83999H8.57999V1.73999Z" fill="#E1F5E7"/>
-<path d="M10.26 3.42004H8.57998V6.84004H6.83998V8.58004H3.41998V10.26H8.57998V8.58004H10.26V3.42004Z" fill="#48AD6A"/>
-<path d="M12 3.42004H10.26V8.58004H12V3.42004Z" fill="#05373B"/>
-<path d="M8.57998 10.26H3.41998V12H8.57998V10.26Z" fill="#05373B"/>
-<path d="M1.74 3.42004H0V8.58004H1.74V3.42004Z" fill="#05373B"/>
-<path d="M8.57998 0H3.41998V1.74H8.57998V0Z" fill="#05373B"/>
-<path d="M10.32 1.73999H8.58002V3.47999H10.32V1.73999Z" fill="#05373B"/>
-<path d="M10.32 8.57996H8.58002V10.32H10.32V8.57996Z" fill="#05373B"/>
-<path d="M3.47999 8.57996H1.73999V10.32H3.47999V8.57996Z" fill="#05373B"/>
-<path d="M1.73999 1.73999V3.41999H3.41999V1.73999" fill="#05373B"/>
-<path d="M1.73999 6.83997V8.57997H3.41999V6.83997" fill="#48AD6A"/>
-</g>
-<defs>
-<clipPath id="clip0_98_8956">
-<rect width="12" height="12" fill="white"/>
-</clipPath>
-</defs>
+<svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0, 3)">
+    <path d="M5.16 5.74H3.42V7.48H5.16V5.74Z" fill="#FCFCFA"/>
+    <path d="M8.58 5.74H5.16V7.42H1.74V10.84H3.42V12.58H6.84V10.84H8.58V5.74Z" fill="#E1F5E7"/>
+    <path d="M10.26 7.42H8.58V10.84H6.84V12.58H3.42L3.42 14.26H8.58V12.58H10.26V7.42Z" fill="#48AD6A"/>
+    <path d="M12 7.42H10.26V12.58H12V7.42Z" fill="#05373B"/>
+    <path d="M8.58 14.26H3.42V16H8.58V14.26Z" fill="#05373B"/>
+    <path d="M1.74 7.42L0 7.42V12.58H1.74V7.42Z" fill="#05373B"/>
+    <path d="M8.58 4H3.42V5.74H8.58V4Z" fill="#05373B"/>
+    <path d="M10.32 5.74H8.58V7.48H10.32V5.74Z" fill="#05373B"/>
+    <path d="M10.32 12.58H8.58V14.32H10.32V12.58Z" fill="#05373B"/>
+    <path d="M3.48 12.58H1.74V14.32H3.48V12.58Z" fill="#05373B"/>
+    <path d="M1.74 5.74V7.42H3.42L3.42 5.74" fill="#05373B"/>
+    <path d="M1.74 10.84V12.58H3.42V10.84" fill="#48AD6A"/>
+  </g>
 </svg>

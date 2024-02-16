@@ -80,19 +80,9 @@ footer {
 }
 
 .pixel-list {
-  list-style-image: url('/images/list-bullet-sm.svg');
+  list-style-image: url("/images/list-bullet-sm.svg");
 
   @media (min-width: 768px) {
-    list-style-image: url('/images/list-bullet.svg');
-  }
-}
-
-.pixel-list::marker {
-  font-size: 0.25rem;
-  line-height: 0.2rem;
-
-  @media (min-width: 1280px) {
-    font-size: 1rem;
-    line-height: 2rem;
+    list-style-image: url("/images/list-bullet.svg");
   }
 }
