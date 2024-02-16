@@ -3,10 +3,15 @@ import Page from "@layouts/page.astro";
 
 import Byline from "@components/blog/byline.astro";
 import ListItem from "@components/game/list-item.astro";
+import divider from "@assets/svg/divider-2.svg?raw";
 ---
 
-<Page title="micro studio + yummy designs" header="Games & Projects">
-  <h1>Goblin Delight</h1>
-  <Byline />
-  <ListItem text="Lorem ipsum dolor sit amet. Aut culpa asperiores." />
+<Page title="micro studio + yummy designs">
+  <div class="wrapper mb-16">
+    <!-- <Byline /> -->
+    <ListItem text="Lorem ipsum dolor sit amet. Aut culpa asperiores." />
+  </div>
+  <div class="flex">
+    <Fragment set:html={divider} />
+  </div>
 </Page>

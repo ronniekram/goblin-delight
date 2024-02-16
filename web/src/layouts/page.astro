@@ -51,11 +51,7 @@ const pageTitle = `${title} | Goblin Delight`;
     <Navigation client:visible />
     {header && <PageHeader title={header} />}
     <main>
-      <div
-        class="mx-auto w-full max-w-[86rem] px-[5.3%] py-8 sm:px-[5.2%] sm:py-12 xl:py-24 2xl:px-0"
-      >
-        <slot />
-      </div>
+      <slot />
     </main>
     <Footer />
   </body>
