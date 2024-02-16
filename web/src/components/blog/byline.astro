@@ -1,0 +1,49 @@
+---
+import SocialIcon from "../ui/button/social-icon.astro";
+
+import jer from "@assets/svg/byline.svg?raw";
+
+const wrapper = `flex items-center justify-between pt-4 lg:pt-5 xl:pt-6 border-t-2 border-green-700 lg:border-t-[2.5px]`;
+const author = `flex items-center space-x-1.5 lg:space-x-2 xl:space-x-3 font-display font-primary text-green-700 text-2xl lg:text-3xl xl:text-4xl`;
+const avatar = `flex h-[2.125rem] sm:h-10 md:h-11 xl:h-12`;
+const icons = `flex items-center space-x-1 sm:space-x-2 xl:space-x-2.5`;
+
+const socials = [
+  {
+    name: `mail`,
+    href: `mailto:info@goblindelight.com`,
+    label: `Email`,
+  },
+  {
+    name: `youtube`,
+    href: `https://youtube.com/@goblindelight`,
+    label: `Goblin Delight YouTube`,
+  },
+  {
+    name: `twitch`,
+    href: `https://twitch.com/`,
+    label: `Goblin Delight Twitch`,
+  },
+  {
+    name: `tiktok`,
+    href: `https://tiktok.com/@goblindelight`,
+    label: `Goblin Delight TikTok`,
+  },
+];
+---
+
+<div class={wrapper}>
+  <div class={author}>
+    <div class={avatar}>
+      <Fragment set:html={jer} />
+    </div>
+    <p>Jeremy Boniface</p>
+  </div>
+  <div class={icons}>
+    {
+      socials.map((social) => (
+        <SocialIcon name={social.name} href={social.href} label={social.label} />
+      ))
+    }
+  </div>
+</div>

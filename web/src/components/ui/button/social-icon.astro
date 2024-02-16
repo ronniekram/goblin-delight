@@ -1,29 +1,18 @@
 ---
 import { Icon } from "astro-icon/components";
-
 interface Props {
-  size: keyof typeof style;
   name: (typeof Icon)["name"];
   href: string;
   label: string;
 }
 
-const { size, name, href, label } = Astro.props;
+const { name, href, label } = Astro.props;
 
-const shared = `settings rounded-full flex items-center justify-center bg-green-700 text-green-100 hover:bg-green-600`;
-
-const style = {
-  sm: `w-8 h-8`,
-  lg: `w-11 h-11`,
-};
+const shared = `settings rounded-full flex items-center justify-center bg-green-700 text-green-100 hover:bg-green-600 w-8 h-8 sm:w-10 sm:h-10 xl:w-12 xl:h-12`;
 ---
 
-<a
-  href={href}
-  aria-label={label}
-  target="_blank"
-  rel="noreferrer"
-  class={`${shared} ${style[size]}`}
->
-  <Icon name={name} size={size === `sm` ? 16 : 24} />
+<a href={href} aria-label={label} target="_blank" rel="noreferrer" class={shared}>
+  <div class="flex items-center justify-center w-5 sm:w-6 lg:w-8">
+    <Icon name={name} size={30} />
+  </div>
 </a>

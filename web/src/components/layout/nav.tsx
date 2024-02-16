@@ -15,20 +15,27 @@ interface MobileProps {
 
 //! ----------> COMPONENTS <----------
 const Bullet = () => (
-  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:hidden">
-    <path d="M9.6 3.9H6.7V6.8H9.6V3.9Z" fill="#FAFCF1"/>
-    <path d="M15.3 3.9H9.6V6.7H3.9V12.4H6.7V15.3H12.4V12.4H15.3V3.9Z" fill="#9ADCAF"/>
-    <path d="M18.1 6.7H15.3V12.4H12.4V15.3H6.7V18.1H15.3V15.3H18.1V6.7Z" fill="#48AD6A"/>
-    <path d="M21 6.7H18.1V15.3L21 15.3V6.7Z" fill="#05373B"/>
-    <path d="M15.3 18.1H6.7V21H15.3L15.3 18.1Z" fill="#05373B"/>
-    <path d="M3.9 6.7H1V15.3H3.9V6.7Z" fill="#05373B"/>
-    <path d="M15.3 1H6.7V3.9H15.3L15.3 1Z" fill="#05373B"/>
-    <path d="M18.2 3.9H15.3V6.8H18.2V3.9Z" fill="#05373B"/>
-    <path d="M18.2 15.3H15.3V18.2H18.2V15.3Z" fill="#05373B"/>
-    <path d="M6.8 15.3L3.9 15.3V18.2H6.8V15.3Z" fill="#05373B"/>
-    <path d="M3.9 3.9V6.7H6.7V3.9" fill="#05373B"/>
-    <path d="M3.9 12.4V15.3L6.7 15.3V12.4" fill="#48AD6A"/>
-  </svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:hidden">
+  <g clip-path="url(#clip0_97_1272)">
+    <path d="M10.6 4.9H7.7V7.8H10.6V4.9Z" fill="#FAFCF1"/>
+    <path d="M16.3 4.9H10.6V7.7H4.9V13.4H7.7V16.3H13.4V13.4H16.3V4.9Z" fill="#E1F5E7"/>
+    <path d="M19.1 7.7H16.3V13.4H13.4V16.3H7.7V19.1H16.3V16.3H19.1V7.7Z" fill="#48AD6A"/>
+    <path d="M22 7.7H19.1V16.3L22 16.3V7.7Z" fill="#05373B"/>
+    <path d="M16.3 19.1H7.7V22H16.3L16.3 19.1Z" fill="#05373B"/>
+    <path d="M4.9 7.7H2V16.3H4.9V7.7Z" fill="#05373B"/>
+    <path d="M16.3 2H7.7V4.9H16.3L16.3 2Z" fill="#05373B"/>
+    <path d="M19.2 4.9H16.3V7.8H19.2V4.9Z" fill="#05373B"/>
+    <path d="M19.2 16.3H16.3V19.2H19.2V16.3Z" fill="#05373B"/>
+    <path d="M7.8 16.3L4.9 16.3V19.2H7.8V16.3Z" fill="#05373B"/>
+    <path d="M4.9 4.9V7.7H7.7V4.9" fill="#05373B"/>
+    <path d="M4.9 13.4V16.3L7.7 16.3V13.4" fill="#48AD6A"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_97_1272">
+      <rect width="20" height="20" fill="white" transform="translate(2 2)"/>
+    </clipPath>
+  </defs>
+</svg>
 );
 
 const Close = () => (
