@@ -77,8 +77,6 @@ const NavLink = ({ label, href }: NavLinkProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
   const navLink = `settings text-green-700 sm:text-green-100 hover:text-green-300 hover:bg-green-700  hover:rounded-sm sm:hover:text-green-600 sm:hover:bg-green-100`;
 
-  console.log(isHover)
-
   return (
     <li className="flex items-center space-x-2 sm:space-x-0" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
       <div className={isHover ? `slide` : ``}>
