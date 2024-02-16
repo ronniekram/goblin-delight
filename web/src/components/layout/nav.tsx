@@ -15,8 +15,8 @@ interface MobileProps {
 
 //! ----------> COMPONENTS <----------
 const Arrow = () => (
-  <svg width="34" height="34" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-green-700 sm:hidden">
-  <g clip-path="url(#clip0_8_5751)">
+  <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-green-700 sm:hidden">
+  <g clipPath="url(#clip0_8_5751)">
   <path d="M14.48 9.0375H19.9188V11.7607H22.642V14.4764H25.3652V17.1995H28.0809V19.9227H30.8041V22.6384H33.5198V25.3616H30.8041V28.0773H28.0809V30.8005H25.3652V33.5236H22.642V36.2393H19.9188V38.9625H14.48V9.0375Z" fill="currentColor"/>
   </g>
   <defs>
@@ -25,30 +25,6 @@ const Arrow = () => (
   </clipPath>
   </defs>
   </svg>
-);
-
-const Bullet = () => (
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:hidden">
-  <g clip-path="url(#clip0_97_1272)">
-    <path d="M10.6 4.9H7.7V7.8H10.6V4.9Z" fill="#FAFCF1"/>
-    <path d="M16.3 4.9H10.6V7.7H4.9V13.4H7.7V16.3H13.4V13.4H16.3V4.9Z" fill="#E1F5E7"/>
-    <path d="M19.1 7.7H16.3V13.4H13.4V16.3H7.7V19.1H16.3V16.3H19.1V7.7Z" fill="#48AD6A"/>
-    <path d="M22 7.7H19.1V16.3L22 16.3V7.7Z" fill="#05373B"/>
-    <path d="M16.3 19.1H7.7V22H16.3L16.3 19.1Z" fill="#05373B"/>
-    <path d="M4.9 7.7H2V16.3H4.9V7.7Z" fill="#05373B"/>
-    <path d="M16.3 2H7.7V4.9H16.3L16.3 2Z" fill="#05373B"/>
-    <path d="M19.2 4.9H16.3V7.8H19.2V4.9Z" fill="#05373B"/>
-    <path d="M19.2 16.3H16.3V19.2H19.2V16.3Z" fill="#05373B"/>
-    <path d="M7.8 16.3L4.9 16.3V19.2H7.8V16.3Z" fill="#05373B"/>
-    <path d="M4.9 4.9V7.7H7.7V4.9" fill="#05373B"/>
-    <path d="M4.9 13.4V16.3L7.7 16.3V13.4" fill="#48AD6A"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_97_1272">
-      <rect width="20" height="20" fill="white" transform="translate(2 2)"/>
-    </clipPath>
-  </defs>
-</svg>
 );
 
 const Close = () => (
@@ -107,7 +83,7 @@ const Mobile = ({ setHeight }: MobileProps) => {
         <NavLink label="Contact" href="#contact" />
       </ul>
 
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 float-right">
         <p className="font-display font-bold uppercase text-green-700 text-[3rem] leading-[2.25rem]">
           Goblin <br /> Delight
         </p>

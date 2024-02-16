@@ -70,12 +70,6 @@ footer {
   display: none;
 }
 
-.inner {
-  margin: auto;
-  width: 100%;
-  max-width: 86rem;
-}
-
 .nav-item {
   font-family: 'OpenSansPX', sans-serif;
 }
@@ -101,7 +95,7 @@ footer {
 
 .wrapper {
   margin: auto;
-  width: full;
+  width: 100%;
   max-width: 86rem;
   padding: 2rem 5.3%;
 
@@ -117,4 +111,10 @@ footer {
   @media (min-width: 1536px) {
     padding: 6rem 0;
   }
+}
+
+.inner {
+  margin: auto;
+  width: 100%;
+  max-width: 86rem;
 }
