@@ -1,0 +1,11 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<li class="pixel-list font-sans text-green-900 text-sm md:text-lg lg:text-xl xl:text-2xl">
+  <span class="xl:mt-1.5 2xl:mt-2">{text}</span>
+</li>
