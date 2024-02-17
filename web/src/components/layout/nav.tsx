@@ -14,20 +14,16 @@ interface MobileProps {
 }
 
 //! ----------> COMPONENTS <----------
-const Bullet = () => (
-  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:hidden">
-    <path d="M9.6 3.9H6.7V6.8H9.6V3.9Z" fill="#FAFCF1"/>
-    <path d="M15.3 3.9H9.6V6.7H3.9V12.4H6.7V15.3H12.4V12.4H15.3V3.9Z" fill="#9ADCAF"/>
-    <path d="M18.1 6.7H15.3V12.4H12.4V15.3H6.7V18.1H15.3V15.3H18.1V6.7Z" fill="#48AD6A"/>
-    <path d="M21 6.7H18.1V15.3L21 15.3V6.7Z" fill="#05373B"/>
-    <path d="M15.3 18.1H6.7V21H15.3L15.3 18.1Z" fill="#05373B"/>
-    <path d="M3.9 6.7H1V15.3H3.9V6.7Z" fill="#05373B"/>
-    <path d="M15.3 1H6.7V3.9H15.3L15.3 1Z" fill="#05373B"/>
-    <path d="M18.2 3.9H15.3V6.8H18.2V3.9Z" fill="#05373B"/>
-    <path d="M18.2 15.3H15.3V18.2H18.2V15.3Z" fill="#05373B"/>
-    <path d="M6.8 15.3L3.9 15.3V18.2H6.8V15.3Z" fill="#05373B"/>
-    <path d="M3.9 3.9V6.7H6.7V3.9" fill="#05373B"/>
-    <path d="M3.9 12.4V15.3L6.7 15.3V12.4" fill="#48AD6A"/>
+const Arrow = () => (
+  <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-green-700 sm:hidden">
+  <g clipPath="url(#clip0_8_5751)">
+  <path d="M14.48 9.0375H19.9188V11.7607H22.642V14.4764H25.3652V17.1995H28.0809V19.9227H30.8041V22.6384H33.5198V25.3616H30.8041V28.0773H28.0809V30.8005H25.3652V33.5236H22.642V36.2393H19.9188V38.9625H14.48V9.0375Z" fill="currentColor"/>
+  </g>
+  <defs>
+  <clipPath id="clip0_8_5751">
+  <rect width="19.0398" height="29.925" fill="white" transform="translate(14.48 9.0375)"/>
+  </clipPath>
+  </defs>
   </svg>
 );
 
@@ -54,11 +50,14 @@ const Menu = () => (
 );
 
 const NavLink = ({ label, href }: NavLinkProps) => {
-  const navLink = `transition duration-200 ease-in-out text-green-700 sm:text-green-100 hover:text-green-800 sm:hover:text-green-300`;
+  const [isHover, setIsHover] = useState<boolean>(false);
+  const navLink = `settings text-green-700 sm:text-green-100 hover:text-green-300 hover:bg-green-700  hover:rounded-sm sm:hover:text-green-600 sm:hover:bg-green-100`;
 
   return (
-    <li className="flex items-center space-x-4 sm:space-x-0">
-      <Bullet />
+    <li className="flex items-center space-x-2 sm:space-x-0" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+      <div className={isHover ? `slide` : ``}>
+        <Arrow />
+      </div>
       <a href={href} className={navLink}>
         {label}
       </a>
@@ -76,7 +75,7 @@ const Mobile = ({ setHeight }: MobileProps) => {
   return (
     <nav
       ref={ref}
-      className="w-screen h-[95dvh] [flex: 1] px-[5.3%] pt-10 pb-20 bg-green-300 flex flex-col justify-between font-display"
+      className="w-screen h-[95dvh] [flex: 1] px-[5.3%] pt-10 pb-20 bg-green-300 flex flex-col justify-between font-display sm:hidden"
     >
       <ul className="flex flex-col space-y-8 text-6xl">
         <NavLink label="Blog" href="/blog" />
@@ -84,7 +83,7 @@ const Mobile = ({ setHeight }: MobileProps) => {
         <NavLink label="Contact" href="#contact" />
       </ul>
 
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 float-right">
         <p className="font-display font-bold uppercase text-green-700 text-[3rem] leading-[2.25rem]">
           Goblin <br /> Delight
         </p>

@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  label: string;
+  href: string;
+  icon?: {
+    position: `left` | `right`;
+    direction: `left` | `right`;
+  };
+}
+
+const { label, href, icon } = Astro.props;
+
+const padding = `px-4 py-0.5 sm:px-5 sm:py-1 xl:px-7 xl:py-2`;
+const text = `font-display font-bold uppercase text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl`;
+const shadow = `shadow-sm hover:shadow-xs sm:shadow sm:hover:shadow-sm md:shadow-lg md:hover:shadow lg:shadow-xl lg:hover:shadow-lg`;
+const shared = `bg-green-300 text-green-700 settings nowrap rounded border-green-700 border-[1.5px] lg:border-2`;
+const style = `${padding} ${text} ${shadow} ${shared}`;
+
+const iconSize = `h-5 md:h-6 lg:h-8`;
+const iconMargin = icon?.position === `left` ? `mr-1` : `ml-1`;
+---
+
+<a href={href} class={`${style} ${icon?.position === `right` && `flex-row-reverse`}`}>
+  {
+    icon && (
+      <Icon
+        name="arrow"
+        class={`flex ${iconSize} ${iconMargin} ${icon.direction === `left` && `rotate-180`}`}
+      />
+    )
+  }
+  {label}
+</a>

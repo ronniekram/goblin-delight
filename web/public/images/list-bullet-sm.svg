@@ -1,0 +1,16 @@
+<svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0, 1.5)">
+    <path d="M3.44 3.16H2.28V4.32H3.44V3.16Z" fill="#FCFCFA"/>
+    <path d="M5.72 3.16H3.44V4.28H1.16V6.56H2.28V7.72H4.56V6.56H5.72V3.16Z" fill="#E1F5E7"/>
+    <path d="M6.84 4.28H5.72V6.56H4.56V7.72H2.28L2.28 8.84H5.72V7.72H6.84V4.28Z" fill="#48AD6A"/>
+    <path d="M8 4.28H6.84V7.72H8V4.28Z" fill="#05373B"/>
+    <path d="M5.72 8.84H2.28V10H5.72V8.84Z" fill="#05373B"/>
+    <path d="M1.16 4.28L0 4.28V7.72H1.16V4.28Z" fill="#05373B"/>
+    <path d="M5.72 2H2.28V3.16H5.72V2Z" fill="#05373B"/>
+    <path d="M6.88 3.16H5.72V4.32H6.88V3.16Z" fill="#05373B"/>
+    <path d="M6.88 7.72H5.72V8.88H6.88V7.72Z" fill="#05373B"/>
+    <path d="M2.32 7.72H1.16V8.88H2.32V7.72Z" fill="#05373B"/>
+    <path d="M1.16 3.16V4.28H2.28L2.28 3.16" fill="#05373B"/>
+    <path d="M1.16 6.56V7.72H2.28V6.56" fill="#48AD6A"/>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0, 3)">
+    <path d="M5.16 5.74H3.42V7.48H5.16V5.74Z" fill="#FCFCFA"/>
+    <path d="M8.58 5.74H5.16V7.42H1.74V10.84H3.42V12.58H6.84V10.84H8.58V5.74Z" fill="#E1F5E7"/>
+    <path d="M10.26 7.42H8.58V10.84H6.84V12.58H3.42L3.42 14.26H8.58V12.58H10.26V7.42Z" fill="#48AD6A"/>
+    <path d="M12 7.42H10.26V12.58H12V7.42Z" fill="#05373B"/>
+    <path d="M8.58 14.26H3.42V16H8.58V14.26Z" fill="#05373B"/>
+    <path d="M1.74 7.42L0 7.42V12.58H1.74V7.42Z" fill="#05373B"/>
+    <path d="M8.58 4H3.42V5.74H8.58V4Z" fill="#05373B"/>
+    <path d="M10.32 5.74H8.58V7.48H10.32V5.74Z" fill="#05373B"/>
+    <path d="M10.32 12.58H8.58V14.32H10.32V12.58Z" fill="#05373B"/>
+    <path d="M3.48 12.58H1.74V14.32H3.48V12.58Z" fill="#05373B"/>
+    <path d="M1.74 5.74V7.42H3.42L3.42 5.74" fill="#05373B"/>
+    <path d="M1.74 10.84V12.58H3.42V10.84" fill="#48AD6A"/>
+  </g>
+</svg>

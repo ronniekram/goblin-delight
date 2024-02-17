@@ -1,21 +1,14 @@
 <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_84_9364)">
-<path d="M5.70802 3H4V17.5413H5.70802V3Z" fill="#FCFCFA"/>
-<path d="M19.7138 3.05124H5.53466V4.76439H19.7138V3.05124Z" fill="#FCFCFA"/>
-<path d="M19.7138 4.3297H18.0135V15.8759H19.7138V4.3297Z" fill="#FCFCFA"/>
-<path d="M15.9562 7.29312H14.2481V12.4599H15.9562V7.29312Z" fill="#FCFCFA"/>
-<path d="M10.8321 7.29312H9.12407V12.4599H10.8321V7.29312Z" fill="#FCFCFA"/>
-<path d="M18.0912 14.1679H15.9562V15.8759H18.0912V14.1679Z" fill="#FCFCFA"/>
-<path d="M17.6642 15.8759H11.6861V17.584H17.6642V15.8759Z" fill="#FCFCFA"/>
-<path d="M13.3941 17.584H9.97808V19.292H13.3941V17.584Z" fill="#FCFCFA"/>
-<path d="M11.6861 19.292H7.41605V21H11.6861V19.292Z" fill="#FCFCFA"/>
-<path d="M9.12407 15.8759H7.41605V19.292H9.12407V15.8759Z" fill="#FCFCFA"/>
-<path d="M7.41605 15.8956H4V17.584H7.41605V15.8956Z" fill="#FCFCFA"/>
-<path d="M7.48522 15.8759H5.44499V16.0356H7.48522V15.8759Z" fill="#FCFCFA"/>
-</g>
-<defs>
-<clipPath id="clip0_84_9364">
-<rect width="15.7138" height="18" fill="white" transform="translate(4 3)"/>
-</clipPath>
-</defs>
+<path d="M5.85188 3H4.14188V17.5406H5.85188V3Z" fill="currentColor"/>
+<path d="M19.8581 3.05066H5.67749V4.76628H19.8581V3.05066Z" fill="currentColor"/>
+<path d="M19.8581 4.32751H18.1594V15.8756H19.8581V4.32751Z" fill="currentColor"/>
+<path d="M16.1006 7.29187H14.3906V12.4612H16.1006V7.29187Z" fill="currentColor"/>
+<path d="M10.9763 7.29187H9.26627V12.4612H10.9763V7.29187Z" fill="currentColor"/>
+<path d="M18.2325 14.1656H16.095V15.8756H18.2325V14.1656Z" fill="currentColor"/>
+<path d="M17.805 15.8756H11.8256V17.5856H17.805V15.8756Z" fill="currentColor"/>
+<path d="M13.5356 17.5856H10.1212V19.2956H13.5356V17.5856Z" fill="currentColor"/>
+<path d="M11.8256 19.29H7.55624V21H11.8256V19.29Z" fill="currentColor"/>
+<path d="M9.26624 15.8756H7.55624V19.29H9.26624V15.8756Z" fill="currentColor"/>
+<path d="M7.55625 15.8981H4.14188V17.5856H7.55625V15.8981Z" fill="currentColor"/>
+<path d="M7.62937 15.8756H5.58749V16.0331H7.62937V15.8756Z" fill="currentColor"/>
 </svg>

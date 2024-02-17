@@ -1,0 +1,108 @@
+---
+import SocialIcon from "../ui/button/social-icon.astro";
+import TextInput from "../ui/input/text.astro";
+import { socials } from "../blog/byline.astro";
+
+import arrow from "@icons/arrow.svg?raw";
+import smCloud from "@assets/cta/cloud-sm.svg?raw";
+import mdCloud from "@assets/cta/cloud-md.svg?raw";
+import lgCloud from "@assets/cta/cloud-lg.svg?raw";
+
+const head = `font-sans font-bold text-green-600 text-4xl sm:text-5xl lg:text-6xl xl:text-[80px] xl:leading-[80px]`;
+const sub = `font-display font-bold uppercase text-green-700 text-2xl sm:text-3xl xl:text-4xl`;
+const arrowWrap = `flex w-4 sm:w-5 xl:w-6 text-green-700`;
+
+const lg = `flex w-[80%] sm:w-[23.4375rem]`;
+const md = `hidden md:flex md:w-[11.0625rem] lg:w-[11.9375rem] xl:w-[13.4375rem]`;
+const sm = `hidden lg:flex lg:w-[11.3125rem]`;
+---
+
+<section id="contact" class="cta-wrapper">
+  <div
+    class="inner cta px-5 py-8 sm:p-8 md:py-10 lg:p-10 xl:px-14 2xl:px-16 border-green-700 border-y-2 sm:border-2 sm:rounded"
+  >
+    <div class="flex items-center justify-between">
+      <div class="w-full sm:w-fit flex flex-col space-y-4 xl:space-y-3">
+        <div>
+          <h2 class={head}>Get our newsletter</h2>
+          <div class="flex items-center space-x-0.5">
+            <div class={arrowWrap}>
+              <Fragment set:html={arrow} />
+            </div>
+            <h3 class={sub}>Stay up to date</h3>
+          </div>
+        </div>
+        <TextInput label="Email" icon="mail-outline" placeholder="you@email.com" />
+      </div>
+      <div class={md}>
+        <Fragment set:html={mdCloud} />
+      </div>
+    </div>
+
+    <div
+      class="flex items-start justify-center lg:space-x-24 xl:justify-end xl:pr-24 xl:space-x-[8rem] 2xl:pr-[9.25rem] 2xl:space-x-[9.25rem]"
+    >
+      <div class={lg}>
+        <Fragment set:html={lgCloud} />
+      </div>
+      <div class={sm}>
+        <Fragment set:html={smCloud} />
+      </div>
+    </div>
+
+    <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:justify-between sm:items-end">
+      <div>
+        <div class="flex items-center space-x-0.5">
+          <div class={arrowWrap}>
+            <Fragment set:html={arrow} />
+          </div>
+          <h3 class={sub}>Inquiries</h3>
+        </div>
+        <p class="font-sans text-green-800 text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+          press@goblindelight.com
+        </p>
+      </div>
+      <div class="flex space-x-2 lg:space-x-2.5 xl:space-x-3">
+        {
+          socials.map((social) => (
+            <SocialIcon name={social.name} href={social.href} label={social.label} />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-wrapper {
+    width: 100%;
+    padding: 0;
+
+    @media (min-width: 640px) {
+      padding: 3rem 5.2%;
+    }
+
+    @media (min-width: 1280px) {
+      padding: 6rem 5.2%;
+    }
+
+    @media (min-width: 1536px) {
+      padding: 6rem 0;
+    }
+  }
+
+  .cta {
+    background-image: url("/images/cta/bg.png");
+    background-position: center;
+    background-size: cover;
+    height: 29.6875rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (min-width: 768px) {
+      height: 28.75rem;
+    }
+  }
+</style>
