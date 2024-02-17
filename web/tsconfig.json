@@ -23,7 +23,8 @@
       ],
       "@styles/*": [
         "styles/*"
-      ]
+      ],
+      "@utils/*": ["utils/*"]
     },
     "allowJs": true,
     "jsx": "react-jsx",
