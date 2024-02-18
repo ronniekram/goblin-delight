@@ -6,8 +6,6 @@ import PageHeader from "@components/layout/page-header.astro";
 import CTA from "@components/layout/cta.astro";
 import Footer from "@components/layout/footer.astro";
 
-import global from "@styles/global.css";
-
 export interface Props {
   title: string;
   header?: string;
@@ -27,8 +25,8 @@ const pageTitle = `${title} | Goblin Delight`;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" type="text/css" href={global} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/style/global.css" />
 
     <SEO
       title={pageTitle}

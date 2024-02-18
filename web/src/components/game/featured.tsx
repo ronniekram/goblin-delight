@@ -3,7 +3,7 @@ import type { SanityClient } from "@sanity/client";
 import { useSpring, animated as a  } from "@react-spring/web";
 import useMeasure from "react-use-measure";
 
-import type { SanityGameCard } from "@utils/sanity";
+import type { SanityGameCard, SanityTag } from "@utils/sanity";
 import sanityImgUrl from "@utils/image";
 
 type Props = SanityGameCard & { client: SanityClient };
@@ -46,7 +46,7 @@ const FeaturedGame = (props: Props) => {
         <div className="w-full flex flex-col space-y-2 sm:space-y-3 xl:space-y-4">
           <p className="clamped font-sans font-medium text-green-100 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">{blurb}</p>
           <div className="flex space-x-1 sm:space-x-2 lg:space-x-3 xl:space-x-4">
-            {tags.map((tag) => (
+            {tags.map((tag: SanityTag) => (
               <a href={`/tags/${tag.slug.current}`} className={`h-fit settings nowrap rounded-[2.75rem] bg-green-200/70 text-green-800 hover:bg-green-200 ${padding} ${text}`}>
                 {tag.title}
               </a>
