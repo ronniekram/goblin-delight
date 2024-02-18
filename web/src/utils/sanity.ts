@@ -3,7 +3,6 @@ import type { ImageAsset, Slug } from "@sanity/types";
 import groq from "groq";
 
 //! ----------> QUERIES <----------
-//? ----------> REPEATED QUERIES
 export const tags = groq`tags[]->{
   _type == "reference" => @-> {
     "ref": {
@@ -13,6 +12,7 @@ export const tags = groq`tags[]->{
   },
 }`;
 
+//? ----------> GAMES
 export const gameCard = groq`
   title,
   slug,
@@ -54,6 +54,12 @@ export const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
   },
 }`;
 
+export const allGames = groq`*[_type == "game"] { ${gameCard} }`;
+
+export const firstGame = groq`*[_type == "game"][0] | orderBy(_createdAt, asc ) { ${gameCard} }`;
+
+//? ----------> BLOGS
+
 export const blogCard = groq`
   title,
   slug,
@@ -75,9 +81,28 @@ export const blogDetail = groq`*[_type == "post" && slug.current == $slug] {
   },
 }`;
 
+export const allBlogs = groq`*[_type == "post"] { ${blogCard} }`;
+
+export const firstBlog = groq`*[_type == "post"][0] | orderBy(_createdAt, asc ) { ${blogCard} }`;
+
 export const tagDetail = groq`{
   "blogs": *[_type == "post" && $slug in tags[]-> slug.current] { ${blogCard} },
   "games": *[_type == "game" && $slug in tags[]-> slug.current] { ${gameCard} },
+}`;
+
+//? ----------> OTHER
+export const homePage = groq`*[_type == "home"][0]{
+  title,
+  tagline,
+  intro,
+  featured {
+    post {
+      _type == "reference" => @-> { "ref": { ${blogCard} } },
+    },
+    game {
+      _type == "reference" => @-> { "ref": { ${gameCard} } },
+    }
+  }
 }`;
 
 //? ----------> FUNCTIONS

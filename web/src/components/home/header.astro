@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+
+import type { SanityHome } from "@utils/sanity.ts";
+import illustration from "@assets/home-illustration.png";
+import arrow from "@icons/arrow.svg?raw";
+
+type Props = Omit<SanityHome, "featured">;
+
+const { title, tagline, intro } = Astro.props;
+
+const headline = `font-sans font-xbold text-green-600 text-5xl md:text-6xl lg:text-7xl xl:text-8xl`;
+const tag = `font-display text-lg md:text-xl lg:text-2xl xl:text-4xl`;
+const desc = `font-sans text-green-800 text-xs lg:text-sm lg:text-bsee xl:text-lg 2xl:text-xl`;
+const arrowWrapper = `flex w-4 lg:w-5 xl:w-6`;
+---
+
+<section
+  class="inner flex flex-col space-y-5 justify-center sm:flex-row sm:space-y-0 sm:justify-between sm:items-center sm:space-x-6 md:space-x-10 lg:space-x-12 xl:space-x-14 2xl:space-x-20"
+>
+  <div
+    class="mx-auto shrink-0 w-[12.5rem] md:w-[15.625rem] lg:w-[23.4375rem] xl:w-[28.125rem] 2xl:w-[37.5rem]"
+  >
+    <Image
+      alt="A shih tzu goblin with an onion for a head"
+      src={illustration}
+      loading="eager"
+      widths={[200, 250, 375, 450, 600]}
+      sizes={`(max-width: 767px) 200px,
+        (max-width: 1023px) 250px,
+        (max-width: 1279px) 375px,
+        (max-width: 1535px) 450px,
+        600px`}
+      quality={100}
+    />
+  </div>
+
+  <div class="flex flex-col space-y-1.5">
+    <div>
+      <h1 class={headline}>{title}</h1>
+      <div class="flex items-center space-x-0.5 text-green-600">
+        <div class={arrowWrapper}>
+          <Fragment set:html={arrow} />
+        </div>
+        <p class={tag}>{tagline}</p>
+      </div>
+    </div>
+    <p class={desc}>{intro}</p>
+  </div>
+</section>
