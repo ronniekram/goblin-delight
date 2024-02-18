@@ -3,20 +3,16 @@ import type { ImageAsset, Slug } from "@sanity/types";
 import groq from "groq";
 
 //! ----------> QUERIES <----------
-//? ----------> REPEATED QUERIES
 export const tags = groq`tags[]->{
-  _type == "reference" => @-> {
-    "ref": {
-      title,
-      slug { current },
-    },
-  },
+  slug,
+  title,
 }`;
 
+//? ----------> GAMES
 export const gameCard = groq`
   title,
   slug,
-  description,
+  blurb,
   ${tags},
   header,
 `;
@@ -40,10 +36,8 @@ export const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
     links,
     blogs[]->{
       _type == "reference" => @-> {
-        "ref": {
-          title,
-          slug { current },
-        },
+        title,
+        slug { current },
       },
     },
   },
@@ -54,9 +48,16 @@ export const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
   },
 }`;
 
+export const allGames = groq`*[_type == "game"] { ${gameCard} }`;
+
+export const firstGame = groq`*[_type == "game"][0] | order(_createdAt, asc ) { ${gameCard} }`;
+
+//? ----------> BLOGS
+
 export const blogCard = groq`
   title,
   slug,
+  tagline,
   ${tags},
   titleImg,
   _createdAt,
@@ -69,15 +70,32 @@ export const blogDetail = groq`*[_type == "post" && slug.current == $slug] {
   ${tags},
   body,
   related[]-> {
-    _type == "reference" => @-> {
-      "ref": { ${blogCard} }
-    },
+    _type == "reference" => @-> { ${blogCard} },
   },
 }`;
+
+export const allBlogs = groq`*[_type == "post"] { ${blogCard} }`;
+
+export const firstBlog = groq`*[_type == "post"][0] | order(_createdAt, asc ) { ${blogCard} }`;
 
 export const tagDetail = groq`{
   "blogs": *[_type == "post" && $slug in tags[]-> slug.current] { ${blogCard} },
   "games": *[_type == "game" && $slug in tags[]-> slug.current] { ${gameCard} },
+}`;
+
+//? ----------> OTHER
+export const homePage = groq`*[_type == "home"][0]{
+  title,
+  tagline,
+  intro,
+  featured {
+    post {
+      _type == "reference" => @-> { ${blogCard} },
+    },
+    game {
+      _type == "reference" => @-> { ${gameCard} },
+    }
+  }
 }`;
 
 //? ----------> FUNCTIONS
@@ -186,9 +204,9 @@ export type SanityHome = {
   title: string;
   tagline: string;
   intro: string;
-  featured?: {
-    blog?: SanityBlogCard;
-    game?: SanityGameCard;
+  featured: {
+    post: SanityBlogCard;
+    game: SanityGameCard;
   };
 };
 
@@ -214,6 +232,7 @@ export type SanityTag = {
 export type SanityBlogCard = {
   title: string;
   slug: Slug;
+  tagline: string;
   tags: SanityTag[];
   titleImg: ImageAsset;
   _createdAt: string;
@@ -223,7 +242,7 @@ export type SanityBlogCard = {
 export type SanityGameCard = {
   title: string;
   slug: Slug;
-  description: PortableTextBlock[];
+  blurb: string;
   tags: SanityTag[];
   header: ImageAsset;
 };

@@ -37,6 +37,15 @@ const Game = defineType({
       group: `basic`,
     },
     {
+      name: `blurb`,
+      title: `Blurb*`,
+      type: `text`,
+      validation: (Rule) => Rule.required(),
+      description: `1 - 2 sentence blurb for feature card`,
+      group: `basic`,
+      rows: 2,
+    },
+    {
       name: `header`,
       title: `Header Image`,
       type: `image`,

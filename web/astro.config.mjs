@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, squooshImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
@@ -29,6 +29,7 @@ export default defineConfig({
   output: `server`,
   adapter: vercel(),
   image: {
+    service: squooshImageService(),
     domains: [`cdn.sanity.io`],
   },
 });
