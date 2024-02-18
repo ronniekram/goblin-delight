@@ -1,0 +1,15 @@
+---
+import type { Props as $, Block } from "astro-portabletext/types";
+
+export type Props = $<Block>;
+
+const { node } = Astro.props;
+
+const heading: unknown = node.children[0]?.text;
+---
+
+<h2
+  class="pt-3 font-sans font-bold text-green-600 text-4xl md:text-5xl lg:text-6xl sm:pt-3.5 md:pt-5 lg:pt-6 xl:pt-8 2xl:pt-10"
+>
+  {heading}
+</h2>

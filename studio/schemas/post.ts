@@ -16,11 +16,6 @@ const Post = defineType({
       validation: (Rule) => Rule.required(),
     },
     {
-      name: `sub`,
-      title: `Subtitle`,
-      type: `string`,
-    },
-    {
       name: `slug`,
       title: `Slug*`,
       type: `slug`,

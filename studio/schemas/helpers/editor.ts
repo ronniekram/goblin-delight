@@ -1,9 +1,7 @@
 import { defineType } from "sanity";
-import { MdFormatBold, MdFormatItalic, MdCode, MdLink, MdOutlineSignpost } from "react-icons/md";
+import { MdFormatBold, MdFormatItalic, MdCode, MdOutlineSignpost } from "react-icons/md";
 
-import ExternalLinkRenderer from "../../components/external-link";
-
-const Editor= defineType({
+const Editor = defineType({
   name: `editor`,
   title: `Block`,
   type: `array`,

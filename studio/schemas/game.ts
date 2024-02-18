@@ -134,6 +134,13 @@ const Game = defineType({
       of: [{ type: `link` }],
       group: `details`,
     },
+    {
+      name: `blogs`,
+      title: `Dev Logs`,
+      type: `array`,
+      of: [{ type: `post` }],
+      group: `details`,
+    },
     // MEDIA
     {
       name: `videos`,
