@@ -20,7 +20,10 @@ const PrivacyPolicy = defineType({
       of: [
         {
           type: `block`,
-          lists: [],
+          lists: [
+            { title: `Numbered`, value: `number`, },
+            { title: `Bullet`, value: `bullet` },
+          ],
           styles: [
             { title: `Normal`, value: `normal` },
             { title: `Heading`, value: `h2` },

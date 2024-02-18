@@ -4,6 +4,7 @@ import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import { sanityIntegration } from "@sanity/astro";
+// import { astroImageTools } from "astro-image-tools";
 
 import react from "@astrojs/react";
 
@@ -11,6 +12,7 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: `http://localhost:4321`,
   integrations: [
+    // astroImageTools(),
     icon(),
     sanityIntegration({
       projectId: `atx0gy8j`,
@@ -24,6 +26,9 @@ export default defineConfig({
     sitemap(),
     react(),
 ],
-  output: "server",
-  adapter: vercel()
+  output: `server`,
+  adapter: vercel(),
+  image: {
+    domains: [`cdn.sanity.io`],
+  },
 });
