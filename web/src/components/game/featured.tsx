@@ -47,7 +47,11 @@ const FeaturedGame = (props: Props) => {
           <p className="clamped font-sans font-medium text-green-100 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">{blurb}</p>
           <div className="flex space-x-1 sm:space-x-2 lg:space-x-3 xl:space-x-4">
             {tags.map((tag: SanityTag) => (
-              <a href={`/tags/${tag.slug.current}`} className={`h-fit settings nowrap rounded-[2.75rem] bg-green-200/70 text-green-800 hover:bg-green-200 ${padding} ${text}`}>
+              <a
+                href={`/tags/${tag.slug.current}`}
+                className={`h-fit settings nowrap rounded-[2.75rem] bg-green-200/70 text-green-800 hover:bg-green-200 ${padding} ${text}`}
+                key={tag.slug.current}
+              >
                 {tag.title}
               </a>
             ))}

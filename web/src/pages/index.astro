@@ -11,7 +11,7 @@ import Button from "@components/ui/button/primary.astro";
 import divider from "@assets/svg/divider.svg?raw";
 
 const getHome = async (): Promise<SanityHome> => {
-  return await sanityClient.fetch(homePage);
+  return (await sanityClient.fetch(homePage)) || {};
 };
 
 const page = await getHome();
@@ -22,7 +22,7 @@ const sectionH2 = `w-full font-display text-green-700 text-4xl lg:text-5xl xl:te
 ---
 
 <Page title="micro studio + yummy designs">
-  <div class="wrapper mb-16">
+  <div class="wrapper">
     <Header title="Goblin Delight" tagline={tagline} intro={intro} />
   </div>
   <div class="flex">

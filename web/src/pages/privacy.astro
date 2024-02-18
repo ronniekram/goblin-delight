@@ -7,10 +7,12 @@ import PolicyText from "@components/policy/index.astro";
 import type { SanityPrivacy } from "@utils/sanity.ts";
 
 const getPrivacy = async (): Promise<SanityPrivacy> => {
-  return await sanityClient.fetch(`*[_type == "privacy"][0]{
+  return (
+    (await sanityClient.fetch(`*[_type == "privacy"][0]{
     _updatedAt,
     body,
-  }`);
+  }`)) || {}
+  );
 };
 
 const policy = await getPrivacy();

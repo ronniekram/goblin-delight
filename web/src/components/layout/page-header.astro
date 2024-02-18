@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 
 interface Props {
-  title: string;
+  title?: string;
 }
 
 const { title } = Astro.props;
@@ -11,7 +11,9 @@ const iconWrapper = `flex w-6 h-6 md:w-8 md:h-8 xl:w-10 xl:h-10 fill-green-600`;
 const text = `font-display font-bold uppercase text-2xl sm:text-4xl md:text-5xl xl:text-6xl`;
 ---
 
-<header class="w-full bg-green-300 text-green-600 px-[5.3%] sm:px-[5.2%] 2xl:px-0">
+<header
+  class={`w-full bg-green-300 text-green-600 px-[5.3%] sm:px-[5.2%] 2xl:px-0 ${!title ? `hidden` : ``}`}
+>
   <div
     class="mx-auto w-full max-w-[86rem] flex items-center space-x-1 sm:space-x-2 py-2.5 sm:py-4 lg:py-5 xl:py-6"
   >
