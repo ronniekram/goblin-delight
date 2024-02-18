@@ -1,11 +1,10 @@
-// import { sanityClient } from "sanity:client";
 import type { PortableTextBlock } from "@portabletext/types";
 import type { ImageAsset, Slug } from "@sanity/types";
 import groq from "groq";
 
 //! ----------> QUERIES <----------
 //? ----------> REPEATED QUERIES
-const tags = groq`tags[]->{
+export const tags = groq`tags[]->{
   _type == "reference" => @-> {
     "ref": {
       title,
@@ -14,7 +13,7 @@ const tags = groq`tags[]->{
   },
 }`;
 
-const gameCard = groq`
+export const gameCard = groq`
   title,
   slug,
   description,
@@ -22,7 +21,7 @@ const gameCard = groq`
   header,
 `;
 
-const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
+export const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
   "basic": {
     title,
     slug,
@@ -55,7 +54,7 @@ const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
   },
 }`;
 
-const blogCard = groq`
+export const blogCard = groq`
   title,
   slug,
   ${tags},
@@ -63,7 +62,7 @@ const blogCard = groq`
   _createdAt,
   "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
 `;
-const blogDetail = groq`*[_type == "post" && slug.current == $slug] {
+export const blogDetail = groq`*[_type == "post" && slug.current == $slug] {
   title,
   slug,
   titleImg,
@@ -76,7 +75,7 @@ const blogDetail = groq`*[_type == "post" && slug.current == $slug] {
   },
 }`;
 
-const tagDetail = groq`{
+export const tagDetail = groq`{
   "blogs": *[_type == "post" && $slug in tags[]-> slug.current] { ${blogCard} },
   "games": *[_type == "game" && $slug in tags[]-> slug.current] { ${gameCard} },
 }`;
