@@ -2,14 +2,9 @@
 import { sanityClient } from "sanity:client";
 
 import Page from "@layouts/page.astro";
-import {
-  homePage,
-  firstGame,
-  firstBlog,
-  type SanityHome,
-  type SanityBlogCard,
-} from "@utils/sanity";
+import { homePage, type SanityHome, type SanityBlogCard } from "@utils/sanity";
 import Header from "@components/home/header.astro";
+import FeaturedGame from "@components/game/featured.tsx";
 import FeaturedBlog from "@components/blog/featured.astro";
 import Button from "@components/ui/button/primary.astro";
 
@@ -33,10 +28,20 @@ const sectionH2 = `w-full font-display text-green-700 text-4xl lg:text-5xl xl:te
   <div class="flex">
     <Fragment set:html={divider} />
   </div>
+
+  <div class="wrapper">
+    <section class={sectionStyle}>
+      <h2 class={`${sectionH2} pb-5 sm:pb-6 lg:pb-8 2xl:pb-10`}>Featured Game</h2>
+
+      <FeaturedGame {...featured?.game} client={sanityClient} client:load />
+      <Button label="All games" href="/games" icon={{ position: `left`, direction: `right` }} />
+    </section>
+  </div>
+
   <div class="wrapper">
     <section class={sectionStyle}>
       <h2 class={sectionH2}>Featured Post</h2>
-      <FeaturedBlog {...featured?.post as SanityBlogCard} />
+      <FeaturedBlog {...featured?.post as SanityBlogCard} client={sanityClient} />
       <Button label="All posts" href="/blog" icon={{ position: `left`, direction: `right` }} />
     </section>
   </div>

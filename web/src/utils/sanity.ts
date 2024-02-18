@@ -12,7 +12,7 @@ export const tags = groq`tags[]->{
 export const gameCard = groq`
   title,
   slug,
-  description,
+  blurb,
   ${tags},
   header,
 `;
@@ -204,9 +204,9 @@ export type SanityHome = {
   title: string;
   tagline: string;
   intro: string;
-  featured?: {
-    post?: SanityBlogCard;
-    game?: SanityGameCard;
+  featured: {
+    post: SanityBlogCard;
+    game: SanityGameCard;
   };
 };
 
@@ -242,7 +242,7 @@ export type SanityBlogCard = {
 export type SanityGameCard = {
   title: string;
   slug: Slug;
-  description: PortableTextBlock[];
+  blurb: string;
   tags: SanityTag[];
   header: ImageAsset;
 };
