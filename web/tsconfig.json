@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "/Users/ronnie/Documents/projects/gd/web/src",
+    "baseUrl": "./src",
     "types": [
       "astro/client"
     ],
@@ -24,7 +24,9 @@
       "@styles/*": [
         "styles/*"
       ],
-      "@utils/*": ["utils/*"]
+      "@utils/*": [
+        "utils/*"
+      ]
     },
     "allowJs": true,
     "jsx": "react-jsx",

@@ -4,7 +4,7 @@ import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import { sanityIntegration } from "@sanity/astro";
-// import { astroImageTools } from "astro-image-tools";
+// import { astroImageTools } from "astro-imagetools";
 
 import react from "@astrojs/react";
 
