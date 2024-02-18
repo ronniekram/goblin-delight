@@ -2,17 +2,28 @@
 import { sanityClient } from "sanity:client";
 
 import Page from "@layouts/page.astro";
-import { homePage, type SanityHome } from "@utils/sanity";
+import {
+  homePage,
+  firstGame,
+  firstBlog,
+  type SanityHome,
+  type SanityBlogCard,
+} from "@utils/sanity";
 import Header from "@components/home/header.astro";
+import FeaturedBlog from "@components/blog/featured.astro";
+import Button from "@components/ui/button/primary.astro";
 
 import divider from "@assets/svg/divider.svg?raw";
 
 const getHome = async (): Promise<SanityHome> => {
-  return (await sanityClient.fetch(homePage)) || {};
+  return await sanityClient.fetch(homePage);
 };
 
 const page = await getHome();
 const { tagline, intro, featured } = page;
+
+const sectionStyle = `inner flex flex-col items-end space-y-5 sm:space-y-6 lg:space-y-8 2xl:space-y-10`;
+const sectionH2 = `w-full font-display text-green-700 text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl`;
 ---
 
 <Page title="micro studio + yummy designs">
@@ -21,5 +32,12 @@ const { tagline, intro, featured } = page;
   </div>
   <div class="flex">
     <Fragment set:html={divider} />
+  </div>
+  <div class="wrapper">
+    <section class={sectionStyle}>
+      <h2 class={sectionH2}>Featured Post</h2>
+      <FeaturedBlog {...featured?.post as SanityBlogCard} />
+      <Button label="All posts" href="/blog" icon={{ position: `left`, direction: `right` }} />
+    </section>
   </div>
 </Page>

@@ -4,12 +4,8 @@ import groq from "groq";
 
 //! ----------> QUERIES <----------
 export const tags = groq`tags[]->{
-  _type == "reference" => @-> {
-    "ref": {
-      title,
-      slug { current },
-    },
-  },
+  slug,
+  title,
 }`;
 
 //? ----------> GAMES
@@ -40,10 +36,8 @@ export const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
     links,
     blogs[]->{
       _type == "reference" => @-> {
-        "ref": {
-          title,
-          slug { current },
-        },
+        title,
+        slug { current },
       },
     },
   },
@@ -56,13 +50,14 @@ export const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
 
 export const allGames = groq`*[_type == "game"] { ${gameCard} }`;
 
-export const firstGame = groq`*[_type == "game"][0] | orderBy(_createdAt, asc ) { ${gameCard} }`;
+export const firstGame = groq`*[_type == "game"][0] | order(_createdAt, asc ) { ${gameCard} }`;
 
 //? ----------> BLOGS
 
 export const blogCard = groq`
   title,
   slug,
+  tagline,
   ${tags},
   titleImg,
   _createdAt,
@@ -75,15 +70,13 @@ export const blogDetail = groq`*[_type == "post" && slug.current == $slug] {
   ${tags},
   body,
   related[]-> {
-    _type == "reference" => @-> {
-      "ref": { ${blogCard} }
-    },
+    _type == "reference" => @-> { ${blogCard} },
   },
 }`;
 
 export const allBlogs = groq`*[_type == "post"] { ${blogCard} }`;
 
-export const firstBlog = groq`*[_type == "post"][0] | orderBy(_createdAt, asc ) { ${blogCard} }`;
+export const firstBlog = groq`*[_type == "post"][0] | order(_createdAt, asc ) { ${blogCard} }`;
 
 export const tagDetail = groq`{
   "blogs": *[_type == "post" && $slug in tags[]-> slug.current] { ${blogCard} },
@@ -97,10 +90,10 @@ export const homePage = groq`*[_type == "home"][0]{
   intro,
   featured {
     post {
-      _type == "reference" => @-> { "ref": { ${blogCard} } },
+      _type == "reference" => @-> { ${blogCard} },
     },
     game {
-      _type == "reference" => @-> { "ref": { ${gameCard} } },
+      _type == "reference" => @-> { ${gameCard} },
     }
   }
 }`;
@@ -212,7 +205,7 @@ export type SanityHome = {
   tagline: string;
   intro: string;
   featured?: {
-    blog?: SanityBlogCard;
+    post?: SanityBlogCard;
     game?: SanityGameCard;
   };
 };
@@ -239,6 +232,7 @@ export type SanityTag = {
 export type SanityBlogCard = {
   title: string;
   slug: Slug;
+  tagline: string;
   tags: SanityTag[];
   titleImg: ImageAsset;
   _createdAt: string;

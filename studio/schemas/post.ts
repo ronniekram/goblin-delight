@@ -26,6 +26,13 @@ const Post = defineType({
       },
     },
     {
+      name: `tagline`,
+      title: `Tagline*`,
+      type: `text`,
+      validation: (Rule) => Rule.required(),
+      description: `1-2 sentence attention grabber for display on feature cards`,
+    },
+    {
       name: `titleImg`,
       title: `Header Image`,
       type: `image`,
