@@ -51,7 +51,7 @@ const Menu = () => (
 
 const NavLink = ({ label, href }: NavLinkProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
-  const navLink = `settings text-green-700 sm:text-green-100 hover:text-green-300 hover:bg-green-700  hover:rounded-sm sm:hover:text-green-600 sm:hover:bg-green-100`;
+  const navLink = `settings text-green-700 sm:text-green-100 hover:text-green-300 hover:bg-green-700  hover:rounded-sm sm:hover:text-green-600 sm:hover:bg-green-200 sm:border-[3px] sm:border-transparent sm:hover:border-green-100`;
 
   return (
     <li className="flex items-center space-x-2 sm:space-x-0" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
