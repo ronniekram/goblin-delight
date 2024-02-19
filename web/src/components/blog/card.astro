@@ -1,0 +1,40 @@
+---
+import type { SanityClient } from "@sanity/client";
+
+import type { SanityBlogCard } from "@utils/sanity";
+import sanityImgUrl from "@utils/image";
+import formatDate from "@utils/format-date";
+
+import CardTag from "@components/ui/tag/card.astro";
+import Button from "@components/ui/button/secondary.astro";
+
+type Props = SanityBlogCard & { client: SanityClient };
+const { title, slug, tags, titleImg, _createdAt, estimatedReadingTime, client } = Astro.props;
+
+const bg = sanityImgUrl(client, titleImg).auto(`format`).fit(`max`).width(668).quality(100).url();
+
+const container = `w-full rounded overflow-hidden border-2 border-green-800 flex flex-col shadow-lg lg:shadow-xl bg-green-200 text-green-700`;
+const top = `h-[10.9375rem] lg:h-[12.5rem] xl:h-[14.0625rem] 2xl:h-[15.625rem] p-4 sm:px-5 md:px-4 lg:px-5 xl:px-6 xl:py-5 2xl:px-8 flex space-x-2 bg-center bg-cover flex-shrink-0`;
+const bottom = `flex flex-col h-full items-stretch justify-between space-y-4 lg:space-y-5 p-4 pt-2 sm:p-5 sm:pt-3 md:p-4 md:pt-2 lg:p-5 lg:pt-3 xl:px-6 xl:pb-5 2xl:px-8 2xl:pt-4 2xl:pb-6`;
+const titleStyle = `w-full font-sans font-bold text-green-600 text-xl lg:text-2xl 2xl:text-4xl`;
+---
+
+<div class={container}>
+  <div class={top} style={`background-image: url(${bg});`}>
+    {tags.map((tag) => <CardTag label={tag.title} href={`/tags/${tag.slug.current}`} />)}
+  </div>
+  <div class={bottom}>
+    <div class="w-full flex flex-col space-y-1 xl:space-y-1.5 2xl:space-y-2">
+      <div
+        class="w-full flex items-center justify-between font-display uppercase text-xl xl:text-2xl 2xl:text-3xl"
+      >
+        <p>{formatDate(_createdAt)}</p>
+        <p>{estimatedReadingTime} min read</p>
+      </div>
+      <h3 class={titleStyle}>{title}</h3>
+    </div>
+    <div class="flex justify-end">
+      <Button label="Read more >>" href={`/blog/${slug.current}`} />
+    </div>
+  </div>
+</div>

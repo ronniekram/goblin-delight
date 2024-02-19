@@ -113,7 +113,7 @@ export const blogsPage = groq`{
   "featured": *[_type == "home"][0] {
     featured {
       post {
-        _type == "reference" => @-> { ${gameCard} },
+        _type == "reference" => @-> { ${blogCard} },
       },
     },
   },

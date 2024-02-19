@@ -4,11 +4,31 @@ import { sanityClient } from "sanity:client";
 import { blogsPage, type SanityBlogCard, type SanityBlogPage } from "@utils/sanity";
 
 import Page from "@layouts/page.astro";
+import FeaturedBlog from "@components/blog/featured.astro";
+import BlogCard from "@components/blog/card.astro";
 
 import divider from "@assets/svg/divider.svg?raw";
 
 const page: SanityBlogPage = (await sanityClient.fetch(blogsPage)) || {};
 const { featured, all } = page;
+const post = featured.featured.post;
 
 const grid = `inner grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-5 lg:gap-8 xl:gap-10`;
 ---
+
+<Page title="Blog" header="Blog">
+  <section class="wrapper">
+    <FeaturedBlog {...post} client={sanityClient} />
+  </section>
+  <div class="flex">
+    <Fragment set:html={divider} />
+  </div>
+  <section class="wrapper py-8 sm:py-10 md:py-12 lg:py-14 xl:py-20 2xl:py-24">
+    <div class="inner flex flex-col space-y-10 md:space-y-12 lg:space-y-14 2xl:space-y-16">
+      <h2 class="section-title">All Posts</h2>
+      <div class={grid}>
+        {all.map((post: SanityBlogCard) => <BlogCard {...post} client={sanityClient} />)}
+      </div>
+    </div>
+  </section>
+</Page>
