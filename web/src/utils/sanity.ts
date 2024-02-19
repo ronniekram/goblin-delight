@@ -83,7 +83,7 @@ export const tagDetail = groq`{
   "games": *[_type == "game" && $slug in tags[]-> slug.current] { ${gameCard} },
 }`;
 
-//? ----------> OTHER
+//? ----------> PAGES
 export const homePage = groq`*[_type == "home"][0]{
   title,
   tagline,
@@ -98,66 +98,20 @@ export const homePage = groq`*[_type == "home"][0]{
   }
 }`;
 
-//? ----------> FUNCTIONS
-// export const getAllBlogs = async (): Promise<SanityBlogCard[]> => {
-//   return await sanityClient.fetch(`*[_type == "post] | order(_createdAt asc){
-//     ${blogCard}
-//   }`) || [];
-// };
+export const gamesPage = groq`{
+  "featured": *[_type == "home"][0] {
+    featured {
+      game {
+        _type == "reference" => @-> { ${gameCard} },
+      },
+    },
+  },
+  "all": ${allGames}
+}`;
 
-// export const getBlogDetail = async (options: { slug: string }): Promise<SanityBlog> => {
-//   return await sanityClient.fetch(blogDetail, options);
-// };
-
-// export const getAllGames = async (): Promise<SanityGameCard[]> => {
-//   return await sanityClient.fetch(`*[_type == "game"] {
-//     ${gameCard}
-//   }`) || [];
-// };
-
-// export const getGameDetail = async (options: { slug: string }): Promise<SanityGame> => {
-//   return await sanityClient.fetch(gameDetail, options);
-// };
-
-// export const getHome = async (): Promise<SanityHome> => {
-//   return await sanityClient.fetch(`*[_type == "home"][0]{
-//     title,
-//     tagline,
-//     intro,
-//     featured {
-//       post {
-//         _type == "reference" => @-> { "ref": { ${blogCard} } },
-//       },
-//       game {
-//         _type == "reference" => @-> { "ref": { ${gameCard} } },
-//       }
-//     }
-//   }`);
-// };
-
-// export const getTagDetails = async (options: { slug: string }): Promise<SanityTagPage> => {
-//   return await sanityClient.fetch(tagDetail, options);
-// };
-
-// export const getPrivacy = async (): Promise<SanityPrivacy> => {
-//   return await sanityClient.fetch(`*[_type == "privacy"][0]{
-//     _updatedAt,
-//     body,
-//   }`);
-// };
-
-// export const getSocials = async (): Promise<SanitySocials> => {
-//   return await sanityClient.fetch(`*[_type == "social"][0]{
-//     email,
-//     twitch,
-//     tiktok,
-//     yt,
-//     git,
-//   }`);
-// };
 
 //! ----------> TYPES <----------
-//? ----------> DOCUMENTS
+//? ----------> DOCUMENTS & PAGES
 export type SanityBlog = {
   title: string;
   slug: Slug;
@@ -208,6 +162,15 @@ export type SanityHome = {
     post: SanityBlogCard;
     game: SanityGameCard;
   };
+};
+
+export type SanityGamePage = {
+  featured: {
+    featured: {
+      game: SanityGameCard;
+    };
+  };
+  all: SanityGameCard[];
 };
 
 export type SanityPrivacy = {
