@@ -1,0 +1,14 @@
+---
+import { sanityClient } from "sanity:client";
+
+import { blogsPage, type SanityBlogCard, type SanityBlogPage } from "@utils/sanity";
+
+import Page from "@layouts/page.astro";
+
+import divider from "@assets/svg/divider.svg?raw";
+
+const page: SanityBlogPage = (await sanityClient.fetch(blogsPage)) || {};
+const { featured, all } = page;
+
+const grid = `inner grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-5 lg:gap-8 xl:gap-10`;
+---
