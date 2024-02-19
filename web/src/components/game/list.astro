@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  links: {
+    label: string;
+    href: string;
+  }[];
+}
+
+const { title, links } = Astro.props;
+const item = `pixel-list settings flex items-center space-x-1 sm:space-x-2 font-display text-green-700 hover:text-green-600 text-xl sm:text-2xl 2xl:text-[1.75rem] 2xl:leading-[2rem]`;
+---
+
+<div class="w-full flex flex-col xl:space-y-1 font-display">
+  <h3
+    class="w-full font-bold text-green-600 text-2xl md:text-3xl lg:text-4xl lg:bg-green-300 lg:py-0.5 xl:text-5xl"
+  >
+    {title}
+  </h3>
+  <ul class="flex flex-col space-y-0.5 sm:space-y-1 lg:space-y-1.5 xl:space-y-2">
+    {
+      links.map(({ label, href }) => (
+        <li class={item}>
+          <a href={href}>{label}</a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
