@@ -31,18 +31,6 @@
   }
 }
 
-.slide {
-  animation-name: slide;
-  animation-duration: 1.25s;
-  animation-iteration-count: infinite;
-}
-
-@keyframes slide {
-  0% {transform: translateX(0);}
-  50% {transform: translateX(4px);}
-  100% {transform: translateX(0);}
-}
-
 html, body {
   height: 100%;
   background: #FCFCFA;
@@ -64,6 +52,18 @@ footer {
   padding: 0.75rem 5.3%;
   @media (min-width: 640px) { padding: 1rem 5.2%; }
   @media(min-width: 1536px) { padding: 1rem 0rem; }
+}
+
+.slide {
+  animation-name: slide;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes slide {
+  0% {transform: translateX(0);}
+  50% {transform: translateX(4px);}
+  100% {transform: translateX(0);}
 }
 
 .hidden {

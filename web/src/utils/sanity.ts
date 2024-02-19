@@ -109,6 +109,17 @@ export const gamesPage = groq`{
   "all": ${allGames}
 }`;
 
+export const blogsPage = groq`{
+  "featured": *[_type == "home"][0] {
+    featured {
+      post {
+        _type == "reference" => @-> { ${blogCard} },
+      },
+    },
+  },
+  "all": ${allBlogs}
+}`;
+
 
 //! ----------> TYPES <----------
 //? ----------> DOCUMENTS & PAGES
@@ -171,6 +182,15 @@ export type SanityGamePage = {
     };
   };
   all: SanityGameCard[];
+};
+
+export type SanityBlogPage = {
+  featured: {
+    featured: {
+      post: SanityBlogCard;
+    };
+  };
+  all: SanityBlogCard[];
 };
 
 export type SanityPrivacy = {
