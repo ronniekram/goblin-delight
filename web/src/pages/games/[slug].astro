@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import type { InferGetStaticParamsType } from "astro";
+import { PortableText } from "astro-portabletext";
+import { sanityClient } from "sanity:client";
+
+import { gameDetail, allGameSlugs, type SanityGame } from "@utils/sanity";
+import sanityImgUrl from "@utils/image";
+
+import Page from "@layouts/page.astro";
+import Header from "@components/game/header.astro";
+
+export async function getStaticPaths() {
+  const games = await sanityClient.fetch(allGameSlugs);
+  return games.map((game: { slug: { current: string } }) => ({
+    params: { slug: game.slug.current },
+  }));
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
+
+const game: SanityGame = (await sanityClient.fetch(gameDetail, { slug })) || {};
+
+const { basic, details, media } = game;
+
+const headerImg = sanityImgUrl(sanityClient, basic?.header)
+  .auto(`format`)
+  .fit(`max`)
+  .width(1376)
+  .quality(100)
+  .url();
+---
+
+<Page title={basic?.title} header="Games & Projects">
+  <div class="wrapper">
+    <div class="inner flex flex-col space-y-4 sm:space-y-5">
+      {
+        basic?.header && (
+          <div class="flex w-full rounded overflow-hidden border-green-700 border-2 lg:border-[3px] h-[8rem] sm:h-[12.5rem] md:h-[14.0625rem] lg:h-[18.75rem] xl:h-[23.4375rem] 2xl:h-[28.125rem]">
+            <Image
+              alt={basic.title}
+              src={headerImg}
+              loading="eager"
+              inferSize
+              class="object-cover object-center"
+            />
+          </div>
+        )
+      }
+      <Header title={basic.title} tags={basic.tags} />
+    </div>
+  </div>
+</Page>

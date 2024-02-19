@@ -17,7 +17,7 @@ export const gameCard = groq`
   header,
 `;
 
-export const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
+export const gameDetail = groq`*[_type == "game" && slug.current == $slug][0] {
   "basic": {
     title,
     slug,
@@ -33,7 +33,10 @@ export const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
     madeWith,
     jam,
     team,
-    links,
+    links[]{
+      label,
+      url,
+    },
     blogs[]->{
       _type == "reference" => @-> {
         title,
@@ -50,10 +53,11 @@ export const gameDetail = groq`*[_type == "game" && slug.current == $slug] {
 
 export const allGames = groq`*[_type == "game"] { ${gameCard} }`;
 
+export const allGameSlugs = groq`*[_type == "game"] { slug { current } }`;
+
 export const firstGame = groq`*[_type == "game"][0] | order(_createdAt, asc ) { ${gameCard} }`;
 
 //? ----------> BLOGS
-
 export const blogCard = groq`
   title,
   slug,
@@ -63,7 +67,7 @@ export const blogCard = groq`
   _createdAt,
   "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
 `;
-export const blogDetail = groq`*[_type == "post" && slug.current == $slug] {
+export const blogDetail = groq`*[_type == "post" && slug.current == $slug][0] {
   title,
   slug,
   titleImg,
@@ -75,6 +79,8 @@ export const blogDetail = groq`*[_type == "post" && slug.current == $slug] {
 }`;
 
 export const allBlogs = groq`*[_type == "post"] { ${blogCard} }`;
+
+export const allBlogSlugs = groq`*[_type == "post"] { slug { current }}`;
 
 export const firstBlog = groq`*[_type == "post"][0] | order(_createdAt, asc ) { ${blogCard} }`;
 

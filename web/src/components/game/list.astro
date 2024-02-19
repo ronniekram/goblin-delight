@@ -3,7 +3,7 @@ interface Props {
   title: string;
   links: {
     label: string;
-    href: string;
+    url: string;
   }[];
 }
 
@@ -19,9 +19,9 @@ const item = `pixel-list settings flex items-center space-x-1 sm:space-x-2 font-
   </h3>
   <ul class="flex flex-col space-y-0.5 sm:space-y-1 lg:space-y-1.5 xl:space-y-2">
     {
-      links.map(({ label, href }) => (
+      links.map(({ label, url }) => (
         <li class={item}>
-          <a href={href}>{label}</a>
+          <a href={url}>{label}</a>
         </li>
       ))
     }
