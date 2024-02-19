@@ -9,7 +9,7 @@ import FeaturedTag from "../ui/tag/feat.astro";
 type Props = SanityGameCard & { client: SanityClient };
 const { title, slug, blurb, tags, header, client } = Astro.props;
 
-const bg = sanityImgUrl(client, header).url();
+const bg = sanityImgUrl(client, header).auto(`format`).fit(`max`).width(1376).quality(100).url();
 
 const container = `group cursor-pointer w-full overflow-hidden relative block h-[17.1875rem] sm:h-[18.75rem] md:h-[20.3125rem] lg:h-[21.875rem] xl:h-[28.125rem] rounded border-green-800 border-2 md:border-[3px] bg-center bg-cover`;
 

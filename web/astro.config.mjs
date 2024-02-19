@@ -26,7 +26,7 @@ export default defineConfig({
     sitemap(),
     react(),
 ],
-  output: `server`,
+  output: `hybrid`,
   adapter: vercel({
     edgeMiddleware: true,
   }),

@@ -12,7 +12,12 @@ type Props = SanityBlogCard & { client: SanityClient };
 const { title, slug, tagline, tags, titleImg, _createdAt, estimatedReadingTime, client } =
   Astro.props;
 
-const imgURL = sanityImageUrl(client, titleImg).url();
+const imgURL = sanityImageUrl(client, titleImg)
+  .auto(`format`)
+  .fit(`max`)
+  .width(1376)
+  .quality(100)
+  .url();
 
 const container = `overflow-hidden w-full bg-green-200 text-green-700 border-2 border-green-800 rounded flex flex-col md:flex-row lg:border-[3px] shadow shadow-green-800 md:shadow-lg xl:shadow-xl`;
 const imageWrapper = `bg-center bg-cover flex flex-shrink-0 space-x-2 h-[12.5rem] p-4 sm:p-5 lg:px-6 xl:px-8 2xl:px-10 md:w-[47%] md:h-auto md:items-stretch lg:w-[48%] xl:w-[49%] 2xl:w-[45%]`;
