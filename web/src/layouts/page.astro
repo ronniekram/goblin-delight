@@ -46,9 +46,8 @@ const pageTitle = `${title} | Goblin Delight`;
     />
   </head>
   <body>
-    <!-- <Nav /> -->
-    <Navigation client:visible />
-    {header && <PageHeader title={header} />}
+    <Navigation client:load />
+    <PageHeader title={header} />
     <main>
       <slot />
     </main>

@@ -27,7 +27,9 @@ export default defineConfig({
     react(),
 ],
   output: `server`,
-  adapter: vercel(),
+  adapter: vercel({
+    edgeMiddleware: true,
+  }),
   image: {
     service: squooshImageService(),
     domains: [`cdn.sanity.io`],

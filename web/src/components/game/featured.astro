@@ -1,0 +1,85 @@
+---
+import type { SanityClient } from "@sanity/client";
+
+import type { SanityGameCard } from "@utils/sanity";
+import sanityImgUrl from "@utils/image";
+
+import FeaturedTag from "../ui/tag/feat.astro";
+
+type Props = SanityGameCard & { client: SanityClient };
+const { title, slug, blurb, tags, header, client } = Astro.props;
+
+const bg = sanityImgUrl(client, header).url();
+
+const container = `group cursor-pointer w-full overflow-hidden relative block h-[17.1875rem] sm:h-[18.75rem] md:h-[20.3125rem] lg:h-[21.875rem] xl:h-[28.125rem] rounded border-green-800 border-2 md:border-[3px] bg-center bg-cover`;
+
+const inner = `detail w-full flex flex-col justify-between items-stretch p-4 sm:p-5 md:px-8 xl:px-10 xl:py-8`;
+
+const titleStyle = `font-display font-bold uppercase text-green-200 group-hover:text-green-100 text-2xl leading-[100%] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl`;
+---
+
+<div class={container} style={`background-image: url(${bg});`} id="container">
+  <div class={inner}>
+    <h3 class={titleStyle}>{title}</h3>
+    <div class="w-full flex flex-col space-y-2 sm:space-y-3 xl:space-y-4">
+      <p
+        class="clamped font-sans font-medium text-green-100 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl"
+      >
+        {blurb}
+      </p>
+      <div class="flex space-x-1 sm:space-x-2 lg:space-x-3 xl:space-x-4">
+        {
+          tags.map((tag) => (
+            <FeaturedTag title={tag.title} slug={`/tags/${tag.slug.current}`} type="game" />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ slug: slug.current }}>
+  const container = document.getElementById(`container`);
+  container.addEventListener(`click`, () => {
+    window.location.assign(`/games/${slug}`);
+  });
+</script>
+
+<style>
+  .detail {
+    background: rgba(19, 93, 80, 0.5);
+    height: calc(17.1875rem + 50%);
+    @media (min-width: 640px) {
+      height: calc(18.75rem + 50%);
+    }
+    @media (min-width: 768px) {
+      height: calc(20.3125rem + 50%);
+    }
+    @media (min-width: 1024px) {
+      height: calc(21.875rem + 50%);
+    }
+    @media (min-width: 1280px) {
+      height: calc(28.125rem + 50%);
+    }
+
+    transition-property: all;
+    transition-duration: 500ms;
+  }
+
+  .detail:hover {
+    background: rgba(5, 55, 59, 0.5);
+    height: 17.1875rem;
+    @media (min-width: 640px) {
+      height: 18.75rem;
+    }
+    @media (min-width: 768px) {
+      height: 20.3125rem;
+    }
+    @media (min-width: 1024px) {
+      height: 21.875rem;
+    }
+    @media (min-width: 1280px) {
+      height: 28.125rem;
+    }
+  }
+</style>
