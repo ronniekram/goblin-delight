@@ -22,6 +22,7 @@ export default defineConfig({
     tailwind({
       // prevents virtual import of base tailwind styles being added to every page
       config: { applyBaseStyles: false },
+      nesting: true,
     }),
     sitemap(),
     react(),

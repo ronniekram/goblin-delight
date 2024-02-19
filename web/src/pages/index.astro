@@ -14,7 +14,7 @@ const page: SanityHome = (await sanityClient.fetch(homePage)) || {};
 const { tagline, intro, featured } = page;
 
 const sectionStyle = `inner flex flex-col items-end space-y-5 sm:space-y-6 lg:space-y-8 2xl:space-y-10`;
-const sectionH2 = `w-full font-display text-green-700 text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl`;
+// flex flex-col space-y-10 md:space-y-12 lg:space-y-14 2xl:space-y-16
 ---
 
 <Page title="micro studio + yummy designs">
@@ -29,13 +29,13 @@ const sectionH2 = `w-full font-display text-green-700 text-4xl lg:text-5xl xl:te
     class="wrapper flex flex-col space-y-10 py-8 sm:py-10 md:py-12 md:space-y-12 lg:py-14 lg:space-y-14 xl:py-20 2xl:py-24 2xl:space-y-16"
   >
     <section class={sectionStyle}>
-      <h2 class={sectionH2}>Featured Game</h2>
+      <h2 class="section-title">Featured Game</h2>
       <FeaturedGame {...featured.game} client={sanityClient} />
       <Button label="All games" href="/games" icon={{ position: `left`, direction: `right` }} />
     </section>
 
     <section class={sectionStyle}>
-      <h2 class={sectionH2}>Featured Post</h2>
+      <h2 class="section-title">Featured Post</h2>
       <FeaturedBlog {...featured.post as SanityBlogCard} client={sanityClient} />
       <Button label="All posts" href="/blog" icon={{ position: `left`, direction: `right` }} />
     </section>
