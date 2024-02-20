@@ -260,7 +260,7 @@ export type SanityTagPage = {
 
 export type SanityTeam = {
   name: string;
-  positiong: string;
+  position: string;
   website?: string;
 };
 

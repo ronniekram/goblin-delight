@@ -14,30 +14,31 @@ const page: SanityHome = (await sanityClient.fetch(homePage)) || {};
 const { tagline, intro, featured } = page;
 
 const sectionStyle = `inner flex flex-col items-end space-y-5 sm:space-y-6 lg:space-y-8 2xl:space-y-10`;
-// flex flex-col space-y-10 md:space-y-12 lg:space-y-14 2xl:space-y-16
 ---
 
 <Page title="micro studio + yummy designs">
-  <div class="wrapper">
-    <Header title="Goblin Delight" tagline={tagline} intro={intro} />
-  </div>
-  <div class="flex">
-    <Fragment set:html={divider} />
-  </div>
-
-  <div
-    class="wrapper flex flex-col space-y-10 py-8 sm:py-10 md:py-12 md:space-y-12 lg:py-14 lg:space-y-14 xl:py-20 2xl:py-24 2xl:space-y-16"
-  >
-    <section class={sectionStyle}>
-      <h2 class="section-title">Featured Game</h2>
-      <FeaturedGame {...featured.game} client={sanityClient} />
-      <Button label="All games" href="/games" icon={{ position: `left`, direction: `right` }} />
+  <article class="flex flex-col space-y-8 sm:space-y-10 lg:space-y-16 2xl:space-y-14">
+    <section class="wrapper">
+      <Header title="Goblin Delight" tagline={tagline} intro={intro} />
     </section>
+    <div class="flex">
+      <Fragment set:html={divider} />
+    </div>
 
-    <section class={sectionStyle}>
-      <h2 class="section-title">Featured Post</h2>
-      <FeaturedBlog {...featured.post as SanityBlogCard} client={sanityClient} />
-      <Button label="All posts" href="/blog" icon={{ position: `left`, direction: `right` }} />
+    <section
+      class="wrapper flex flex-col space-y-10 md:space-y-12 lg:space-y-14 2xl:space-y-16 2xl:pt-14"
+    >
+      <section class={sectionStyle}>
+        <h2 class="section-title">Featured Game</h2>
+        <FeaturedGame {...featured.game} client={sanityClient} />
+        <Button label="All games" href="/games" icon={{ position: `left`, direction: `right` }} />
+      </section>
+
+      <section class={sectionStyle}>
+        <h2 class="section-title">Featured Post</h2>
+        <FeaturedBlog {...featured.post as SanityBlogCard} client={sanityClient} />
+        <Button label="All posts" href="/blog" icon={{ position: `left`, direction: `right` }} />
+      </section>
     </section>
-  </div>
+  </article>
 </Page>

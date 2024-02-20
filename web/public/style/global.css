@@ -87,6 +87,7 @@ footer {
 
 .pixel-list {
   list-style-image: url("/images/list-bullet-sm.svg");
+  padding-inline-start: 4px;
 
   @media (min-width: 768px) {
     list-style-image: url("/images/list-bullet.svg");
@@ -97,19 +98,19 @@ footer {
   margin: auto;
   width: 100%;
   max-width: 86rem;
-  padding: 2rem 5.3%;
+  padding: 0 5.3%;
 
   @media (min-width: 640px) {
-    padding: 3rem 5.2%;
+    padding: 0 5.2%;
   }
 
   @media (min-width: 1280px) {
-    padding: 6rem 5.2%;
+    padding: 0 5.2%;
   }
 
 
   @media (min-width: 1536px) {
-    padding: 6rem 0;
+    padding: 0;
   }
 }
 

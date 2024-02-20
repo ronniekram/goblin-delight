@@ -11,6 +11,8 @@ import Page from "@layouts/page.astro";
 import Header from "@components/game/header.astro";
 import List from "@components/game/list.astro";
 import ListItem from "@components/game/list-item.astro";
+import Detail from "@components/game/detail.astro";
+import TeamMember from "@components/game/team.astro";
 import Accordion from "@components/game/info-accordion.astro";
 import Button from "@components/ui/button/primary.astro";
 
@@ -41,11 +43,12 @@ const headerImg = sanityImgUrl(sanityClient, basic?.header)
   .quality(100)
   .url();
 
-const featList = `flex flex-col space-y-2 sm:space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6`;
+const featList = `flex flex-col space-y-2.5 sm:space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6`;
+const grid = `grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-4 xl:gap-8`;
 ---
 
 <Page title={basic?.title} header="Games & Projects">
-  <div class="wrapper w-full flex flex-col items-end space-y-5">
+  <div class="wrapper w-full flex flex-col items-end space-y-5 sm:space-y-8">
     <section class="inner flex flex-col space-y-4 sm:space-y-5">
       {
         basic?.header && (
@@ -73,11 +76,35 @@ const featList = `flex flex-col space-y-2 sm:space-y-3 lg:space-y-4 xl:space-y-5
       <List title="Links" links={details.links} />
     </section>
   </div>
-  <section class="w-full flex flex-col space-y-5">
+  <section class="w-full flex flex-col space-y-5 sm:space-y-8">
     <Accordion title="Features">
       <ul class={`${featList} pl-4 list-outside`}>
         {basic.features.map((feat) => <ListItem text={feat} />)}
       </ul>
     </Accordion>
+    <Accordion title="Details">
+      <div class={grid}>
+        {details?.release && <Detail title="Release Date" content={details.release} />}
+        {details?.genre && <Detail title="Genre" content={details.genre} />}
+        {details?.platforms && <Detail title="Platforms" content={details.platforms} />}
+        {details?.madeWith && <Detail title="Made With" content={details.madeWith} />}
+        {details?.jam && <Detail title="Game Jam" content={details.jam} />}
+      </div>
+    </Accordion>
+    <!-- MEDIA GOES HERE -->
+    <Accordion title="Team">
+      <div class={grid}>
+        {
+          details?.team.map((member) => (
+            <TeamMember name={member.name} position={member.position} website={member?.website} />
+          ))
+        }
+      </div>
+    </Accordion>
+  </section>
+  <section class="wrapper pt-5 pb-12">
+    <div class="inner flex justify-end">
+      <Button label="All Games" href="/games" icon={{ position: `left`, direction: `left` }} />
+    </div>
   </section>
 </Page>
