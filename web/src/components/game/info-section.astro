@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const header = `w-full flex py-2 border-green-700 lg:border-b-2 font-display font-bold uppercase text-green-700 text-6xl xl:text-7xl`;
+const body = `px-0 py-8`;
+---
+
+<section class="w-full">
+  <h2 class={header}>{title}</h2>
+  <div class={body}>
+    <slot />
+  </div>
+</section>

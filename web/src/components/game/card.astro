@@ -16,16 +16,16 @@ const inner = `detail flex flex-col justify-center items-stretch p-4 xl:p-5`;
 const titleStyle = `font-display font-bold uppercase text-center text-green-100 text-4xl leading-[100%] sm:text-[2.5rem] lg:text-5xl xl:text-6xl 2xl:text-7xl`;
 ---
 
-<div class={container} style={`background-image: url(${bg});`} id="container">
+<a href={`/games/${slug.current}`} class={container} style={`background-image: url(${bg});`}>
   <div class={inner}>
     <h3 class={titleStyle}>{title}</h3>
   </div>
-</div>
+</a>
 
 <script define:vars={{ slug: slug.current }}>
   const container = document.getElementById(`container`);
   container.addEventListener(`click`, () => {
-    window.location.assign(`/games/${slug}`);
+    window.location.assign(`/games/${slug.current}`);
   });
 </script>
 

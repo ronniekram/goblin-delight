@@ -91,6 +91,7 @@ footer {
 
   @media (min-width: 768px) {
     list-style-image: url("/images/list-bullet.svg");
+    padding-inline-start: 8px;
   }
 }
 
