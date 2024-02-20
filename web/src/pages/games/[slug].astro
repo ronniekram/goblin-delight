@@ -9,6 +9,10 @@ import sanityImgUrl from "@utils/image";
 
 import Page from "@layouts/page.astro";
 import Header from "@components/game/header.astro";
+import List from "@components/game/list.astro";
+import ListItem from "@components/game/list-item.astro";
+import Accordion from "@components/game/info-accordion.astro";
+import Button from "@components/ui/button/primary.astro";
 
 export async function getStaticPaths() {
   const games = await sanityClient.fetch(allGameSlugs);
@@ -24,17 +28,25 @@ const game: SanityGame = (await sanityClient.fetch(gameDetail, { slug })) || {};
 
 const { basic, details, media } = game;
 
+const logs =
+  details?.blogs?.map((blog) => ({
+    label: blog.title,
+    url: blog.slug.current,
+  })) || [];
+
 const headerImg = sanityImgUrl(sanityClient, basic?.header)
   .auto(`format`)
   .fit(`max`)
   .width(1376)
   .quality(100)
   .url();
+
+const featList = `flex flex-col space-y-2 sm:space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6`;
 ---
 
 <Page title={basic?.title} header="Games & Projects">
-  <div class="wrapper">
-    <div class="inner flex flex-col space-y-4 sm:space-y-5">
+  <div class="wrapper w-full flex flex-col items-end space-y-5">
+    <section class="inner flex flex-col space-y-4 sm:space-y-5">
       {
         basic?.header && (
           <div class="flex w-full rounded overflow-hidden border-green-700 border-2 lg:border-[3px] h-[8rem] sm:h-[12.5rem] md:h-[14.0625rem] lg:h-[18.75rem] xl:h-[23.4375rem] 2xl:h-[28.125rem]">
@@ -49,6 +61,23 @@ const headerImg = sanityImgUrl(sanityClient, basic?.header)
         )
       }
       <Header title={basic.title} tags={basic.tags} />
-    </div>
+    </section>
+    <section
+      class="inner flex flex-col space-y-1 font-sans text-green-800 text-sm sm:text-base md:text-lg lg:text-xl lg:space-y-3 xl:text-2xl 2xl:text-3xl 2xl:space-y-4"
+    >
+      <PortableText value={basic.description} />
+    </section>
+
+    <section class="inner grid grid-cols-2 gap-x-5 sm:gap-x-10">
+      <List title="Dev Logs" links={logs} />
+      <List title="Links" links={details.links} />
+    </section>
   </div>
+  <section class="w-full flex flex-col space-y-5">
+    <Accordion title="Features">
+      <ul class={`${featList} pl-4 list-outside`}>
+        {basic.features.map((feat) => <ListItem text={feat} />)}
+      </ul>
+    </Accordion>
+  </section>
 </Page>

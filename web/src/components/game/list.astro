@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { title, links } = Astro.props;
-const item = `pixel-list settings flex items-center space-x-1 sm:space-x-2 font-display text-green-700 hover:text-green-600 text-xl sm:text-2xl 2xl:text-[1.75rem] 2xl:leading-[2rem]`;
+const item = `pixel-list settings font-display text-green-700 hover:text-green-600 text-xl sm:text-2xl 2xl:text-[1.75rem] 2xl:leading-[2rem]`;
 ---
 
 <div class="w-full flex flex-col xl:space-y-1 font-display">
@@ -17,11 +17,13 @@ const item = `pixel-list settings flex items-center space-x-1 sm:space-x-2 font-
   >
     {title}
   </h3>
-  <ul class="flex flex-col space-y-0.5 sm:space-y-1 lg:space-y-1.5 xl:space-y-2">
+  <ul class="flex flex-col space-y-0.5 sm:space-y-1 lg:space-y-1.5 xl:space-y-2 pl-3">
     {
       links.map(({ label, url }) => (
         <li class={item}>
-          <a href={url}>{label}</a>
+          <a href={url} class="pl-0.5">
+            {label}
+          </a>
         </li>
       ))
     }

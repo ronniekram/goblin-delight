@@ -160,8 +160,10 @@ export type SanityGame = {
     links: SanityLink[];
     blogs: {
       title: string;
-      slug: string;
-    };
+      slug: {
+        current: string;
+      };
+    }[];
   };
   // MEDIA
   media: {

@@ -1,0 +1,78 @@
+---
+import arrow from "@icons/arrow.svg?raw";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const arrowWrapper = `settings duration-500 flex w-6 md:w-8 lg:hidden`;
+const header = `w-full flex items-center justify-between px-[5.3%] sm:px-[5.2%] lg:px-0 py-2 md:py-3 lg:py-2 border-green-700 lg:border-b-2 font-display font-bold uppercase text-green-700 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl`;
+const body = `px-[5.3%] py-4 sm:px-[5.2%] sm:py-5 md:px-10 md:py-8 lg:px-0`;
+---
+
+<div class="settings w-full" id={`${title}-accordion`}>
+  <button type="button" class={header} id={`${title}-accordion__button`} aria-expanded="false">
+    <p>{title}</p>
+    <p class={arrowWrapper} id={`${title}-accordion__arrow`}>
+      <span class="rotate-90">
+        <Fragment set:html={arrow} />
+      </span>
+    </p>
+  </button>
+  <div
+    class="overflow-hidden settings duration-700"
+    id={`${title}-accordion__body`}
+    style="height: 0px;"
+  >
+    <div class={body} id={`${title}-accordion__body-inner`}>
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .header-active {
+    border-top: 1px solid #135d50;
+    border-bottom: 1px solid #135d50;
+    background: #e1f5e7;
+    @media (min-width: 1024px) {
+      border-top: 0;
+      border-bottom: 0;
+      background: transparent;
+    }
+  }
+</style>
+
+<script define:vars={{ title }}>
+  const accordion = document.getElementById(`${title}-accordion`);
+  const button = document.getElementById(`${title}-accordion__button`);
+  const arrow = document.getElementById(`${title}-accordion__arrow`);
+  const accBody = document.getElementById(`${title}-accordion__body`);
+  const bodyInner = document.getElementById(`${title}-accordion__body-inner`);
+
+  const accordionSetup = () => {
+    if (accordion && button && arrow && accBody && bodyInner) {
+      button.addEventListener(`click`, (e) => {
+        if (!accordion.classList.contains(`active`)) {
+          accordion.classList.add(`active`);
+          button.classList.add(`header-active`);
+          arrow.classList.add(`rotate-180`);
+          accBody.style.height = `${bodyInner.offsetHeight}px`;
+          button.setAttribute("aria-expanded", "true");
+        } else {
+          accordion.classList.remove(`active`);
+          button.classList.remove(`header-active`);
+          arrow.classList.remove(`rotate-180`);
+          accBody.style.height = `0px`;
+          button.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+  };
+
+  accordionSetup();
+
+  document.addEventListener(`astro:after-swap`, accordionSetup);
+</script>

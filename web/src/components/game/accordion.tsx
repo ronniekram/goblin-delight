@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { useSpring, animated as a } from "@react-spring/web";
 import useMeasure from "react-use-measure";
-import { useWindowSize } from "react-use";
+import { useWindowWidth } from "@react-hook/window-size";
 
 //! ----------> TYPES <----------
 interface Props {
   title: string;
-  content: JSX.Element;
+  children: JSX.Element;
 }
 
 //! ----------> STYLES <----------
-const arrowInfoWrapper = `flex w-6 md:w-8 lg:hidden`;
-const arrowMediaWrapper = `flex w-5 sm:w-6 lg:w-8 lg:w-10`;
+const arrowInfoWrapper = `settings duration-300 flex w-6 md:w-8 lg:hidden`;
+const arrowMediaWrapper = `settings duration-300 flex w-5 sm:w-6 lg:w-8 lg:w-10`;
 
-const infoHeaderClosed = `w-full flex items-center justify-between px-5 py-2 sm:px-8 md:px-40 md:py-3 lg:px-0 lg:py-2 border-green-700 lg:border-b-2 font-display font-bold uppercase text-green-700 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl`;
-const infoHeaderOpen = `border-y-2 bg-green-200 lg:border-y-0 lg:bg-transparent`;
-const infoBody = `px-5 py-4 sm:px-32 sm:py-5 md:px-10 md:py-8 lg:px-0`;
+const infoHeaderClosed = `w-full flex items-center justify-between px-[5.3%] sm:px-[5.2%] lg:px-0 py-2 md:py-3 lg:py-2 border-green-700 lg:border-b-2 font-display font-bold uppercase text-green-700 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl`;
+const infoHeaderOpen = `border-y bg-green-300 lg:border-y-0 lg:bg-transparent`;
+const infoBody = `px-[5.3%] py-4 sm:px-[5.2%] sm:py-5 md:px-10 md:py-8 lg:px-0`;
 
 const mediaHeader = `w-full flex items-center justify-between py-1.5 lg:py-2 xl:py-3 border-green-700 font-display uppercase text-green-700 text-2xl sm:text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl`;
 const mediaBody = `py-4 sm:py-5 md:py-8 xl:py-10`;
@@ -34,10 +34,10 @@ const Arrow = () => (
   </svg>
 );
 
-export const MediaAccordion = ({ title, content }: Props) => {
+export const MediaAccordion = ({ title, children }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const [ref, { height }] = useMeasure();
-  const { width } = useWindowSize();
+  const width = useWindowWidth();
 
   const spring = useSpring({
     height: open ? height : 0,
@@ -61,17 +61,17 @@ export const MediaAccordion = ({ title, content }: Props) => {
       </button>
       <a.div className="overflow-hidden" style={spring}>
         <div className={mediaBody} ref={ref}>
-          {content}
+          {children}
         </div>
       </a.div>
     </div>
   );
 };
 
-const Accordion = ({ title, content }: Props) => {
+const Accordion = ({ title, children }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const [ref, { height }] = useMeasure();
-  const { width } = useWindowSize();
+  const width = useWindowWidth();
 
   const spring = useSpring({
     height: open ? height : 0,
@@ -95,7 +95,7 @@ const Accordion = ({ title, content }: Props) => {
       </button>
       <a.div className="overflow-hidden" style={spring}>
         <div className={infoBody} ref={ref}>
-          {content}
+          {children}
         </div>
       </a.div>
     </div>
