@@ -1,13 +1,16 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
   title: string;
   links: {
     label: string;
     url: string;
   }[];
+  external?: boolean;
 }
 
-const { title, links } = Astro.props;
+const { title, links, external } = Astro.props;
 const item = `pixel-list settings font-display text-green-700 hover:text-green-600 text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl 2xl:leading-[2rem]`;
 ---
 
@@ -21,8 +24,13 @@ const item = `pixel-list settings font-display text-green-700 hover:text-green-6
     {
       links.map(({ label, url }) => (
         <li class={item}>
-          <a href={url} class="pl-0.5">
-            {label}
+          <a href={url} class="pl-0.5 flex items-center space-x-1 lg:space-x-1.5">
+            <span> {label} </span>
+            {external && (
+              <span class="flex w-4 md:w-5 lg:w-6 2xl:w-7">
+                <Icon name="external-link" />
+              </span>
+            )}
           </a>
         </li>
       ))

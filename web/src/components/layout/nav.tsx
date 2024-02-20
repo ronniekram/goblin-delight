@@ -51,14 +51,13 @@ const Menu = () => (
 
 const NavLink = ({ label, href }: NavLinkProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
-  const navLink = `settings text-green-700 sm:text-green-100 hover:text-green-300 hover:bg-green-700  hover:rounded-sm sm:hover:text-green-600 sm:hover:bg-green-200 sm:border-[3px] sm:border-transparent sm:hover:border-green-100`;
 
   return (
     <li className="flex items-center space-x-2 sm:space-x-0" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
       <div className={isHover ? `slide` : ``}>
         <Arrow />
       </div>
-      <a href={href} className={navLink}>
+      <a href={href} className="settings nav-link">
         {label}
       </a>
     </li>
@@ -109,7 +108,7 @@ const Navigation = () => {
 
   return (
     <RemoveScroll enabled={open}>
-      <header className="font-display w-full bg-green-600 text-green-100 px-[5.3%] py-3 sm:px-[5.2%] sm:py-4 2xl:px-0">
+      <header className="wrapper nav">
         <div className="inner flex items-center justify-between text-6xl sm:text-4xl lg:text-[2.5rem] lg:leading-[2.75rem] xl:text-5xl">
           <a href="/" aria-label="Home" className="flex h-11 sm:h-12 xl:h-[3.75rem]">
             <img src="/images/logo.png" alt="Goblin Delight logo" />

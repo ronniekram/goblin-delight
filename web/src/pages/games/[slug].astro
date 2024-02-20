@@ -147,7 +147,7 @@ const twoCol = `hidden inner two-cols`;
           {details?.madeWith && <Detail title="Made With" content={details.madeWith} />}
           {details?.jam && <Detail title="Game Jam" content={details.jam} />}
           {logs.length > 0 && <List title="Dev Logs" links={logs} />}
-          {details?.links.length > 0 && <List title="Links" links={details.links} />}
+          {details?.links.length > 0 && <List title="Links" links={details.links} external />}
         </section>
       </div>
     </div>
