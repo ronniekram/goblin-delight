@@ -50,13 +50,11 @@ const { title } = Astro.props;
       button.addEventListener(`click`, (e) => {
         if (!media.classList.contains(`active`)) {
           media.classList.add(`active`);
-          button.classList.add(`media-accordion__button-active`);
           arrow.classList.add(`rotate-180`);
           accBody.style.height = `${bodyInner.offsetHeight}px`;
           button.setAttribute("aria-expanded", "true");
         } else {
           media.classList.remove(`active`);
-          button.classList.remove(`media-accordion__button-active`);
           arrow.classList.remove(`rotate-180`);
           accBody.style.height = `0px`;
           button.setAttribute("aria-expanded", "false");
