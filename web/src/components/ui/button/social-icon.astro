@@ -7,12 +7,10 @@ interface Props {
 }
 
 const { name, href, label } = Astro.props;
-
-const shared = `settings rounded-full flex items-center justify-center bg-green-700 text-green-100 hover:bg-green-600 w-8 h-8 sm:w-10 sm:h-10 xl:w-12 xl:h-12`;
 ---
 
-<a href={href} aria-label={label} target="_blank" rel="noreferrer" class={shared}>
-  <div class="flex items-center justify-center w-5 sm:w-6 lg:w-8">
+<a href={href} aria-label={label} target="_blank" rel="noreferrer" class="settings button__social">
+  <div class="button__social-icon">
     <Icon name={name} size={30} />
   </div>
 </a>
