@@ -39,7 +39,7 @@ const bg = sanityImgUrl(client, header).auto(`format`).fit(`max`).width(1376).qu
 <script define:vars={{ slug: slug.current }}>
   const container = document.getElementById(`container`);
   container.addEventListener(`click`, () => {
-    window.location.assign(`/games/${slug}`);
+    window.location.assign(`/games/${slug.current}`);
   });
 </script>
 

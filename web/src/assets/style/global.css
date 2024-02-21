@@ -210,6 +210,10 @@ footer {
   @apply w-full font-bold text-green-600 text-2xl md:text-3xl lg:text-4xl lg:bg-green-300 lg:py-0.5 xl:text-5xl;
 }
 
+.media__wrapper {
+  @apply w-full px-[5.3%] sm:px-[5.2%] lg:px-0 flex flex-col items-end space-y-4 md:space-y-5 lg:space-y-8 xl:space-y-10;
+}
+
 /* ACCORDIONS */
 .info-accordion__arrow {
   @apply duration-500 flex w-6 md:w-8 lg:hidden;
@@ -225,6 +229,38 @@ footer {
 
 .info-accordion__body {
   @apply px-[5.3%] py-5 sm:px-[5.2%] sm:py-6 md:px-10 md:py-8;
+}
+
+.media-accordion__button {
+  @apply w-full flex items-center justify-between font-display uppercase text-green-700 py-1.5 lg:py-2 xl:py-2.5 text-2xl sm:text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl;
+}
+
+.media-accordion__arrow {
+  @apply flex w-5 md:w-6 lg:w-8 xl:w-10;
+}
+
+.media-accordion__body {
+  @apply py-5;
+}
+
+.media-accordion__videos {
+  @apply grid grid-cols-1 gap-y-4 md:gap-y-5 lg:gap-y-6 xl:gap-y-8 2xl:gap-y-10;
+}
+
+.media-accordion__images {
+  @apply grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-5 lg:gap-6 xl:gap-8 2xl:gap-10;
+
+  div {
+    @apply flex w-full h-full items-stretch object-cover object-center;
+  }
+}
+
+.media-accordion__logos {
+  @apply grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:gap-5 xl:gap-6 2xl:gap-8;
+
+  div {
+    @apply flex w-full h-full items-stretch object-cover object-center;
+  }
 }
 
 /* BLOG */

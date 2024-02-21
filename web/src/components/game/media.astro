@@ -1,0 +1,69 @@
+---
+import { sanityClient } from "sanity:client";
+import type { ImageAsset } from "@sanity/types";
+import { Image } from "astro:assets";
+
+import type { SanityGame } from "@utils/sanity";
+import sanityImgUrl from "@utils/image";
+
+import MediaAccordion from "./media-accordion.astro";
+import Youtube from "@components/blog/portable/youtube.astro";
+import Button from "@components/ui/button/secondary.astro";
+
+type Props = SanityGame["media"];
+
+const { videos, images, logoIcons } = Astro.props;
+
+const imageURL = (asset: ImageAsset) =>
+  sanityImgUrl(sanityClient, asset).auto(`format`).fit(`max`).width(453).quality(100).url();
+
+const logoURL = (asset: ImageAsset) =>
+  sanityImgUrl(sanityClient, asset).auto(`format`).fit(`max`).width(1376).quality(100).url();
+---
+
+<div class="media__wrapper">
+  {
+    videos && (
+      <MediaAccordion title="Videos">
+        <div class="media-accordion__videos">
+          {videos?.map((vid) => (
+            <Youtube url={vid.url} />
+          ))}
+        </div>
+      </MediaAccordion>
+    )
+  }
+  {
+    images && (
+      <MediaAccordion title="Images">
+        <div class="media-accordion__images">
+          {images?.map((img) => {
+            const src = imageURL(img);
+            return (
+              <div>
+                <Image src={src} alt="" loading="lazy" inferSize />
+              </div>
+            );
+          })}
+        </div>
+      </MediaAccordion>
+    )
+  }
+  {
+    logoIcons && (
+      <MediaAccordion title="Logos & Icons">
+        <div class="media-accordion__logos">
+          {logoIcons?.map((logo) => {
+            const src = logoURL(logo);
+            return (
+              <div>
+                <Image src={src} alt="" loading="lazy" inferSize />
+              </div>
+            );
+          })}
+        </div>
+      </MediaAccordion>
+    )
+  }
+  <Button label="Download Press Kit" href="#" icon="download" />
+</div>

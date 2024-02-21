@@ -1,0 +1,71 @@
+---
+import arrow from "@icons/arrow.svg?raw";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="settings w-full" id={`${title}-media`}>
+  <button
+    type="button"
+    id={`${title}-media__button`}
+    class="media-accordion__button"
+    aria-expanded="false"
+    aria-controls={`${title}-media__body-inner`}
+  >
+    <h2>{title}</h2>
+    <p id={`${title}-media__arrow`} class="media-accordion__arrow">
+      <span class="rotate-90">
+        <Fragment set:html={arrow} />
+      </span>
+    </p>
+  </button>
+  <div
+    class="overflow-hidden settings duration-700"
+    id={`${title}-media__body`}
+    style="height: 0px;"
+  >
+    <div
+      id={`${title}-media__body-inner`}
+      aria-labelledby={`${title}-media__button`}
+      class="media-accordion__body"
+    >
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ title }}>
+  const media = document.getElementById(`${title}-media`);
+  const button = document.getElementById(`${title}-media__button`);
+  const arrow = document.getElementById(`${title}-media__arrow`);
+  const accBody = document.getElementById(`${title}-media__body`);
+  const bodyInner = document.getElementById(`${title}-media__body-inner`);
+
+  const mediaSetup = () => {
+    if (media && button && arrow && accBody && bodyInner) {
+      button.addEventListener(`click`, (e) => {
+        if (!media.classList.contains(`active`)) {
+          media.classList.add(`active`);
+          button.classList.add(`media-accordion__button-active`);
+          arrow.classList.add(`rotate-180`);
+          accBody.style.height = `${bodyInner.offsetHeight}px`;
+          button.setAttribute("aria-expanded", "true");
+        } else {
+          media.classList.remove(`active`);
+          button.classList.remove(`media-accordion__button-active`);
+          arrow.classList.remove(`rotate-180`);
+          accBody.style.height = `0px`;
+          button.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+  };
+
+  mediaSetup();
+
+  document.addEventListener(`astro:after-swap`, mediaSetup);
+</script>
