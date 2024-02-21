@@ -6,14 +6,11 @@ export interface Props {
 }
 
 const { title, slug, type } = Astro.props;
-
-export const padding = `px-6 pt-[7px] pb-1.5 xl:px-7 py-1.5`;
-export const text = `font-sans font-bold uppercase text-green-100 tracking-[6%] text-[12px] leading-[100%] lg:text-[14px] xl:text-[16px]`;
-const base = `h-fit settings nowrap rounded-[2.75rem] ${type === `blog` ? `bg-green-600/70 text-green-100 hover:bg-green-600` : `bg-green-200/70 text-green-800 hover:bg-green-200`}`;
-
-const style = `${padding} ${text} ${base}`;
 ---
 
-<a href={slug} class={style}>
+<a
+  href={slug}
+  class={`settings nowrap feat-tag tag ${type === `blog` ? `bg-green-600/70 text-green-100 hover:bg-green-600` : `bg-green-200/70 text-green-800 hover:bg-green-200`}`}
+>
   {title}
 </a>
