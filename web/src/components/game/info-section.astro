@@ -1,0 +1,14 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section class="w-full">
+  <h2 class="game__info-section-header">{title}</h2>
+  <div class="game__info-section-body">
+    <slot />
+  </div>
+</section>

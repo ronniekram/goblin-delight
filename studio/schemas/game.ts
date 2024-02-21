@@ -123,7 +123,7 @@ const Game = defineType({
       fieldset: `details`,
     },
     {
-      name: `madetWith`,
+      name: `madeWith`,
       title: `Made with`,
       type: `string`,
       group: `details`,

@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  title: string;
+  links: {
+    label: string;
+    url: string;
+  }[];
+  external?: boolean;
+}
+
+const { title, links, external } = Astro.props;
+---
+
+<div class="game__list">
+  <h3 class="game__list-header">
+    {title}
+  </h3>
+  <ul>
+    {
+      links.map(({ label, url }) => (
+        <li class="pixel-list settings">
+          <a href={url} class="pl-0.5 flex items-center space-x-1 lg:space-x-1.5">
+            <span> {label} </span>
+            {external && (
+              <span class="flex w-4 md:w-5 lg:w-6 2xl:w-7">
+                <Icon name="external-link" />
+              </span>
+            )}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

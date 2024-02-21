@@ -17,7 +17,7 @@ const md = `hidden md:flex md:w-[11.0625rem] lg:w-[11.9375rem] xl:w-[13.4375rem]
 const sm = `hidden lg:flex lg:w-[11.3125rem]`;
 ---
 
-<section id="contact" class="cta-wrapper">
+<section id="contact" class="sm:px-[5.2%] sm:pb-14 2xl:px-0">
   <div
     class="inner cta px-5 py-8 sm:p-8 md:py-10 lg:p-10 xl:px-14 2xl:px-16 border-green-700 border-y-2 sm:border-2 sm:rounded"
   >
@@ -72,37 +72,3 @@ const sm = `hidden lg:flex lg:w-[11.3125rem]`;
     </div>
   </div>
 </section>
-
-<style>
-  .cta-wrapper {
-    width: 100%;
-    padding: 0;
-
-    @media (min-width: 640px) {
-      padding: 3rem 5.2%;
-    }
-
-    @media (min-width: 1280px) {
-      padding: 6rem 5.2%;
-    }
-
-    @media (min-width: 1536px) {
-      padding: 6rem 0;
-    }
-  }
-
-  .cta {
-    background-image: url("/images/cta/bg.png");
-    background-position: center;
-    background-size: cover;
-    height: 29.6875rem;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    @media (min-width: 768px) {
-      height: 28.75rem;
-    }
-  }
-</style>

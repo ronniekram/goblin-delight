@@ -8,24 +8,22 @@ type Props = SanityGameCard & { client: SanityClient };
 const { title, slug, header, client } = Astro.props;
 
 const bg = sanityImgUrl(client, header).auto(`format`).fit(`max`).width(668).quality(100).url();
-
-const container = `group relative overflow-hidden cursor-pointer h-[12.5rem] sm:h-[15.625rem] xl:h-[19.6875rem] 2xl:h-[21.875rem] rounded border-green-800 border-2 md:border-[3px] bg-center bg-cover`;
-
-const inner = `detail flex flex-col justify-center items-stretch p-4 xl:p-5`;
-
-const titleStyle = `font-display font-bold uppercase text-center text-green-100 text-4xl leading-[100%] sm:text-[2.5rem] lg:text-5xl xl:text-6xl 2xl:text-7xl`;
 ---
 
-<div class={container} style={`background-image: url(${bg});`} id="container">
-  <div class={inner}>
-    <h3 class={titleStyle}>{title}</h3>
+<a
+  href={`/games/${slug.current}`}
+  class="group game__card-container"
+  style={`background-image: url(${bg});`}
+>
+  <div class="detail game__card-inner">
+    <h3 class="game__card-title">{title}</h3>
   </div>
-</div>
+</a>
 
 <script define:vars={{ slug: slug.current }}>
   const container = document.getElementById(`container`);
   container.addEventListener(`click`, () => {
-    window.location.assign(`/games/${slug}`);
+    window.location.assign(`/games/${slug.current}`);
   });
 </script>
 

@@ -1,0 +1,18 @@
+---
+import type { SanityTag } from "@utils/sanity";
+import Tag from "@components/ui/tag/detail.astro";
+
+interface Props {
+  title: string;
+  tags: SanityTag[];
+}
+
+const { title, tags } = Astro.props;
+---
+
+<div class="flex flex-col space-y-1.5 sm:space-y-2">
+  <h1 class="game__header-title">{title}</h1>
+  <div class="flex items-center space-x-1.5 sm:space-x-3 xl:space-x-4">
+    {tags.map((tag: SanityTag) => <Tag label={tag.title} href={`/tags/${tag.slug.current}`} />)}
+  </div>
+</div>

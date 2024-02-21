@@ -10,17 +10,15 @@ type Props = SanityGameCard & { client: SanityClient };
 const { title, slug, blurb, tags, header, client } = Astro.props;
 
 const bg = sanityImgUrl(client, header).auto(`format`).fit(`max`).width(1376).quality(100).url();
-
-const container = `group cursor-pointer w-full overflow-hidden relative block h-[17.1875rem] sm:h-[18.75rem] md:h-[20.3125rem] lg:h-[21.875rem] xl:h-[28.125rem] rounded border-green-800 border-2 md:border-[3px] bg-center bg-cover`;
-
-const inner = `detail w-full flex flex-col justify-between items-stretch p-4 sm:p-5 md:px-8 xl:px-10 xl:py-8`;
-
-const titleStyle = `font-display font-bold uppercase text-green-200 group-hover:text-green-100 text-2xl leading-[100%] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl`;
 ---
 
-<div class={container} style={`background-image: url(${bg});`} id="container">
-  <div class={inner}>
-    <h3 class={titleStyle}>{title}</h3>
+<div
+  class="inner group game__feat-container"
+  style={`background-image: url(${bg});`}
+  id="container"
+>
+  <div class="detail game__feat-inner">
+    <h3 class="game__feat-title">{title}</h3>
     <div class="w-full flex flex-col space-y-2 sm:space-y-3 xl:space-y-4">
       <p
         class="clamped font-sans font-medium text-green-100 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl"

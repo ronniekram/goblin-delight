@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
   name: string;
   position: string;
@@ -6,21 +8,27 @@ interface Props {
 }
 
 const { name, position, website } = Astro.props;
-
-const nameStyle = `settings text-green-800 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl`;
 ---
 
-<div class="flex flex-col xl:space-y-1 font-display">
-  <h3 class="font-bold text-green-600 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+<div class="game__team-wrapper">
+  <h3 class="game__team-title">
     {position}
   </h3>
   {
     website ? (
-      <a href={website} target="_blank" rel="noreferrer">
-        {name}
+      <a
+        href={website}
+        target="_blank"
+        rel="noreferrer"
+        class={`settings game__team-name flex items-center space-x-1 lg:space-x-1.5 hover:text-green-600`}
+      >
+        <span>{name}</span>
+        <span class="flex w-4 md:w-5 lg:w-6 2xl:w-7">
+          <Icon name="external-link" />
+        </span>
       </a>
     ) : (
-      <p>{name}</p>
+      <p class="game__team-name">{name}</p>
     )
   }
 </div>

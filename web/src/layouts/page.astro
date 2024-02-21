@@ -26,7 +26,9 @@ const pageTitle = `${title} | Goblin Delight`;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/style/global.css" />
+    <style is:global>
+      @import "@assets/style/global.css";
+    </style>
 
     <SEO
       title={pageTitle}
@@ -53,11 +55,5 @@ const pageTitle = `${title} | Goblin Delight`;
     </main>
     <CTA />
     <Footer />
-    <style>
-      ::selection {
-        background-color: #218365;
-        color: #fcfcfa;
-      }
-    </style>
   </body>
 </html>
