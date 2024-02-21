@@ -8,12 +8,10 @@ interface Props {
 }
 
 const { title, tags } = Astro.props;
-
-const titleStyle = `font-display font-bold uppercase text-green-600 text-[2.5rem] leading-[100%] sm:text-5xl lg:text-7xl xl:text-8xl`;
 ---
 
 <div class="flex flex-col space-y-1.5 sm:space-y-2">
-  <h1 class={titleStyle}>{title}</h1>
+  <h1 class="game__header-title">{title}</h1>
   <div class="flex items-center space-x-1.5 sm:space-x-3 xl:space-x-4">
     {tags.map((tag: SanityTag) => <Tag label={tag.title} href={`/tags/${tag.slug.current}`} />)}
   </div>

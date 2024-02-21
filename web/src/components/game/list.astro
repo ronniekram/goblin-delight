@@ -11,19 +11,16 @@ interface Props {
 }
 
 const { title, links, external } = Astro.props;
-const item = `pixel-list settings font-display text-green-700 hover:text-green-600 text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl 2xl:leading-[2rem]`;
 ---
 
-<div class="w-full flex flex-col xl:space-y-1 2xl:space-y-2 font-display">
-  <h3
-    class="w-full font-bold text-green-600 text-2xl md:text-3xl lg:text-4xl lg:bg-green-300 lg:py-0.5 xl:text-5xl"
-  >
+<div class="game__list">
+  <h3 class="game__list-header">
     {title}
   </h3>
-  <ul class="flex flex-col space-y-0.5 sm:space-y-1 lg:space-y-1.5 xl:space-y-2 pl-3">
+  <ul>
     {
       links.map(({ label, url }) => (
-        <li class={item}>
+        <li class="pixel-list settings">
           <a href={url} class="pl-0.5 flex items-center space-x-1 lg:space-x-1.5">
             <span> {label} </span>
             {external && (
