@@ -146,7 +146,6 @@ export type SanityBlog = {
   estimatedReadingTime: number;
   titleImg: ImageAsset;
   tags: SanityTag[];
-  body: PortableTextBlock[];
   markdown: string;
   related: SanityBlog[];
 };
@@ -214,7 +213,7 @@ export type SanityBlogPage = {
 
 export type SanityPrivacy = {
   _updatedAt: string;
-  body: PortableTextBlock[];
+  content: string;
 };
 
 export type SanitySocials = {

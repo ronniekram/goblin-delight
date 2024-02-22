@@ -63,12 +63,6 @@ const Post = defineType({
       ],
     },
     {
-      name: `body`,
-      title: `Post Body*`,
-      type: `editor`,
-      validation: (Rule) => Rule.required(),
-    },
-    {
       name: `markdown`,
       title: `Post Body*`,
       type: `markdown`,
