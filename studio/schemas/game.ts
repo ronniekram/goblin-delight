@@ -1,5 +1,5 @@
 import { defineType } from "sanity";
-// import { orderRankField } from "@sanity/orderable-document-list";
+import { orderRankField } from "@sanity/orderable-document-list";
 import { LuGamepad2 } from "react-icons/lu";
 
 const Game = defineType({
@@ -16,7 +16,7 @@ const Game = defineType({
     { name: `details`, title: `Details`, options: { columns: 2 } },
   ],
   fields: [
-    // orderRankField({ type: `game` }),
+    orderRankField({ type: `game` }),
     // BASIC INFO
     {
       name: `title`,

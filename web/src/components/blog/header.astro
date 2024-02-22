@@ -1,0 +1,30 @@
+---
+import type { SanityBlog } from "@utils/sanity";
+import formatDate from "@utils/format-date";
+
+import Tag from "@components/ui/tag/detail.astro";
+
+type Props = Pick<SanityBlog, `title` | `tags` | `_createdAt` | `estimatedReadingTime`>;
+
+const { title, _createdAt, estimatedReadingTime, tags } = Astro.props;
+const date = formatDate(_createdAt);
+---
+
+<section class="blog-header">
+  <div class="blog-header__dates">
+    <p>{date}</p>
+    <p>{estimatedReadingTime} min read</p>
+  </div>
+
+  <h1 class="blog-header__title">{title}</h1>
+
+  {
+    tags && tags.length > 0 && (
+      <div class="blog-header__tags">
+        {tags.map((tag) => (
+          <Tag label={tag.title} href={tag.slug.current} />
+        ))}
+      </div>
+    )
+  }
+</section>

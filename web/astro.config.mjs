@@ -4,6 +4,7 @@ import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import { sanityIntegration } from "@sanity/astro";
+import markdownIntegration from "@astropub/md";
 // import { astroImageTools } from "astro-imagetools";
 
 import react from "@astrojs/react";
@@ -12,8 +13,8 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: `http://localhost:4321`,
   integrations: [
-    // astroImageTools(),
     icon(),
+    markdownIntegration(),
     sanityIntegration({
       projectId: `atx0gy8j`,
       dataset: `production`,
@@ -27,7 +28,6 @@ export default defineConfig({
     sitemap(),
     react(),
 ],
-  output: `hybrid`,
   adapter: vercel({
     edgeMiddleware: true,
   }),
@@ -35,4 +35,5 @@ export default defineConfig({
     service: squooshImageService(),
     domains: [`cdn.sanity.io`],
   },
+  output: `hybrid`,
 });

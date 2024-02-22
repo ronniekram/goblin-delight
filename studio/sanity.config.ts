@@ -3,6 +3,7 @@ import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { media } from "sanity-plugin-media";
 import { codeInput } from "@sanity/code-input";
+import { markdownSchema } from "sanity-plugin-markdown";
 
 import schemas from "./schemas";
 import { singletons, singletonActions, deskConfig, defaultDocumentNode } from "./lib/desk";
@@ -17,6 +18,7 @@ export default defineConfig({
       defaultDocumentNode,
     }),
     visionTool(),
+    markdownSchema(),
     media(),
     codeInput(),
   ],

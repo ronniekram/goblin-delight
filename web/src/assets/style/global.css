@@ -134,32 +134,13 @@ footer {
 
 
 /* GAMES */
+.game__two-col {
+  @apply hidden lg:grid lg:gap-x-14 xl:gap-x-20;
+}
+
+/* DETAIL */
 .game__header-title {
   @apply font-display font-bold uppercase text-green-600 text-[2.5rem] leading-[100%] sm:text-5xl lg:text-7xl xl:text-8xl;
-}
-
-.game__card-container {
-  @apply relative overflow-hidden cursor-pointer h-[12.5rem] sm:h-[15.625rem] xl:h-[19.6875rem] 2xl:h-[21.875rem] rounded border-green-800 border-2 md:border-[3px] bg-center bg-cover;
-}
-
-.game__card-inner {
-  @apply flex flex-col justify-center items-stretch p-4 xl:p-5;
-}
-
-.game__card-title {
-  @apply font-display font-bold uppercase text-center text-green-100 text-4xl leading-[100%] sm:text-[2.5rem] lg:text-5xl xl:text-6xl 2xl:text-7xl;
-}
-
-.game__feat-container {
-  @apply cursor-pointer w-full overflow-hidden relative block h-[17.1875rem] sm:h-[18.75rem] md:h-[20.3125rem] lg:h-[21.875rem] xl:h-[28.125rem] rounded border-green-800 border-2 md:border-[3px] bg-center bg-cover;
-}
-
-.game__feat-inner {
-  @apply w-full flex flex-col justify-between items-stretch p-4 sm:p-5 md:px-8 xl:px-10 xl:py-8;
-}
-
-.game__feat-title {
-  @apply font-display font-bold uppercase text-green-200 group-hover:text-green-100 text-2xl leading-[100%] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl;
 }
 
 .game__detail-wrapper {
@@ -210,8 +191,30 @@ footer {
   @apply w-full font-bold text-green-600 text-2xl md:text-3xl lg:text-4xl lg:bg-green-300 lg:py-0.5 xl:text-5xl;
 }
 
-.media__wrapper {
-  @apply w-full px-[5.3%] sm:px-[5.2%] lg:px-0 flex flex-col items-end space-y-4 md:space-y-5 lg:space-y-8 xl:space-y-10;
+/* CARDS */
+
+.game__card-container {
+  @apply relative overflow-hidden cursor-pointer w-full h-[12.5rem] sm:h-[15.625rem] xl:h-[19.6875rem] 2xl:h-[21.875rem] rounded border-green-800 border-2 md:border-[3px] bg-center bg-cover;
+}
+
+.game__card-inner {
+  @apply flex flex-col justify-center items-stretch p-4 xl:p-5;
+}
+
+.game__card-title {
+  @apply font-display font-bold uppercase text-center text-green-100 text-4xl leading-[100%] sm:text-[2.5rem] lg:text-5xl xl:text-6xl 2xl:text-7xl;
+}
+
+.game__feat-container {
+  @apply cursor-pointer w-full overflow-hidden relative block h-[17.1875rem] sm:h-[18.75rem] md:h-[20.3125rem] lg:h-[21.875rem] xl:h-[28.125rem] rounded border-green-800 border-2 md:border-[3px] bg-center bg-cover;
+}
+
+.game__feat-inner {
+  @apply w-full flex flex-col justify-between items-stretch p-4 sm:p-5 md:px-8 xl:px-10 xl:py-8;
+}
+
+.game__feat-title {
+  @apply font-display font-bold uppercase text-green-200 group-hover:text-green-100 text-2xl leading-[100%] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl;
 }
 
 /* ACCORDIONS */
@@ -264,8 +267,90 @@ footer {
 }
 
 /* BLOG */
+
+/* DETAIL */
+.blog-header {
+  @apply w-full flex flex-col space-y-2 sm:space-y-3.5 lg:space-y-4;
+}
+
+.blog-header__image {
+  @apply w-full mx-auto max-w-[96rem] flex h-[6.875rem] sm:h-[11.75rem] md:h-[14.0625rem] lg:h-[18.75rem] xl:h-[23.4375rem] 2xl:h-[28.125rem] object-cover object-center -mt-8 sm:-mt-12 md:-mt-14 lg:-mt-16 xl:-mt-24 border-green-700 border;
+}
+
+.blog-header__title {
+  @apply w-full font-sans font-xbold text-green-600 text-2xl sm:text-4xl lg:text-5xl xl:text-6xl;
+}
+
+.blog-header__dates {
+  @apply w-full flex items-center justify-between font-display uppercase text-green-700 text-xl sm:text-2xl xl:text-3xl;
+}
+
+.blog-header__tags {
+  @apply w-full flex items-center space-x-2 lg:space-x-3 xl:space-x-4;
+}
+
+.blog__body {
+  @apply w-full grid grid-cols-1 md:gap-x-5 lg:gap-x-10 xl:gap-x-16 2xl:gap-x-20;
+}
+
+.blog__markdown {
+  @apply font-sans w-full flex flex-col space-y-2.5;
+
+  h1, h2, h3, h4 {
+    @apply font-bold text-green-600 tracking-[1%] pt-1.5 lg:pt-2 xl:pt-2.5;
+  }
+
+  h1 {
+    @apply text-2xl sm:text-3xl lg:text-4xl xl:text-5xl;
+  }
+
+  h2 {
+    @apply text-xl sm:text-2xl lg:text-3xl xl:text-4xl;
+  }
+
+  h3 {
+    @apply text-lg sm:text-xl lg:text-2xl xl:text-3xl;
+  }
+
+  h4 {
+    @apply sm:text-lg lg:text-xl xl:text-2xl;
+  }
+
+  p {
+    @apply text-green-800 text-sm sm:text-base lg:text-lg xl:text-xl;
+  }
+}
+
+.blog__toc {
+  @apply hidden md:flex md:flex-col lg:space-y-3 xl:space-y-4;
+
+  h2 {
+    @apply font-sans font-semi text-green-600 text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl;
+  }
+
+  ul {
+    @apply border-l-2 border-green-600 flex flex-col space-y-2 pl-2.5 xl:space-y-3 xl:pl-3 text-green-700 font-medium text-lg lg:text-xl xl:text-2xl;
+  }
+}
+
+.blog-content {
+  @apply flex flex-col items-end space-y-10 sm:space-y-14 lg:space-y-16 xl:space-y-20;
+}
+
+.blog__related {
+  @apply flex flex-col space-y-4 sm:space-y-6 lg:space-y-8;
+
+  h2 {
+    @apply font-sans font-xbold text-green-600 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl;
+  }
+
+  div {
+    @apply grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-0 lg:gap-x-5 xl:gap-x-6 2xl:gap-x-8;
+  }
+}
+
 .byline {
-  @apply flex items-center justify-between pt-4 lg:pt-5 xl:pt-6 border-t-2 border-green-700 lg:border-t-[2.5px];
+  @apply w-full flex flex-col space-y-1.5 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between pt-4 lg:pt-5 xl:pt-6 border-t-2 border-green-700 lg:border-t-[2.5px];
 }
 
 .byline__author {
@@ -279,6 +364,8 @@ footer {
 .byline__icons {
   @apply flex items-center space-x-1 sm:space-x-2 xl:space-x-2.5;
 }
+
+/* CARDS */
 
 .blog-card {
   @apply w-full rounded overflow-hidden border-2 border-green-800 flex flex-col shadow-lg lg:shadow-xl bg-green-200 text-green-700;
@@ -320,6 +407,18 @@ footer {
   @apply text-green-700 text-xs leading-[20px] sm:text-sm xl:text-base 2xl:text-lg;
 }
 
+.blog-related {
+  @apply w-full h-full flex flex-col items-end justify-between p-4 xl:p-5 2xl:p-6 shadow-sm xl:shadow;
+}
+
+.blog-related__dates {
+  @apply w-full flex items-center justify-between font-display uppercase text-green-700 sm:text-lg xl:text-xl 2xl:text-2xl;
+}
+
+.blog-related__title {
+  @apply w-full font-sans font-bold text-green-600 xl:text-2xl 2xl:text-3xl;
+}
+
 /* GENERAL UI */
 
 /* BUTTONS */
@@ -355,9 +454,17 @@ footer {
   @apply flex items-center justify-center w-5 sm:w-6 lg:w-8;
 }
 
+.button__related {
+  @apply rounded-sm leading-[100%] px-2 py-1 space-x-1 xl:px-3 xl:py-1.5 xl:space-x-1.5 2xl:px-4 2xl:space-x-2 text-green-700 text-[1.125rem] xl:text-[1.5rem] 2xl:text-[1.75rem] hover:bg-green-600 hover:text-green-200;
+}
+
+.button__related-icon {
+  @apply flex w-[1.1875rem] xl:w-[1.4375rem] 2xl:w-[1.5625rem];
+}
+
 /* TAGS */
 .tag {
-  @apply h-fit rounded-[2.75rem] font-sans font-bold uppercase tracking-[6%] text-[12px] leading-[100%];
+  @apply w-fit h-fit shrink-0 rounded-[2.75rem] font-sans font-bold uppercase tracking-[6%] text-[12px] leading-[100%];
 }
 
 .card-tag {

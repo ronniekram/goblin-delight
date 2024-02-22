@@ -1,0 +1,16 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={href} class="settings button button__related">
+  <span> Read more </span>
+  <span class="button__related-icon">
+    <Icon name="pointer" />
+  </span>
+</a>
