@@ -112,7 +112,7 @@ const twoCol = `hidden inner two-cols`;
 
     <!-- THE BELOW SECTION BECOMES CONTENT STARTING AT LARGE SCREEN SIZES  -->
     <div class="wrapper">
-      <div class="two-col inner">
+      <div class="game__two-col inner">
         <div class="flex flex-col space-y-8">
           <section
             class="flex flex-col font-sans text-green-800 text-xl space-y-3 xl:text-2xl 2xl:space-y-4"
@@ -159,21 +159,3 @@ const twoCol = `hidden inner two-cols`;
     </div>
   </div>
 </Page>
-
-<style>
-  .two-col {
-    display: none;
-    @media (min-width: 1024px) {
-      display: grid;
-      grid-template-columns: 1fr 14.0625rem;
-      gap: 3.5rem;
-    }
-    @media (min-width: 1280px) {
-      grid-template-columns: 1fr 18.75rem;
-      gap: 5rem;
-    }
-    @media (min-width: 1536px) {
-      grid-template-columns: 1fr 21.875rem;
-    }
-  }
-</style>

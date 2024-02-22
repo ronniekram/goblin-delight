@@ -73,6 +73,7 @@ export const blogDetail = groq`*[_type == "post" && slug.current == $slug][0] {
   titleImg,
   ${tags},
   body,
+  markdown,
   related[]-> {
     _type == "reference" => @-> { ${blogCard} },
   },
@@ -137,6 +138,7 @@ export type SanityBlog = {
   titleImg: ImageAsset;
   tags: SanityTag[];
   body: PortableTextBlock[];
+  markdown: string;
   related: SanityBlog[];
 };
 

@@ -1,0 +1,62 @@
+---
+import type { SanityClient } from "@sanity/client";
+import { Image } from "astro:assets";
+
+import type { SanityBlog } from "@utils/sanity";
+import sanityImageUrl from "@utils/image";
+
+import Page from "./page.astro";
+import Header from "@components/blog/header.astro";
+import Byline from "@components/blog/byline.astro";
+import Related from "@components/blog/related.astro";
+import Button from "@components/ui/button/primary.astro";
+
+type Props = Omit<SanityBlog, `slug` | `body` | `markdown`> & { client: SanityClient };
+
+const { title, _createdAt, estTime, titleImg, tags, related, client } = Astro.props;
+
+const header = sanityImageUrl(client, titleImg)
+  .auto(`format`)
+  .fit(`max`)
+  .width(1376)
+  .quality(100)
+  .url();
+---
+
+<Page title={title} header="Blog">
+  {
+    titleImg && (
+      <div class="inner blog-header__image">
+        <Image src={header} alt={title} inferSize />
+      </div>
+    )
+  }
+  <div class="wrapper">
+    <article class="inner blog__body">
+      <div class="blog__toc">
+        <h2>Table of Contents</h2>
+        <ul>
+          <li>Heading</li>
+        </ul>
+      </div>
+      <div class="blog-content">
+        <Header title={title} _createdAt={_createdAt} estTime={estTime} tags={tags} />
+        <slot />
+        <Byline />
+        {
+          related && (
+            <section class="blog__related">
+              <h2>Related Posts</h2>
+              <div>
+                {related.slice(2).map((post: SanityBlog) => (
+                  <Related {...post} />
+                ))}
+              </div>
+            </section>
+          )
+        }
+        <Button label="All posts" href="/blog" icon={{ direction: `left`, position: `left` }} />
+      </div>
+    </article>
+  </div>
+</Page>
