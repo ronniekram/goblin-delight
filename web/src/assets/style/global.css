@@ -122,11 +122,15 @@ footer {
 }
 
 .section__title {
-  @apply w-full font-display text-green-700 text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-[5rem] 2xl:leading-[5rem];
+  @apply w-full text-green-700 text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-[5rem] 2xl:leading-[5rem];
 }
 
 .section__wrapper {
-  @apply w-full flex flex-col space-y-5 sm:space-y-6 md:space-y-8 lg:space-y-10 xl:space-y-14 2xl:space-y-16;
+  @apply font-display w-full flex flex-col items-end space-y-5 sm:space-y-6 md:space-y-8 lg:space-y-10 xl:space-y-14 2xl:space-y-16;
+
+  .empty {
+    @apply text-green-800 text-xl sm:text-3xl md:text-4xl xl:text-5xl;
+  }
 }
 
 .section__grid {

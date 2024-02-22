@@ -131,7 +131,7 @@ export const blogsPage = groq`{
 }`;
 
 export const tagPage = groq`{
-  "title": *[_type == "tag" && slug.current == $slug] { title },
+  "title": *[_type == "tag" && slug.current == $slug][0] { title },
   "blogs": *[_type == "post" && $slug in tags[]-> slug.current] { ${blogCard} },
   "games": *[_type == "game" && $slug in tags[]-> slug.current] { ${gameCard} },
 }`;
@@ -265,7 +265,9 @@ export type SanityLink = {
 };
 
 export type SanityTagPage = {
-  title: string;
+  title: {
+    title: string;
+  };
   games: SanityGameCard[];
   blogs: SanityBlogCard[];
 };

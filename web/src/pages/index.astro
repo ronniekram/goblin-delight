@@ -28,13 +28,13 @@ const sectionStyle = `inner flex flex-col items-end space-y-5 sm:space-y-6 lg:sp
     <section
       class="wrapper flex flex-col space-y-10 md:space-y-12 lg:space-y-14 2xl:space-y-16 2xl:pt-14"
     >
-      <section class={sectionStyle}>
+      <section class="inner section__wrapper">
         <h2 class="section__title">Featured Game</h2>
         <FeaturedGame {...featured.game} client={sanityClient} />
         <Button label="All games" href="/games" icon={{ position: `left`, direction: `right` }} />
       </section>
 
-      <section class={sectionStyle}>
+      <section class="inner section__wrapper">
         <h2 class="section__title">Featured Post</h2>
         <FeaturedBlog {...featured.post as SanityBlogCard} client={sanityClient} />
         <Button label="All posts" href="/blog" icon={{ position: `left`, direction: `right` }} />
