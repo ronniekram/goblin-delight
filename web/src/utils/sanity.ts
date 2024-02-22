@@ -71,17 +71,16 @@ export const blogCard = groq`
   ${tags},
   titleImg,
   _createdAt,
-  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+  "estimatedReadingTime": round(length(markdown) / 5 / 180 ),
 `;
 export const blogDetail = groq`*[_type == "post" && slug.current == $slug][0] {
   title,
   slug,
   titleImg,
   ${tags},
-  body,
   markdown,
   _createdAt,
-  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+  "estimatedReadingTime": round(length(markdown) / 5 / 180 ),
   related[]-> {
     _type == "reference" => @-> { ${blogCard} },
   },
