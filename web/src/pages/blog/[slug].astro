@@ -19,11 +19,11 @@ const { slug } = Astro.params as Params;
 
 const blog: SanityBlog = (await sanityClient.fetch(blogDetail, { slug })) || {};
 
-// FOR TABLE OF CONTENTS: use query selector for each h1, h2, h3 and h4 within the blog__markdown container
+// FOR TABLE OF CONTENTS: use query selector for each h1, h2, h3 and h4 within the blog__markdown container, all headings have id attached automatically for linking
 ---
 
 <Blog {...blog} client={sanityClient}>
   <section class="blog__markdown">
-    <Markdown of={blog.markdown} />
+    <Markdown of={blog.markdown} options={{ wrap: true }} />
   </section>
 </Blog>

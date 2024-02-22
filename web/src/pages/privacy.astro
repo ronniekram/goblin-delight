@@ -1,22 +1,23 @@
 ---
 import { sanityClient } from "sanity:client";
 import { format } from "date-fns";
+import { Markdown } from "@astropub/md";
 
 import Page from "@layouts/page.astro";
-import PolicyText from "@components/policy/index.astro";
 import type { SanityPrivacy } from "@utils/sanity.ts";
 
 const getPrivacy = async (): Promise<SanityPrivacy> => {
   return (
     (await sanityClient.fetch(`*[_type == "privacy"][0]{
     _updatedAt,
-    body,
+    content,
   }`)) || {}
   );
 };
 
 const policy = await getPrivacy();
-const date = new Date(policy?._updatedAt);
+const { _updatedAt, content } = policy;
+const date = new Date(_updatedAt);
 ---
 
 <Page title="Privacy Policy">
@@ -27,12 +28,12 @@ const date = new Date(policy?._updatedAt);
       >
         Privacy Policy
       </h1>
-      <p class="font-sans text-green-900 text-sm md:text-base lg:text-lg mt-1 xl:mt-2">
+      <p class="font-sans text-green-800 text-sm md:text-base lg:text-lg mt-1 xl:mt-2">
         Last updated: {format(new Date(date), `LL/dd/y`)}
       </p>
     </section>
-    <section class="inner flex flex-col space-y-2 -mt-3 sm:-mt-3.5">
-      <PolicyText body={policy.body} />
+    <section class="inner privacy" id="privacy">
+      <Markdown of={content} />
     </section>
   </article>
 </Page>

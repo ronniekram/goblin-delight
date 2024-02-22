@@ -10,7 +10,7 @@ const { title, slug, _createdAt, estimatedReadingTime } = Astro.props;
 ---
 
 <div class="blog-related">
-  <div class="flex flex-col space-y-2.5 xl:space-y-3">
+  <div class="w-full flex flex-col space-y-2 pb-3 xl:space-y-3 xl:pb-4">
     <div class="blog-related__dates">
       <p>{formatDate(_createdAt)}</p>
       <p>{estimatedReadingTime} min read</p>
