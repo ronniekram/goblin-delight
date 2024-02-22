@@ -1,7 +1,8 @@
 import type { StructureBuilder, StructureResolverContext, DefaultDocumentNodeResolver } from "sanity/structure";
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { Iframe } from "sanity-plugin-iframe-pane";
 import { SanityDocument } from "@sanity/client";
-import { LuHome, LuLock } from "react-icons/lu";
+import { LuHome, LuLock, LuGamepad2 } from "react-icons/lu";
 import { IoShareSocialOutline } from "react-icons/io5";
 import type { IconType } from "react-icons";
 
@@ -43,7 +44,14 @@ export const deskConfig = (S: StructureBuilder, context: StructureResolverContex
       singleListItem(S, `Home Page`, `home`, LuHome),
       singleListItem(S, `Privacy Policy`, `privacy`, LuLock),
       S.divider(),
-      ...S.documentTypeListItems().filter((item) => item && !singletons.has(item.getId() as string)).filter((item) => item.getId() !== `media.tag`),
+      orderableDocumentListDeskItem({
+        type: `game`,
+        title: `Games & Projects`,
+        icon: LuGamepad2,
+        S,
+        context,
+      }),
+      ...S.documentTypeListItems().filter((item) => item && !singletons.has(item.getId() as string)).filter((item) => item.getId() !== `media.tag`).filter((item) => item.getId() !== `game`),
       S.divider(),
       singleListItem(S, `Social Media Accounts`, `social`, IoShareSocialOutline),
     ]);

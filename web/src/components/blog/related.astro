@@ -1,0 +1,23 @@
+---
+import type { SanityBlog } from "@utils/sanity";
+import formatDate from "@utils/format-date";
+
+import RelatedButton from "@components/ui/button/related.astro";
+
+type Props = Pick<SanityBlog, `title` | `slug` | `_createdAt` | `estimatedReadingTime`>;
+
+const { title, slug, _createdAt, estimatedReadingTime } = Astro.props;
+---
+
+<div class="blog-related">
+  <div class="flex flex-col space-y-2.5 xl:space-y-3">
+    <div class="blog-related__dates">
+      <p>{formatDate(_createdAt)}</p>
+      <p>{estimatedReadingTime} min read</p>
+    </div>
+    <p class="blog-related__title">
+      {title}
+    </p>
+  </div>
+  <RelatedButton href={`/blog/${slug.current}`} />
+</div>

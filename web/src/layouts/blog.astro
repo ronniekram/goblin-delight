@@ -1,0 +1,86 @@
+---
+import type { SanityClient } from "@sanity/client";
+import { Image } from "astro:assets";
+
+import type { SanityBlog } from "@utils/sanity";
+import sanityImageUrl from "@utils/image";
+
+import Page from "./page.astro";
+import Header from "@components/blog/header.astro";
+import Byline from "@components/blog/byline.astro";
+import Related from "@components/blog/related.astro";
+import Button from "@components/ui/button/primary.astro";
+
+type Props = Omit<SanityBlog, `slug` | `body` | `markdown`> & { client: SanityClient };
+
+const { title, _createdAt, estimatedReadingTime, titleImg, tags, related, client } = Astro.props;
+
+const header = sanityImageUrl(client, titleImg)
+  .auto(`format`)
+  .fit(`fill`)
+  .width(1536)
+  .quality(100)
+  .url();
+---
+
+<Page title={title} header="Blog">
+  {
+    titleImg && (
+      <div class="blog-header__image">
+        <Image src={header} alt={title} inferSize class="object-cover object-center flex" />
+      </div>
+    )
+  }
+  <div class="wrapper">
+    <article
+      class={`inner blog__body grid ${titleImg && `pt-8 sm:pt-12 md:pt-14 lg:pt-16 xl:pt-24`}`}
+    >
+      <div class="blog__toc">
+        <h2>Table of Contents</h2>
+        <ul>
+          <li>Heading</li>
+        </ul>
+      </div>
+      <div class="blog-content">
+        <Header
+          title={title}
+          _createdAt={_createdAt}
+          estimatedReadingTime={estimatedReadingTime}
+          tags={tags}
+        />
+        <slot />
+        <Byline />
+        {
+          related && (
+            <section class="blog__related">
+              <h2>Related Posts</h2>
+              <div>
+                {related.slice(2).map((post: SanityBlog) => (
+                  <Related {...post} />
+                ))}
+              </div>
+            </section>
+          )
+        }
+        <Button label="All posts" href="/blog" icon={{ direction: `left`, position: `left` }} />
+      </div>
+    </article>
+  </div>
+</Page>
+
+<style>
+  .grid {
+    @media (min-width: 768px) {
+      grid-template-columns: 10.1875rem 1fr;
+    }
+    @media (min-width: 1024px) {
+      grid-template-columns: 12.1875rem 1fr;
+    }
+    @media (min-width: 1280px) {
+      grid-template-columns: 15.25rem 1fr;
+    }
+    @media (min-width: 1536px) {
+      grid-template-columns: 17.9375rem 1fr;
+    }
+  }
+</style>

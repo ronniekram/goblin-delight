@@ -69,6 +69,12 @@ const Post = defineType({
       validation: (Rule) => Rule.required(),
     },
     {
+      name: `markdown`,
+      title: `Post Body*`,
+      type: `markdown`,
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: `related`,
       title: `Related Posts`,
       type: `array`,
