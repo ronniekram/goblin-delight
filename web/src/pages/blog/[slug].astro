@@ -18,6 +18,8 @@ type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 const { slug } = Astro.params as Params;
 
 const blog: SanityBlog = (await sanityClient.fetch(blogDetail, { slug })) || {};
+
+blog && console.log(typeof blog.markdown);
 ---
 
 <Blog {...blog} client={sanityClient}>

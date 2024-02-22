@@ -13,12 +13,12 @@ import Button from "@components/ui/button/primary.astro";
 
 type Props = Omit<SanityBlog, `slug` | `body` | `markdown`> & { client: SanityClient };
 
-const { title, _createdAt, estTime, titleImg, tags, related, client } = Astro.props;
+const { title, _createdAt, estimatedReadingTime, titleImg, tags, related, client } = Astro.props;
 
 const header = sanityImageUrl(client, titleImg)
   .auto(`format`)
-  .fit(`max`)
-  .width(1376)
+  .fit(`fill`)
+  .width(1536)
   .quality(100)
   .url();
 ---
@@ -26,13 +26,15 @@ const header = sanityImageUrl(client, titleImg)
 <Page title={title} header="Blog">
   {
     titleImg && (
-      <div class="inner blog-header__image">
-        <Image src={header} alt={title} inferSize />
+      <div class="blog-header__image">
+        <Image src={header} alt={title} inferSize class="object-cover object-center flex" />
       </div>
     )
   }
   <div class="wrapper">
-    <article class="inner blog__body">
+    <article
+      class={`inner blog__body grid ${titleImg && `pt-8 sm:pt-12 md:pt-14 lg:pt-16 xl:pt-24`}`}
+    >
       <div class="blog__toc">
         <h2>Table of Contents</h2>
         <ul>
@@ -40,7 +42,12 @@ const header = sanityImageUrl(client, titleImg)
         </ul>
       </div>
       <div class="blog-content">
-        <Header title={title} _createdAt={_createdAt} estTime={estTime} tags={tags} />
+        <Header
+          title={title}
+          _createdAt={_createdAt}
+          estimatedReadingTime={estimatedReadingTime}
+          tags={tags}
+        />
         <slot />
         <Byline />
         {
@@ -60,3 +67,20 @@ const header = sanityImageUrl(client, titleImg)
     </article>
   </div>
 </Page>
+
+<style>
+  .grid {
+    @media (min-width: 768px) {
+      grid-template-columns: 10.1875rem 1fr;
+    }
+    @media (min-width: 1024px) {
+      grid-template-columns: 12.1875rem 1fr;
+    }
+    @media (min-width: 1280px) {
+      grid-template-columns: 15.25rem 1fr;
+    }
+    @media (min-width: 1536px) {
+      grid-template-columns: 17.9375rem 1fr;
+    }
+  }
+</style>

@@ -51,7 +51,7 @@ export const gameDetail = groq`*[_type == "game" && slug.current == $slug][0] {
   },
 }`;
 
-export const allGames = groq`*[_type == "game"] { ${gameCard} }`;
+export const allGames = groq`*[_type == "game"] | order(orderRank) { ${gameCard} }`;
 
 export const allGameSlugs = groq`*[_type == "game"] { slug { current } }`;
 
@@ -74,6 +74,8 @@ export const blogDetail = groq`*[_type == "post" && slug.current == $slug][0] {
   ${tags},
   body,
   markdown,
+  _createdAt,
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
   related[]-> {
     _type == "reference" => @-> { ${blogCard} },
   },
@@ -134,7 +136,7 @@ export type SanityBlog = {
   title: string;
   slug: Slug;
   _createdAt: string;
-  estTime: number;
+  estimatedReadingTime: number;
   titleImg: ImageAsset;
   tags: SanityTag[];
   body: PortableTextBlock[];
