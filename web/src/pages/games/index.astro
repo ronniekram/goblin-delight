@@ -11,8 +11,6 @@ import divider from "@assets/svg/divider.svg?raw";
 
 const page: SanityGamePage = (await sanityClient.fetch(gamesPage)) || {};
 const { featured, all } = page;
-
-const grid = `inner grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-4 md:gap-5 lg:gap-8 xl:gap-10`;
 ---
 
 <Page title="Games & Projects" header="Games & Projects">
@@ -26,9 +24,9 @@ const grid = `inner grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-4 md:gap-5 lg
     </div>
 
     <section class="wrapper">
-      <div class="inner flex flex-col space-y-5 md:space-y-12 lg:space-y-14 2xl:space-y-16">
-        <h2 class="section-title">All Games & Projects</h2>
-        <div class={grid}>
+      <div class="inner section__wrapper">
+        <h2 class="section__title">All Games & Projects</h2>
+        <div class="section__grid">
           {all.map((game: SanityGameCard) => <GameCard {...game} client={sanityClient} />)}
         </div>
       </div>

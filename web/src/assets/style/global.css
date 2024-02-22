@@ -57,6 +57,8 @@ footer {
   }
 }
 
+/* SHARED */
+
 .slide {
   animation-name: slide;
   animation-duration: 1.25s;
@@ -119,12 +121,20 @@ footer {
   -webkit-box-orient: vertical;
 }
 
-.section-title {
-  @apply w-full font-display text-green-700 text-4xl leading-[2.5rem] lg:text-5xl lg:leading-[100%] xl:text-6xl 2xl:text-7xl;
+.section__title {
+  @apply w-full text-green-700 text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-[5rem] 2xl:leading-[5rem];
 }
 
-.section-space {
-  @apply flex flex-col py-8 sm:py-10 sm:space-y-10 md:py-12 md:space-y-12 lg:space-y-14 lg:py-14 xl:py-20 2xl:py-24;
+.section__wrapper {
+  @apply font-display w-full flex flex-col items-end space-y-5 sm:space-y-6 md:space-y-8 lg:space-y-10 xl:space-y-14 2xl:space-y-16;
+
+  .empty {
+    @apply text-green-800 text-xl sm:text-3xl md:text-4xl xl:text-5xl;
+  }
+}
+
+.section__grid {
+  @apply grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-4 md:gap-5 lg:gap-7 xl:gap-8 2xl:gap-10;
 }
 
 .cta {

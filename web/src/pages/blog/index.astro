@@ -12,8 +12,6 @@ import divider from "@assets/svg/divider.svg?raw";
 const page: SanityBlogPage = (await sanityClient.fetch(blogsPage)) || {};
 const { featured, all } = page;
 const post = featured.featured.post;
-
-const grid = `inner grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-5 lg:gap-8 xl:gap-10`;
 ---
 
 <Page title="Blog" header="Blog">
@@ -25,9 +23,9 @@ const grid = `inner grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-5 lg:gap-8 xl
       <Fragment set:html={divider} />
     </div>
     <section class="wrapper">
-      <div class="inner flex flex-col space-y-10 md:space-y-12 lg:space-y-14 2xl:space-y-16">
-        <h2 class="section-title">All Posts</h2>
-        <div class={grid}>
+      <div class="inner section__wrapper">
+        <h2 class="section__title">All Posts</h2>
+        <div class="section__grid">
           {all.map((post: SanityBlogCard) => <BlogCard {...post} client={sanityClient} />)}
         </div>
       </div>
