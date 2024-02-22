@@ -8,6 +8,12 @@ export const tags = groq`tags[]->{
   title,
 }`;
 
+export const allTagSlugs = groq`*[_type == "tag"]{
+  slug {
+    current,
+  },
+}`;
+
 //? ----------> GAMES
 export const gameCard = groq`
   title,
@@ -87,11 +93,6 @@ export const allBlogSlugs = groq`*[_type == "post"] { slug { current }}`;
 
 export const firstBlog = groq`*[_type == "post"][0] | order(_createdAt, asc ) { ${blogCard} }`;
 
-export const tagDetail = groq`{
-  "blogs": *[_type == "post" && $slug in tags[]-> slug.current] { ${blogCard} },
-  "games": *[_type == "game" && $slug in tags[]-> slug.current] { ${gameCard} },
-}`;
-
 //? ----------> PAGES
 export const homePage = groq`*[_type == "home"][0]{
   title,
@@ -127,6 +128,12 @@ export const blogsPage = groq`{
     },
   },
   "all": ${allBlogs}
+}`;
+
+export const tagPage = groq`{
+  "title": *[_type == "tag" && slug.current == $slug] { title },
+  "blogs": *[_type == "post" && $slug in tags[]-> slug.current] { ${blogCard} },
+  "games": *[_type == "game" && $slug in tags[]-> slug.current] { ${gameCard} },
 }`;
 
 
@@ -258,6 +265,7 @@ export type SanityLink = {
 };
 
 export type SanityTagPage = {
+  title: string;
   games: SanityGameCard[];
   blogs: SanityBlogCard[];
 };
