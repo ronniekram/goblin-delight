@@ -1,6 +1,7 @@
 ---
 import type { InferGetStaticParamsType } from "astro";
 import { sanityClient } from "sanity:client";
+import { Markdown } from "@astropub/md";
 
 import { blogDetail, allBlogSlugs, type SanityBlog } from "@utils/sanity";
 
@@ -19,9 +20,11 @@ const { slug } = Astro.params as Params;
 
 const blog: SanityBlog = (await sanityClient.fetch(blogDetail, { slug })) || {};
 
-blog && console.log(typeof blog.markdown);
+// FOR TABLE OF CONTENTS: use query selector for each h1, h2, h3 and h4 within the blog__markdown container
 ---
 
 <Blog {...blog} client={sanityClient}>
-  <section></section>
+  <section class="blog__markdown">
+    <Markdown of={blog.markdown} />
+  </section>
 </Blog>
