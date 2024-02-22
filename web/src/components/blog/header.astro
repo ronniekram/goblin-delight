@@ -22,7 +22,7 @@ const date = formatDate(_createdAt);
     tags && tags.length > 0 && (
       <div class="blog-header__tags">
         {tags.map((tag) => (
-          <Tag label={tag.title} href={tag.slug.current} />
+          <Tag label={tag.title} href={`/tags/${tag.slug.current}`} />
         ))}
       </div>
     )

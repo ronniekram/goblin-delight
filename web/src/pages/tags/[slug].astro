@@ -1,0 +1,67 @@
+---
+import type { InferGetStaticParamsType } from "astro";
+import { sanityClient } from "sanity:client";
+
+import { tagPage, allTagSlugs, type SanityTag, type SanityTagPage } from "@utils/sanity";
+
+import Page from "@layouts/page.astro";
+import BlogCard from "@components/blog/card.astro";
+import GameCard from "@components/game/card.astro";
+import Button from "@components/ui/button/primary.astro";
+
+export async function getStaticPaths() {
+  const tags = (await sanityClient.fetch(allTagSlugs)) || [];
+
+  return tags.map((tag: SanityTag) => ({
+    params: { slug: tag.slug.current },
+  }));
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
+
+const page: SanityTagPage = (await sanityClient.fetch(tagPage, { slug })) || {};
+
+const { title, blogs, games } = page;
+const tagName = title.title;
+---
+
+<Page title={`${tagName} Games & Posts`} header={tagName}>
+  <div class="wrapper flex flex-col space-y-14 lg:space-y-16 xl:space-y-20">
+    {
+      games && (
+        <section class="inner section__wrapper">
+          <h2 class="section__title">{tagName} Games</h2>
+          {games.length > 0 ? (
+            <div class="section__grid">
+              {games.map((game) => (
+                <GameCard {...game} client={sanityClient} />
+              ))}
+            </div>
+          ) : (
+            <p class="empty">There are no {tagName} games.</p>
+          )}
+          <Button label="All Games" href="/games" icon={{ direction: `right`, position: `left` }} />
+        </section>
+      )
+    }
+
+    {
+      blogs && (
+        <section class="inner section__wrapper">
+          <h2 class="section__title">{tagName} Games</h2>
+          {blogs.length > 0 ? (
+            <div class="section__grid">
+              {blogs.map((blog) => (
+                <BlogCard {...blog} client={sanityClient} />
+              ))}
+            </div>
+          ) : (
+            <p class="empty">There are no {tagName} posts.</p>
+          )}
+          <Button label="All Posts" href="/blog" icon={{ direction: `right`, position: `left` }} />
+        </section>
+      )
+    }
+  </div>
+</Page>
