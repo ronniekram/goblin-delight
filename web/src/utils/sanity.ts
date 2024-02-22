@@ -81,9 +81,7 @@ export const blogDetail = groq`*[_type == "post" && slug.current == $slug][0] {
   markdown,
   _createdAt,
   "estimatedReadingTime": round(length(markdown) / 5 / 180 ),
-  related[]-> {
-    _type == "reference" => @-> { ${blogCard} },
-  },
+  related[]-> { ${blogCard} },
 }`;
 
 export const allBlogs = groq`*[_type == "post"] { ${blogCard} }`;
