@@ -58,6 +58,7 @@ export default {
       fontFamily: {
         sans: [`Inter Tight`, `sans-serif`],
         display: [`OpenSansPX`, `monospace`],
+        mono: [`JetBrains Mono`, `monospace`],
       },
       boxShadow: {
         xs: `1px 2px 0px 0px #05373B`,

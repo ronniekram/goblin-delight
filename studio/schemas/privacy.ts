@@ -14,29 +14,15 @@ const PrivacyPolicy = defineType({
       hidden: true,
     },
     {
-      name: `body`,
+      name: `content`,
       title: `Body*`,
-      type: `array`,
-      of: [
-        {
-          type: `block`,
-          lists: [
-            { title: `Numbered`, value: `number`, },
-            { title: `Bullet`, value: `bullet` },
-          ],
-          styles: [
-            { title: `Normal`, value: `normal` },
-            { title: `Heading`, value: `h2` },
-          ],
-          marks: {
-            decorators: [
-              { title: `Strong`, value: `strong`, },
-              { title: `Emphasis`, value: `em`, },
-            ],
-          },
-        },
-      ],
-    }
+      type: `markdown`,
+      validation: (Rule) => Rule.required(),
+      options: {
+        imageUpload: true,
+        toolbar: [`bold`, `italic`, `|`, `heading-2`, `|`, `numbered-list`, `bulleted-list`, `|`, `link`, `|`, `preview`, `side-by-side`, `fullscreen`, `|`, `guide`],
+      },
+    },
   ],
 });
 

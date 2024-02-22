@@ -63,16 +63,14 @@ const Post = defineType({
       ],
     },
     {
-      name: `body`,
-      title: `Post Body*`,
-      type: `editor`,
-      validation: (Rule) => Rule.required(),
-    },
-    {
       name: `markdown`,
       title: `Post Body*`,
       type: `markdown`,
       validation: (Rule) => Rule.required(),
+      options: {
+        imageUpload: true,
+        toolbar: [`bold`, `italic`, `strikethrough`, `|`, `heading-1`, `heading-2`, `heading-3`, `|`, `numbered-list`, `bulleted-list`, `|`, `code`, `image`, `link`, `upload-image`, `|`, `preview`, `side-by-side`, `fullscreen`, `|`, `guide`],
+      }
     },
     {
       name: `related`,

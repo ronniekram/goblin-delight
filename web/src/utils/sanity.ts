@@ -71,20 +71,17 @@ export const blogCard = groq`
   ${tags},
   titleImg,
   _createdAt,
-  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+  "estimatedReadingTime": round(length(markdown) / 5 / 180 ),
 `;
 export const blogDetail = groq`*[_type == "post" && slug.current == $slug][0] {
   title,
   slug,
   titleImg,
   ${tags},
-  body,
   markdown,
   _createdAt,
-  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
-  related[]-> {
-    _type == "reference" => @-> { ${blogCard} },
-  },
+  "estimatedReadingTime": round(length(markdown) / 5 / 180 ),
+  related[]-> { ${blogCard} },
 }`;
 
 export const allBlogs = groq`*[_type == "post"] { ${blogCard} }`;
@@ -146,7 +143,6 @@ export type SanityBlog = {
   estimatedReadingTime: number;
   titleImg: ImageAsset;
   tags: SanityTag[];
-  body: PortableTextBlock[];
   markdown: string;
   related: SanityBlog[];
 };
@@ -214,7 +210,7 @@ export type SanityBlogPage = {
 
 export type SanityPrivacy = {
   _updatedAt: string;
-  body: PortableTextBlock[];
+  content: string;
 };
 
 export type SanitySocials = {
