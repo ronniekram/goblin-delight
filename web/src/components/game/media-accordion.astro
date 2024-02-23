@@ -3,59 +3,57 @@ import arrow from "@icons/arrow.svg?raw";
 
 interface Props {
   title: string;
+  id: string;
 }
 
-const { title } = Astro.props;
+const { title, id } = Astro.props;
+
+const titleSlug = title.toLowerCase().split(` `).join(`-`);
 ---
 
-<div class="settings w-full" id={`${title}-media`}>
+<div class="settings w-full" id={id}>
   <button
     type="button"
-    id={`${title}-media__button`}
     class="media-accordion__button"
+    id={`${id}__button`}
     aria-expanded="false"
-    aria-controls={`${title}-media__body-inner`}
+    aria-controls={`${titleSlug}-media__body-inner`}
   >
     <h2>{title}</h2>
-    <p id={`${title}-media__arrow`} class="media-accordion__arrow">
+    <p class="media-accordion__arrow" id={`${id}__arrow`}>
       <span class="rotate-90">
         <Fragment set:html={arrow} />
       </span>
     </p>
   </button>
-  <div
-    class="overflow-hidden settings duration-700"
-    id={`${title}-media__body`}
-    style="height: 0px;"
-  >
+  <div class="overflow-hidden settings duration-700" id={`${id}__body`} style="height: 0px;">
     <div
-      id={`${title}-media__body-inner`}
-      aria-labelledby={`${title}-media__button`}
       class="media-accordion__body"
+      id={`${id}__body-inner`}
+      aria-labelledby={`${titleSlug}-media__button`}
     >
       <slot />
     </div>
   </div>
 </div>
 
-<script define:vars={{ title }}>
-  const media = document.getElementById(`${title}-media`);
-  const button = document.getElementById(`${title}-media__button`);
-  const arrow = document.getElementById(`${title}-media__arrow`);
-  const accBody = document.getElementById(`${title}-media__body`);
-  const bodyInner = document.getElementById(`${title}-media__body-inner`);
+<script define:vars={{ id }}>
+  const accordion = document.getElementById(id);
+  const button = document.getElementById(`${id}__button`);
+  const arrow = document.getElementById(`${id}__arrow`);
+  const accBody = document.getElementById(`${id}__body`);
+  const bodyInner = document.getElementById(`${id}__body-inner`);
 
-  const mediaSetup = () => {
-    if (media && button && arrow && accBody && bodyInner) {
+  const setup = () => {
+    if (accordion && button && arrow && accBody && bodyInner) {
       button.addEventListener(`click`, (e) => {
-        e.preventDefault();
-        if (!media.classList.contains(`active`)) {
-          media.classList.add(`active`);
+        if (!accordion.classList.contains(`active`)) {
+          accordion.classList.add(`active`);
           arrow.classList.add(`rotate-180`);
           accBody.style.height = `${bodyInner.offsetHeight}px`;
           button.setAttribute("aria-expanded", "true");
         } else {
-          media.classList.remove(`active`);
+          accordion.classList.remove(`active`);
           arrow.classList.remove(`rotate-180`);
           accBody.style.height = `0px`;
           button.setAttribute("aria-expanded", "false");
@@ -64,7 +62,7 @@ const { title } = Astro.props;
     }
   };
 
-  mediaSetup();
+  setup();
 
-  document.addEventListener(`astro:after-swap`, mediaSetup);
+  document.addEventListener(`astro:after-swap`, setup);
 </script>

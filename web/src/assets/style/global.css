@@ -251,7 +251,7 @@ footer {
 }
 
 .media-accordion__arrow {
-  @apply flex w-5 md:w-6 lg:w-8 xl:w-10;
+  @apply duration-500 flex w-5 md:w-6 lg:w-8 xl:w-10;
 }
 
 .media-accordion__body {

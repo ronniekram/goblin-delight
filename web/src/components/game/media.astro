@@ -10,9 +10,9 @@ import sanityImgUrl from "@utils/image";
 import MediaAccordion from "./media-accordion.astro";
 import Button from "@components/ui/button/secondary.astro";
 
-type Props = SanityGame["media"];
+type Props = SanityGame["media"] & { size: `sm` | `lg` };
 
-const { videos, images, logoIcons } = Astro.props;
+const { videos, images, logoIcons, size } = Astro.props;
 
 const imageURL = (asset: ImageAsset) =>
   sanityImgUrl(sanityClient, asset).auto(`format`).fit(`max`).width(453).quality(100).url();
@@ -24,7 +24,7 @@ const logoURL = (asset: ImageAsset) =>
 <div class="media__wrapper">
   {
     videos && (
-      <MediaAccordion title="Videos">
+      <MediaAccordion title="Videos" id={`videos-${size}`}>
         <div class="media-accordion__videos">
           {videos.map((vid) => (
             <YouTube id={vid.url} />
@@ -35,7 +35,7 @@ const logoURL = (asset: ImageAsset) =>
   }
   {
     images && (
-      <MediaAccordion title="Images">
+      <MediaAccordion title="Images" id={`images-${size}`}>
         <div class="media-accordion__images">
           {images.map((img) => {
             const src = imageURL(img);
@@ -51,7 +51,7 @@ const logoURL = (asset: ImageAsset) =>
   }
   {
     logoIcons && (
-      <MediaAccordion title="Logos & Icons">
+      <MediaAccordion title="Logos & Icons" id={`icons-${size}`}>
         <div class="media-accordion__logos">
           {logoIcons.map((logo) => {
             const src = logoURL(logo);

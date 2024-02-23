@@ -13,7 +13,6 @@ const { title, slug, blurb, tags, header, client } = Astro.props;
 const bg = sanityImgUrl(client, header).auto(`format`).fit(`max`).width(1376).quality(100).url();
 
 const url = `/games/${slug.current}`;
-console.log(url);
 ---
 
 <div
