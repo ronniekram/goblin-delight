@@ -48,6 +48,7 @@ const { title } = Astro.props;
   const mediaSetup = () => {
     if (media && button && arrow && accBody && bodyInner) {
       button.addEventListener(`click`, (e) => {
+        e.preventDefault();
         if (!media.classList.contains(`active`)) {
           media.classList.add(`active`);
           arrow.classList.add(`rotate-180`);
