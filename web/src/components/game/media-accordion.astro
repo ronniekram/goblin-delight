@@ -46,7 +46,7 @@ const { title, id } = Astro.props;
 
   const setup = () => {
     if (accordion && button && arrow && accBody && bodyInner) {
-      button.addEventListener(`click`, (e) => {
+      button.addEventListener(`click`, () => {
         if (!accordion.classList.contains(`active`)) {
           accordion.classList.add(`active`);
           arrow.classList.add(`rotate-180`);

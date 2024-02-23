@@ -47,7 +47,7 @@ const { title } = Astro.props;
 
   const accordionSetup = () => {
     if (accordion && button && arrow && accBody && bodyInner) {
-      button.addEventListener(`click`, (e) => {
+      button.addEventListener(`click`, () => {
         if (!accordion.classList.contains(`active`)) {
           accordion.classList.add(`active`);
           button.classList.add(`info-accordion__header-active`);

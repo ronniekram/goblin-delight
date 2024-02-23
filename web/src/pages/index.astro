@@ -12,8 +12,6 @@ import divider from "@assets/svg/divider.svg?raw";
 
 const page: SanityHome = (await sanityClient.fetch(homePage)) || {};
 const { tagline, intro, featured } = page;
-
-const sectionStyle = `inner flex flex-col items-end space-y-5 sm:space-y-6 lg:space-y-8 2xl:space-y-10`;
 ---
 
 <Page title="micro studio + yummy designs">

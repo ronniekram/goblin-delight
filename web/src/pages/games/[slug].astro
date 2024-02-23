@@ -3,8 +3,6 @@ import { Image } from "astro:assets";
 import type { InferGetStaticParamsType } from "astro";
 import { PortableText } from "astro-portabletext";
 import { sanityClient } from "sanity:client";
-import type { ImageAsset } from "@sanity/types";
-import { YouTube } from "@astro-community/astro-embed-youtube";
 
 import { gameDetail, allGameSlugs, type SanityGame } from "@utils/sanity";
 import sanityImgUrl from "@utils/image";
@@ -15,7 +13,6 @@ import List from "@components/game/list.astro";
 import ListItem from "@components/game/list-item.astro";
 import Detail from "@components/game/detail.astro";
 import TeamMember from "@components/game/team.astro";
-import MediaAccordion from "@components/game/media-accordion.astro";
 import Media from "@components/game/media.astro";
 import Accordion from "@components/game/info-accordion.astro";
 import InfoSection from "@components/game/info-section.astro";
@@ -47,9 +44,6 @@ const headerImg = sanityImgUrl(sanityClient, basic?.header)
   .width(1376)
   .quality(100)
   .url();
-
-const imageURL = (asset: ImageAsset) =>
-  sanityImgUrl(sanityClient, asset).auto(`format`).fit(`max`).width(453).quality(100).url();
 
 const featList = `flex flex-col space-y-2.5 sm:space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6`;
 const grid = `grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-4 xl:gap-8`;
