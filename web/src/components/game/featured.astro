@@ -5,11 +5,14 @@ import type { SanityGameCard } from "@utils/sanity";
 import sanityImgUrl from "@utils/image";
 
 import FeaturedTag from "../ui/tag/feat.astro";
+import pointer from "@icons/pointer.svg?raw";
 
 type Props = SanityGameCard & { client: SanityClient };
 const { title, slug, blurb, tags, header, client } = Astro.props;
 
 const bg = sanityImgUrl(client, header).auto(`format`).fit(`max`).width(1376).quality(100).url();
+
+const url = `/games/${slug.current}`;
 ---
 
 <div
@@ -25,23 +28,25 @@ const bg = sanityImgUrl(client, header).auto(`format`).fit(`max`).width(1376).qu
       >
         {blurb}
       </p>
-      <div class="flex space-x-1 sm:space-x-2 lg:space-x-3 xl:space-x-4">
-        {
-          tags.map((tag) => (
-            <FeaturedTag title={tag.title} slug={`/tags/${tag.slug.current}`} type="game" />
-          ))
-        }
+      <div class="flex items-center justify-between">
+        <div class="flex space-x-1 sm:space-x-2 lg:space-x-3 xl:space-x-4">
+          {
+            tags.map((tag) => (
+              <FeaturedTag title={tag.title} slug={`/tags/${tag.slug.current}`} type="game" />
+            ))
+          }
+        </div>
+        <a
+          href={url}
+          class="flex items-center font-display text-green-100 w-8 sm:w-10 xl:w-12 2xl:w-14"
+          aria-label={`${title} Info`}
+        >
+          <Fragment set:html={pointer} />
+        </a>
       </div>
     </div>
   </div>
 </div>
-
-<script define:vars={{ slug: slug.current }}>
-  const container = document.getElementById(`container`);
-  container.addEventListener(`click`, () => {
-    window.location.assign(`/games/${slug}`);
-  });
-</script>
 
 <style>
   .detail {

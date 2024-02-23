@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import type { InferGetStaticParamsType } from "astro";
 import { PortableText } from "astro-portabletext";
 import { sanityClient } from "sanity:client";
+import type { ImageAsset } from "@sanity/types";
+import { YouTube } from "@astro-community/astro-embed-youtube";
 
 import { gameDetail, allGameSlugs, type SanityGame } from "@utils/sanity";
 import sanityImgUrl from "@utils/image";
@@ -13,6 +15,8 @@ import List from "@components/game/list.astro";
 import ListItem from "@components/game/list-item.astro";
 import Detail from "@components/game/detail.astro";
 import TeamMember from "@components/game/team.astro";
+import MediaAccordion from "@components/game/media-accordion.astro";
+import Media from "@components/game/media.astro";
 import Accordion from "@components/game/info-accordion.astro";
 import InfoSection from "@components/game/info-section.astro";
 import Button from "@components/ui/button/primary.astro";
@@ -43,6 +47,9 @@ const headerImg = sanityImgUrl(sanityClient, basic?.header)
   .width(1376)
   .quality(100)
   .url();
+
+const imageURL = (asset: ImageAsset) =>
+  sanityImgUrl(sanityClient, asset).auto(`format`).fit(`max`).width(453).quality(100).url();
 
 const featList = `flex flex-col space-y-2.5 sm:space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6`;
 const grid = `grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-4 xl:gap-8`;
@@ -76,8 +83,8 @@ const grid = `grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-4 xl:gap-8`;
       </section>
 
       <section class="inner grid grid-cols-2 gap-x-5 sm:gap-x-10 lg:hidden">
-        <List title="Dev Logs" links={logs} />
-        <List title="Links" links={details.links} />
+        {logs && <List title="Dev Logs" links={logs} />}
+        {details?.links && <List title="Links" links={details.links} />}
       </section>
     </div>
 
@@ -97,7 +104,11 @@ const grid = `grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-4 xl:gap-8`;
           {details?.jam && <Detail title="Game Jam" content={details.jam} />}
         </div>
       </Accordion>
-      <!-- MEDIA GOES HERE -->
+
+      <Accordion title="Press Kit & Media">
+        <Media videos={media.videos} images={media.images} logoIcons={media.logoIcons} size="sm" />
+      </Accordion>
+
       <Accordion title="Team">
         <div class={grid}>
           {
@@ -123,7 +134,16 @@ const grid = `grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-4 xl:gap-8`;
               {basic.features.map((feat) => <ListItem text={feat} />)}
             </ul>
           </InfoSection>
-          <!-- MEDIA GOES HERE -->
+
+          <InfoSection title="Press Kit & Media">
+            <Media
+              videos={media.videos}
+              images={media.images}
+              logoIcons={media.logoIcons}
+              size="lg"
+            />
+          </InfoSection>
+
           <InfoSection title="Team">
             <div class={grid}>
               {
@@ -146,7 +166,11 @@ const grid = `grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-4 xl:gap-8`;
           {details?.madeWith && <Detail title="Made With" content={details.madeWith} />}
           {details?.jam && <Detail title="Game Jam" content={details.jam} />}
           {logs.length > 0 && <List title="Dev Logs" links={logs} />}
-          {details?.links.length > 0 && <List title="Links" links={details.links} external />}
+          {
+            details?.links && details?.links.length > 0 && (
+              <List title="Links" links={details.links} external />
+            )
+          }
         </section>
       </div>
     </div>

@@ -154,18 +154,18 @@ export type SanityGame = {
     header: ImageAsset;
     description: PortableTextBlock[];
     features: string[];
-    tags: SanityTag[];
+    tags?: SanityTag[];
   };
   // DETAILS
   details: {
     team: SanityTeam[];
-    release: string;
-    platforms: string;
-    genre: string;
-    madeWith: string;
-    jam: string;
-    links: SanityLink[];
-    blogs: {
+    release?: string;
+    platforms?: string;
+    genre?: string;
+    madeWith?: string;
+    jam?: string;
+    links?: SanityLink[];
+    blogs?: {
       title: string;
       slug: {
         current: string;
@@ -174,9 +174,9 @@ export type SanityGame = {
   };
   // MEDIA
   media: {
-    videos: SanityYouTube[];
-    images: ImageAsset[];
-    logoIcons: ImageAsset[];
+    videos?: SanityYouTube[];
+    images?: ImageAsset[];
+    logoIcons?: ImageAsset[];
   };
 };
 
