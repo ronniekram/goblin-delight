@@ -23,7 +23,30 @@ const blog: SanityBlog = (await sanityClient.fetch(blogDetail, { slug })) || {};
 ---
 
 <Blog {...blog} client={sanityClient}>
-  <section class="blog__markdown">
+  <section class="blog__markdown" id="content">
     <Markdown of={blog.markdown} options={{ wrap: true }} />
   </section>
 </Blog>
+
+<script>
+  const createTOC = () => {
+    const content = document.getElementById(`content`);
+    const toc = document.getElementById(`toc`);
+    const allHeadings = content?.querySelectorAll(`h1, h2, h3, h4`);
+    const headings = Array.from(allHeadings || []);
+
+    headings.forEach((heading) => {
+      const li = document.createElement(`li`);
+      if (heading.tagName === `H2`) li.classList.add(`pl-2`);
+      if (heading.tagName === `H3`) li.classList.add(`pl-4`);
+      if (heading.tagName === `H4`) li.classList.add(`pl-7`);
+      const anchor = document.createElement(`a`);
+      anchor.href = `#${heading.id}`;
+      anchor.textContent = heading.textContent;
+      li.appendChild(anchor);
+      toc?.appendChild(li);
+    });
+  };
+
+  document.addEventListener(`DOMContentLoaded`, createTOC);
+</script>
