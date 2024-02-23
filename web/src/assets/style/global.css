@@ -333,10 +333,10 @@ footer {
   }
 
   ul {
-    @apply border-l-2 border-green-600 flex flex-col space-y-2 pl-2 xl:space-y-3 text-green-700 font-medium lg:text-lg;
+    @apply border-l-2 border-green-600 flex flex-col space-y-1 pl-1.5 xl:space-y-2 text-green-700 font-medium lg:text-lg;
 
     li {
-      @apply settings text-green-600 hover:text-green-800;
+      @apply settings text-green-700 hover:text-green-800;
     }
   }
 }
