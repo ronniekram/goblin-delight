@@ -40,8 +40,14 @@ const logoURL = (asset: ImageAsset) =>
           {images.map((img) => {
             const src = imageURL(img);
             return (
-              <div>
-                <Image src={src} alt="" loading="lazy" inferSize />
+              <div class="image-container">
+                <Image
+                  src={src}
+                  alt=""
+                  loading="lazy"
+                  inferSize
+                  class="object-cover object-center"
+                />
               </div>
             );
           })}
@@ -56,8 +62,14 @@ const logoURL = (asset: ImageAsset) =>
           {logoIcons.map((logo) => {
             const src = logoURL(logo);
             return (
-              <div>
-                <Image src={src} alt="" loading="lazy" inferSize />
+              <div class="image-container">
+                <Image
+                  src={src}
+                  alt=""
+                  loading="lazy"
+                  inferSize
+                  class="object-cover object-center"
+                />
               </div>
             );
           })}

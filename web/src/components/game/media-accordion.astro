@@ -7,8 +7,6 @@ interface Props {
 }
 
 const { title, id } = Astro.props;
-
-const titleSlug = title.toLowerCase().split(` `).join(`-`);
 ---
 
 <div class="settings w-full" id={id}>
@@ -17,7 +15,7 @@ const titleSlug = title.toLowerCase().split(` `).join(`-`);
     class="media-accordion__button"
     id={`${id}__button`}
     aria-expanded="false"
-    aria-controls={`${titleSlug}-media__body-inner`}
+    aria-controls={`${id}-media__body-inner`}
   >
     <h2>{title}</h2>
     <p class="media-accordion__arrow" id={`${id}__arrow`}>
@@ -30,7 +28,7 @@ const titleSlug = title.toLowerCase().split(` `).join(`-`);
     <div
       class="media-accordion__body"
       id={`${id}__body-inner`}
-      aria-labelledby={`${titleSlug}-media__button`}
+      aria-labelledby={`${id}-media__button`}
     >
       <slot />
     </div>
@@ -38,6 +36,8 @@ const titleSlug = title.toLowerCase().split(` `).join(`-`);
 </div>
 
 <script define:vars={{ id }}>
+  const parent = document.getElementById(`Press Kit & Media-accordion__body`);
+  const parentInner = document.getElementById(`Press Kit & Media-accordion__body-inner`);
   const accordion = document.getElementById(id);
   const button = document.getElementById(`${id}__button`);
   const arrow = document.getElementById(`${id}__arrow`);
@@ -51,11 +51,13 @@ const titleSlug = title.toLowerCase().split(` `).join(`-`);
           accordion.classList.add(`active`);
           arrow.classList.add(`rotate-180`);
           accBody.style.height = `${bodyInner.offsetHeight}px`;
+          parent.style.height = `${parentInner.offsetHeight + bodyInner.offsetHeight}px`;
           button.setAttribute("aria-expanded", "true");
         } else {
           accordion.classList.remove(`active`);
           arrow.classList.remove(`rotate-180`);
           accBody.style.height = `0px`;
+          parent.style.height = `${parentInner.offsetHeight}px`;
           button.setAttribute("aria-expanded", "false");
         }
       });
