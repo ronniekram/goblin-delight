@@ -465,7 +465,7 @@ footer {
   @apply font-sans flex flex-col gap-y-6 sm:gap-y-8 md:gap-y-11 lg:gap-y-14 xl:gap-y-16;
 
   h2 {
-    @apply font-xbold text-green-600 text-4xl -mb-4 sm:-mb-6 sm:mt-2.5 md:-mb-8 md:mt-4 lg:mt-6 lg:-mb-11 xl:-mb-12 xl:mt-8 2xl:mt-10 md:text-5xl lg:text-6xl xl:text-7xl;
+    @apply font-xbold text-green-600 text-4xl -mb-4 sm:-mb-6 sm:mt-2.5 md:-mb-8 md:mt-4 lg:mt-6 lg:-mb-11 xl:-mb-12 xl:mt-8 2xl:mt-10 md:text-5xl lg:text-6xl;
   }
 
   p {
