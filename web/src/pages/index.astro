@@ -11,7 +11,7 @@ import Button from "@components/ui/button/primary.astro";
 import divider from "@assets/svg/divider.svg?raw";
 
 const page: SanityHome = (await sanityClient.fetch(homePage)) || {};
-const { tagline, intro, featured } = page;
+const { tagline, intro, featured, seo } = page;
 ---
 
 <Page title="micro studio + yummy designs">

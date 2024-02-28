@@ -5,7 +5,7 @@ import type { SanityHome } from "@utils/sanity.ts";
 import illustration from "@assets/home-illustration.png";
 import arrow from "@icons/arrow.svg?raw";
 
-type Props = Omit<SanityHome, "featured">;
+type Props = Omit<SanityHome, "featured" | "seo">;
 
 const { title, tagline, intro } = Astro.props;
 ---

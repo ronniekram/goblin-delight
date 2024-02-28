@@ -12,6 +12,7 @@ import editor from "./helpers/editor";
 import gallery from "./helpers/gallery";
 import gameDetail from "./helpers/game-detail";
 import link from "./helpers/link";
+import seo from "./helpers/seo";
 import team from "./helpers/team";
 import youtube from "./helpers/youtube";
 
@@ -30,6 +31,7 @@ const schemas = [
   gallery,
   gameDetail,
   link,
+  seo,
   team,
   youtube,
 ];

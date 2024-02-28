@@ -33,6 +33,13 @@ const Post = defineType({
       description: `1-2 sentence attention grabber for display on feature cards`,
     },
     {
+      name: `seo`,
+      title: `SEO*`,
+      type: `seo`,
+      validation: (Rule) => Rule.required(),
+      group: `basic`,
+    },
+    {
       name: `titleImg`,
       title: `Header Image`,
       type: `image`,

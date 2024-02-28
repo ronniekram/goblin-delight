@@ -5,13 +5,12 @@ import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import { sanityIntegration } from "@sanity/astro";
 import markdownIntegration from "@astropub/md";
-// import { astroImageTools } from "astro-imagetools";
 
 import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: `http://localhost:4321`,
+  site: import.meta.env.PUBLIC_SITE_URL,
   integrations: [
     icon(),
     markdownIntegration(),
