@@ -13,6 +13,9 @@ interface MobileProps {
   setHeight: (height: number) => void;
 }
 
+//! ----------> HELPERS <----------
+const useIsomorphicLayoutEffect = typeof window !== `undefined` ? useLayoutEffect : useEffect;
+
 //! ----------> COMPONENTS <----------
 const Arrow = () => (
   <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-green-700 sm:hidden">
@@ -67,7 +70,7 @@ const NavLink = ({ label, href }: NavLinkProps) => {
 const Mobile = ({ setHeight }: MobileProps) => {
   const [ref, bounds] = useMeasure();
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     setHeight(bounds.height);
   }, [bounds, setHeight]);
 
