@@ -48,7 +48,7 @@ const pageTitle = `${title} | Goblin Delight`;
     />
   </head>
   <body>
-    <Navigation client:load />
+    <Navigation client:only="react" />
     <PageHeader title={header} />
     <main>
       <slot />
