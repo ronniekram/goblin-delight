@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { useSpring, animated as a } from "@react-spring/web";
 import { RemoveScroll } from "react-remove-scroll";
 import useMeasure from "react-use-measure";
@@ -67,7 +67,7 @@ const NavLink = ({ label, href }: NavLinkProps) => {
 const Mobile = ({ setHeight }: MobileProps) => {
   const [ref, bounds] = useMeasure();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHeight(bounds.height);
   }, [bounds, setHeight]);
 
