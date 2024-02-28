@@ -111,7 +111,7 @@ const Navigation = () => {
 
   return (
     <RemoveScroll enabled={open}>
-      <header className="wrapper nav">
+      <div className="wrapper nav">
         <div className="inner flex items-center justify-between text-6xl sm:text-4xl lg:text-[2.5rem] lg:leading-[2.75rem] xl:text-5xl">
           <a href="/" aria-label="Home" className="flex h-11 sm:h-12 xl:h-[3.75rem]">
             <img src="/images/logo.png" alt="Goblin Delight logo" />
@@ -138,7 +138,7 @@ const Navigation = () => {
             <NavLink label="Contact" href="#contact" />
           </ul>
         </div>
-      </header>
+      </div>
       <a.div style={menuSpring} className="overflow-hidden fixed z-50 top-[4.25rem]">
         <Mobile setHeight={(num: number) => setHeight(num)} />
       </a.div>
