@@ -15,7 +15,6 @@ export interface Props {
 const { pathname, origin } = Astro.url;
 
 const canonicalURL = `${origin}/${pathname}`;
-const ogImgURL = `${origin}/opengraph.png`;
 
 const { title = "Micro studio + yummy designs", desc, header } = Astro.props;
 
@@ -44,7 +43,7 @@ const pageTitle = `${title} | Goblin Delight`;
           url: canonicalURL,
           type: `website`,
           title: `micro studio + yummy designs`,
-          image: ogImgURL,
+          image: `https://raw.githubusercontent.com/ronniekram/goblin-delight/dev/web/public/opengraph.png`,
         },
         image: {
           alt: `Goblin Delight`,
