@@ -30,12 +30,9 @@ export default defineConfig({
     sitemap(),
     react(),
 ],
-  adapter: vercel({
-    edgeMiddleware: true,
-  }),
   image: {
     service: squooshImageService(),
     domains: [`cdn.sanity.io`],
   },
-  output: `hybrid`,
+  output: `static`,
 });
