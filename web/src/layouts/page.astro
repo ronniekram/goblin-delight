@@ -1,7 +1,7 @@
 ---
 import { SEO } from "astro-seo";
 
-import Navigation from "@components/layout/nav.tsx";
+import Nav from "@components/layout/nav.astro";
 import PageHeader from "@components/layout/page-header.astro";
 import CTA from "@components/layout/cta.astro";
 import Footer from "@components/layout/footer.astro";
@@ -26,6 +26,7 @@ const pageTitle = `${title} | Goblin Delight`;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <script src="https://analytics.us.umami.is/script.js" data-website-id="e3685622-b08c-4825-848c-e234b2705894"></script>
     <style is:global>
       @import "@assets/style/global.css";
     </style>
@@ -48,7 +49,7 @@ const pageTitle = `${title} | Goblin Delight`;
     />
   </head>
   <body>
-    <Navigation client:only="react" />
+    <Nav />
     <PageHeader title={header} />
     <main>
       <slot />
