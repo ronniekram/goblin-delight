@@ -12,23 +12,23 @@ const { name, position, website } = Astro.props;
 
 <div class="game__team-wrapper">
   <h3 class="game__team-title">
-    {position}
+    {
+      website ? (
+        <a
+          href={website}
+          target="_blank"
+          rel="noreferrer"
+          class={`settings flex items-center space-x-1 lg:space-x-1.5 hover:text-green-700`}
+        >
+          <span>{name}</span>
+          <span class="flex w-4 md:w-5 lg:w-6 2xl:w-7">
+            <Icon name="external-link" />
+          </span>
+        </a>
+      ) : (
+        <p>{name}</p>
+      )
+    }
   </h3>
-  {
-    website ? (
-      <a
-        href={website}
-        target="_blank"
-        rel="noreferrer"
-        class={`settings game__team-name flex items-center space-x-1 lg:space-x-1.5 hover:text-green-600`}
-      >
-        <span>{name}</span>
-        <span class="flex w-4 md:w-5 lg:w-6 2xl:w-7">
-          <Icon name="external-link" />
-        </span>
-      </a>
-    ) : (
-      <p class="game__team-name">{name}</p>
-    )
-  }
+  <p class="game__team-name">{position}</p>
 </div>

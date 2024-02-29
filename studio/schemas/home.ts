@@ -45,12 +45,6 @@ const Home = defineType({
         },
       ],
     },
-    {
-      name: `seo`,
-      title: `SEO*`,
-      type: `seo`,
-      validation: (Rule) => Rule.required(),
-    },
   ],
 });
 

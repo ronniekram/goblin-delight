@@ -46,13 +46,6 @@ const Game = defineType({
       rows: 2,
     },
     {
-      name: `seo`,
-      title: `SEO*`,
-      type: `seo`,
-      validation: (Rule) => Rule.required(),
-      group: `basic`,
-    },
-    {
       name: `header`,
       title: `Header Image`,
       type: `image`,

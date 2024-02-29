@@ -27,11 +27,11 @@ export const gameDetail = groq`*[_type == "game" && slug.current == $slug][0] {
   "basic": {
     title,
     slug,
+    blurb,
     header,
     description,
     features,
     ${tags},
-    seo,
   },
   "details": {
     release,
@@ -77,9 +77,9 @@ export const blogCard = groq`
 export const blogDetail = groq`*[_type == "post" && slug.current == $slug][0] {
   title,
   slug,
+  tagline,
   titleImg,
   ${tags},
-  seo,
   markdown,
   _createdAt,
   "estimatedReadingTime": round(length(markdown) / 5 / 180 ),
@@ -142,7 +142,7 @@ export const tagPage = groq`{
 export type SanityBlog = {
   title: string;
   slug: Slug;
-  seo: SanitySEO;
+  tagline: string;
   _createdAt: string;
   estimatedReadingTime: number;
   titleImg: ImageAsset;
@@ -155,7 +155,7 @@ export type SanityGame = {
   basic: {
     title: string;
     slug: Slug;
-    seo: SanitySEO;
+    blurb: string;
     header: ImageAsset;
     description: PortableTextBlock[];
     features: string[];
@@ -189,7 +189,6 @@ export type SanityHome = {
   title: string;
   tagline: string;
   intro: string;
-  seo: SanitySEO;
   featured: {
     post: SanityBlogCard;
     game: SanityGameCard;
@@ -282,9 +281,4 @@ export type SanityTeam = {
 
 export type SanityYouTube = {
   url: string;
-};
-
-export type SanitySEO = {
-  title: string;
-  desc: string;
 };

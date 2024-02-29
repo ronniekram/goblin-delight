@@ -172,11 +172,11 @@ footer {
 }
 
 .game__team-title {
-  @apply w-full font-bold text-green-600 text-2xl md:text-3xl lg:text-[40px] lg:py-1 xl:text-5xl;
+  @apply w-full font-bold text-green-600 text-xl sm:text-3xl md:text-[34px] xl:text-4xl;
 }
 
 .game__team-name {
-  @apply text-green-800 text-lg sm:text-xl md:text-2xl lg:text-3xl 2xl:text-4xl;
+  @apply text-green-800 sm:text-[22px] md:text-2xl 2xl:text-[26px];
 }
 
 .game__info-section-header {
