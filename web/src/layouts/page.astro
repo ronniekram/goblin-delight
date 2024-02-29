@@ -12,8 +12,10 @@ export interface Props {
   header?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.url.origin).toString();
-const ogImgURL = new URL(`/opengraph.png`, Astro.url.origin).toString();
+const { pathname, origin } = Astro.url;
+
+const canonicalURL = `${origin}/${pathname}`;
+const ogImgURL = `${origin}/opengraph.png`;
 
 const { title = "Micro studio + yummy designs", desc, header } = Astro.props;
 

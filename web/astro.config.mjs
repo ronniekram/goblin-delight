@@ -5,12 +5,15 @@ import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import { sanityIntegration } from "@sanity/astro";
 import markdownIntegration from "@astropub/md";
-
 import react from "@astrojs/react";
+
+import { loadEnv } from "vite";
+
+const { PUBLIC_SITE_URL } = loadEnv(process.env.PUBLIC_SITE_URL, process.cwd(), ``);
 
 // https://astro.build/config
 export default defineConfig({
-  site: import.meta.env.PUBLIC_SITE_URL,
+  site: PUBLIC_SITE_URL,
   integrations: [
     icon(),
     markdownIntegration(),
