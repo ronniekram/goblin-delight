@@ -40,7 +40,7 @@ const logs =
 
 const headerImg = sanityImgUrl(sanityClient, basic?.header)
   .auto(`format`)
-  .fit(`max`)
+  .fit(`fill`)
   .width(1376)
   .quality(100)
   .url();
@@ -49,7 +49,7 @@ const featList = `flex flex-col space-y-2.5 sm:space-y-3 lg:space-y-4 xl:space-y
 const grid = `grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-4 xl:gap-8`;
 ---
 
-<Page title={basic?.title} header="Games & Projects">
+<Page title={basic?.title} desc={basic?.blurb} header="Games & Projects">
   <article class="flex flex-col space-y-5 sm:space-y-8 xl:space-y-12">
     <!-- STARTING AT LG SCREEN SIZE, EVERYTHING EXCEPT FOR HEADER IMG/GAME TITLE/TAGS IS HIDDEN  -->
     <div class="wrapper w-full flex flex-col items-end space-y-5 sm:space-y-8">

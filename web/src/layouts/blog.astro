@@ -13,7 +13,7 @@ import Button from "@components/ui/button/primary.astro";
 
 type Props = Omit<SanityBlog, `slug` | `body` | `markdown`> & { client: SanityClient };
 
-const { title, _createdAt, estimatedReadingTime, titleImg, tags, related, client } = Astro.props;
+const { title, tagline, _createdAt, estimatedReadingTime, titleImg, tags, related, client } = Astro.props;
 
 const header = sanityImageUrl(client, titleImg)
   .auto(`format`)
@@ -23,7 +23,7 @@ const header = sanityImageUrl(client, titleImg)
   .url();
 ---
 
-<Page title={title} header="Blog">
+<Page title={title} desc={tagline} header="Blog">
   {
     titleImg && (
       <div class="blog-header__image">

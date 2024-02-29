@@ -27,6 +27,7 @@ export const gameDetail = groq`*[_type == "game" && slug.current == $slug][0] {
   "basic": {
     title,
     slug,
+    blurb,
     header,
     description,
     features,
@@ -76,6 +77,7 @@ export const blogCard = groq`
 export const blogDetail = groq`*[_type == "post" && slug.current == $slug][0] {
   title,
   slug,
+  tagline,
   titleImg,
   ${tags},
   markdown,
@@ -95,6 +97,7 @@ export const homePage = groq`*[_type == "home"][0]{
   title,
   tagline,
   intro,
+  seo,
   featured {
     post {
       _type == "reference" => @-> { ${blogCard} },
@@ -139,6 +142,7 @@ export const tagPage = groq`{
 export type SanityBlog = {
   title: string;
   slug: Slug;
+  tagline: string;
   _createdAt: string;
   estimatedReadingTime: number;
   titleImg: ImageAsset;
@@ -151,6 +155,7 @@ export type SanityGame = {
   basic: {
     title: string;
     slug: Slug;
+    blurb: string;
     header: ImageAsset;
     description: PortableTextBlock[];
     features: string[];

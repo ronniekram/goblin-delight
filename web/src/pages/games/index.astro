@@ -13,7 +13,7 @@ const page: SanityGamePage = (await sanityClient.fetch(gamesPage)) || {};
 const { featured, all } = page;
 ---
 
-<Page title="Games & Projects" header="Games & Projects">
+<Page title="Games & Projects" desc="Video games created by Goblin Delight, an indie studio in Pittsburgh, PA." header="Games & Projects">
   <article>
     <section class="wrapper">
       <FeaturedGame {...featured.featured.game} client={sanityClient} />

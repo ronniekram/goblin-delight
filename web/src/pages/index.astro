@@ -14,7 +14,7 @@ const page: SanityHome = (await sanityClient.fetch(homePage)) || {};
 const { tagline, intro, featured } = page;
 ---
 
-<Page title="micro studio + yummy designs">
+<Page title="micro studio + yummy designs" desc={intro}>
   <article class="flex flex-col space-y-8 sm:space-y-10 lg:space-y-16 2xl:space-y-14">
     <section class="wrapper">
       <Header title="Goblin Delight" tagline={tagline} intro={intro} />

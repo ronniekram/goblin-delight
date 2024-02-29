@@ -8,13 +8,16 @@ import Footer from "@components/layout/footer.astro";
 
 export interface Props {
   title: string;
+  desc: string;
   header?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
-const ogImgURL = new URL(`/opengraph.png`, Astro.site).toString();
+const { pathname, origin } = Astro.url;
 
-const { title = "Micro studio + yummy designs", header } = Astro.props;
+const canonicalURL = `${origin}/${pathname}`;
+const ogImgURL = `${origin}/opengraph.png`;
+
+const { title = "Micro studio + yummy designs", desc, header } = Astro.props;
 
 const pageTitle = `${title} | Goblin Delight`;
 ---
@@ -26,6 +29,7 @@ const pageTitle = `${title} | Goblin Delight`;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <script src="https://analytics.us.umami.is/script.js" data-website-id="e3685622-b08c-4825-848c-e234b2705894"></script>
     <style is:global>
       @import "@assets/style/global.css";
@@ -33,7 +37,7 @@ const pageTitle = `${title} | Goblin Delight`;
 
     <SEO
       title={pageTitle}
-      description=""
+      description={desc}
       canonical={canonicalURL}
       openGraph={{
         basic: {
