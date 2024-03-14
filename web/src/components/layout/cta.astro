@@ -1,5 +1,6 @@
 ---
 import SocialIcon from "../ui/button/social-icon.astro";
+import SignUp from "../ui/input/signup.astro";
 import TextInput from "../ui/input/text.astro";
 import { socials } from "../blog/byline.astro";
 
@@ -22,17 +23,17 @@ const sm = `hidden lg:flex lg:w-[11.3125rem]`;
     class="inner cta px-5 py-8 sm:p-8 md:py-10 lg:p-10 xl:px-14 2xl:px-16 border-green-700 border-y-2 sm:border-2 sm:rounded"
   >
     <div class="flex items-center justify-between">
-      <div class="w-full sm:w-fit flex flex-col space-y-4 xl:space-y-3">
+      <div class="w-full flex flex-col space-y-4 xl:space-y-3">
         <div>
-          <h2 class={head}>Get our newsletter</h2>
+          <h2 class={head}>Yumyum Bloodgun</h2>
           <div class="flex items-center space-x-0.5">
             <div class={arrowWrap}>
               <Fragment set:html={arrow} />
             </div>
-            <h3 class={sub}>Stay up to date</h3>
+            <h3 class={sub}>Beta Waitlist</h3>
           </div>
         </div>
-        <TextInput label="Email" icon="mail-outline" placeholder="you@email.com" />
+        <SignUp />
       </div>
       <div class={md}>
         <Fragment set:html={mdCloud} />

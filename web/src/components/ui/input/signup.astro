@@ -1,0 +1,32 @@
+---
+import Text from "./text.astro";
+import submit from "@icons/submit.svg?raw";
+---
+
+<form
+  class="flex items-center space-x-1 w-full max-w-[20.9375rem]"
+  action="https://gmail.us11.list-manage.com/subscribe/post?u=ecfcff8f831436f349d757775&id=22ab8965ca&f_id=00ffa7e0f0"
+  method="post"
+  id="mc-embedded-subscribe-form"
+  name="mc-embedded-subscribe-form"
+  class="validate"
+  target="_blank"
+>
+  <Text
+    label="email"
+    type="email"
+    icon="mail-outline"
+    placeholder="knife@gunfight.com"
+    name="EMAIL"
+    id="mce-EMAIL"
+  />
+  <button
+    type="submit"
+    name="subscribe"
+    id="mc-embedded-subscribe"
+    aria-label="Submit"
+    class="w-10 h-10 shrink-0 bg-green-600 rounded flex items-center justify-center border-2 border-green-800 hover:bg-green-700 settings"
+  >
+    <Fragment set:html={submit} />
+  </button>
+</form>
