@@ -16,7 +16,7 @@ const bg = sanityImgUrl(client, titleImg).auto(`format`).fit(`max`).width(668).q
 
 <div class="blog-card">
   <div class="blog-card__top" style={`background-image: url(${bg});`}>
-    {tags.map((tag) => <CardTag label={tag.title} href={`/tags/${tag.slug.current}`} />)}
+    {tags?.map((tag) => <CardTag label={tag.title} href={`/tags/${tag.slug.current}`} />)}
   </div>
   <div class="blog-card__bottom">
     <div class="w-full flex flex-col space-y-1 xl:space-y-1.5 2xl:space-y-2">

@@ -13,14 +13,12 @@ import Button from "@components/ui/button/primary.astro";
 
 type Props = Omit<SanityBlog, `slug` | `body` | `markdown`> & { client: SanityClient };
 
-const { title, tagline, _createdAt, estimatedReadingTime, titleImg, tags, related, client } = Astro.props;
+const { title, tagline, _createdAt, estimatedReadingTime, titleImg, tags, related, client } =
+  Astro.props;
 
-const header = sanityImageUrl(client, titleImg)
-  .auto(`format`)
-  .fit(`fill`)
-  .width(1536)
-  .quality(100)
-  .url();
+const header =
+  titleImg &&
+  sanityImageUrl(client, titleImg).auto(`format`).fit(`fill`).width(1536).quality(100).url();
 ---
 
 <Page title={title} desc={tagline} header="Blog">
