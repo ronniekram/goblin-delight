@@ -23,9 +23,10 @@ const imgURL = sanityImageUrl(client, titleImg)
 <div class="blog-feature inner">
   <div class="blog-feature__image" style={`background-image: url(${imgURL});`}>
     {
-      tags.map((tag) => (
-        <FeaturedTag title={tag.title} slug={`/tags/${tag.slug.current}`} type="blog" />
-      ))
+      tags &&
+        tags.map((tag) => (
+          <FeaturedTag title={tag.title} slug={`/tags/${tag.slug.current}`} type="blog" />
+        ))
     }
   </div>
   <div class="blog-feature__body">

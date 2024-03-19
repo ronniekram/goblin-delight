@@ -31,9 +31,10 @@ const url = `/games/${slug.current}`;
       <div class="flex items-center justify-between">
         <div class="flex space-x-1 sm:space-x-2 lg:space-x-3 xl:space-x-4">
           {
-            tags.map((tag) => (
-              <FeaturedTag title={tag.title} slug={`/tags/${tag.slug.current}`} type="game" />
-            ))
+            tags &&
+              tags.map((tag) => (
+                <FeaturedTag title={tag.title} slug={`/tags/${tag.slug.current}`} type="game" />
+              ))
           }
         </div>
         <a
