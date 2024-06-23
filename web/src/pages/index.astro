@@ -19,11 +19,11 @@ const { tagline, intro, featured } = page;
     <section class="wrapper">
       <Header title="Goblin Delight" tagline={tagline} intro={intro} />
     </section>
-    <div class="flex">
+    <!-- <div class="flex">
       <Fragment set:html={divider} />
-    </div>
+    </div> -->
 
-    <section
+    <!-- <section
       class="wrapper flex flex-col space-y-10 md:space-y-12 lg:space-y-14 2xl:space-y-16 2xl:pt-14"
     >
       <section class="inner section__wrapper">
@@ -37,6 +37,6 @@ const { tagline, intro, featured } = page;
         <FeaturedBlog {...featured.post as SanityBlogCard} client={sanityClient} />
         <Button label="All posts" href="/blog" icon={{ position: `left`, direction: `right` }} />
       </section>
-    </section>
+    </section> -->
   </article>
 </Page>

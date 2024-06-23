@@ -19,25 +19,25 @@ const useIsomorphicLayoutEffect = typeof window !== `undefined` ? useLayoutEffec
 //! ----------> COMPONENTS <----------
 const Arrow = () => (
   <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-green-700 sm:hidden">
-  <g clipPath="url(#clip0_8_5751)">
-  <path d="M14.48 9.0375H19.9188V11.7607H22.642V14.4764H25.3652V17.1995H28.0809V19.9227H30.8041V22.6384H33.5198V25.3616H30.8041V28.0773H28.0809V30.8005H25.3652V33.5236H22.642V36.2393H19.9188V38.9625H14.48V9.0375Z" fill="currentColor"/>
-  </g>
-  <defs>
-  <clipPath id="clip0_8_5751">
-  <rect width="19.0398" height="29.925" fill="white" transform="translate(14.48 9.0375)"/>
-  </clipPath>
-  </defs>
+    <g clipPath="url(#clip0_8_5751)">
+      <path d="M14.48 9.0375H19.9188V11.7607H22.642V14.4764H25.3652V17.1995H28.0809V19.9227H30.8041V22.6384H33.5198V25.3616H30.8041V28.0773H28.0809V30.8005H25.3652V33.5236H22.642V36.2393H19.9188V38.9625H14.48V9.0375Z" fill="currentColor" />
+    </g>
+    <defs>
+      <clipPath id="clip0_8_5751">
+        <rect width="19.0398" height="29.925" fill="white" transform="translate(14.48 9.0375)" />
+      </clipPath>
+    </defs>
   </svg>
 );
 
 const Close = () => (
   <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_84_9342)">
-      <path d="M3 3V5.25H4.125V6.375H5.25V7.5H6.375V8.625H7.5V9.75H8.625V10.875H9.75V13.125H8.625V14.25H7.5V15.375H6.375V16.5H5.25V17.625H4.125V18.75H3V21H5.25V19.875H6.375V18.75H7.5V17.625H8.625V16.5H9.75V15.375H10.875V14.25H13.125V15.375H14.25V16.5H15.375V17.625H16.5V18.75H17.625V19.875H18.75V21H21V18.75H19.875V17.625H18.75V16.5H17.625V15.375H16.5V14.25H15.375V13.125H14.25V10.875H15.375V9.75H16.5V8.625H17.625V7.5H18.75V6.375H19.875V5.25H21V3H18.75V4.125H17.625V5.25H16.5V6.375H15.375V7.5H14.25V8.625H13.125V9.75H10.875V8.625H9.75V7.5H8.625V6.375H7.5V5.25H6.375V4.125H5.25V3H3Z" fill="#FCFCFA"/>
+      <path d="M3 3V5.25H4.125V6.375H5.25V7.5H6.375V8.625H7.5V9.75H8.625V10.875H9.75V13.125H8.625V14.25H7.5V15.375H6.375V16.5H5.25V17.625H4.125V18.75H3V21H5.25V19.875H6.375V18.75H7.5V17.625H8.625V16.5H9.75V15.375H10.875V14.25H13.125V15.375H14.25V16.5H15.375V17.625H16.5V18.75H17.625V19.875H18.75V21H21V18.75H19.875V17.625H18.75V16.5H17.625V15.375H16.5V14.25H15.375V13.125H14.25V10.875H15.375V9.75H16.5V8.625H17.625V7.5H18.75V6.375H19.875V5.25H21V3H18.75V4.125H17.625V5.25H16.5V6.375H15.375V7.5H14.25V8.625H13.125V9.75H10.875V8.625H9.75V7.5H8.625V6.375H7.5V5.25H6.375V4.125H5.25V3H3Z" fill="#FCFCFA" />
     </g>
     <defs>
       <clipPath id="clip0_84_9342">
-        <rect width="18" height="18" fill="white" transform="translate(3 3)"/>
+        <rect width="18" height="18" fill="white" transform="translate(3 3)" />
       </clipPath>
     </defs>
   </svg>
@@ -45,10 +45,10 @@ const Close = () => (
 
 const Menu = () => (
   <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M2.95996 3.51001H20.96V5.51001H2.95996V3.51001Z" fill="#FCFCFA"/>
-    <path d="M2.95996 8.51001H20.96V10.51H2.95996V8.51001Z" fill="#FCFCFA"/>
-    <path d="M2.95996 13.51H20.96V15.51H2.95996V13.51Z" fill="#FCFCFA"/>
-    <path d="M2.95996 18.51H20.96V20.51H2.95996V18.51Z" fill="#FCFCFA"/>
+    <path d="M2.95996 3.51001H20.96V5.51001H2.95996V3.51001Z" fill="#FCFCFA" />
+    <path d="M2.95996 8.51001H20.96V10.51H2.95996V8.51001Z" fill="#FCFCFA" />
+    <path d="M2.95996 13.51H20.96V15.51H2.95996V13.51Z" fill="#FCFCFA" />
+    <path d="M2.95996 18.51H20.96V20.51H2.95996V18.51Z" fill="#FCFCFA" />
   </svg>
 );
 
@@ -80,8 +80,8 @@ const Mobile = ({ setHeight }: MobileProps) => {
       className="w-screen h-[95dvh] [flex: 1] px-[5.3%] pt-10 pb-20 bg-green-300 flex flex-col justify-between font-display sm:hidden"
     >
       <ul className="flex flex-col space-y-8 text-6xl">
-        <NavLink label="Blog" href="/blog" />
-        <NavLink label="Games" href="/games" />
+        {/* <NavLink label="Blog" href="/blog" />
+        <NavLink label="Games" href="/games" /> */}
         <NavLink label="Contact" href="#contact" />
       </ul>
 
@@ -105,7 +105,7 @@ const Navigation = () => {
   const toggle = () => setOpen(!open);
 
   const menuSpring = useSpring({
-    height: open ? height: 0,
+    height: open ? height : 0,
     config: { tension: 120, friction: 14, clamp: true },
   });
 
@@ -133,8 +133,8 @@ const Navigation = () => {
           </button>
 
           <ul className="hidden sm:flex sm:space-x-6 md:space-x-8 xl:space-x-10">
-            <NavLink label="Blog" href="/blog" />
-            <NavLink label="Games" href="/games" />
+            {/* <NavLink label="Blog" href="/blog" />
+            <NavLink label="Games" href="/games" /> */}
             <NavLink label="Contact" href="#contact" />
           </ul>
         </div>
