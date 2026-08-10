@@ -1,4 +1,4 @@
-import { defineConfig, squooshImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
@@ -19,18 +19,17 @@ export default defineConfig({
     sanityIntegration({
       projectId: `atx0gy8j`,
       dataset: `production`,
-      useCdn: false
+      useCdn: false,
     }),
     tailwind({
       // prevents virtual import of base tailwind styles being added to every page
       config: { applyBaseStyles: false },
       nesting: true,
     }),
-    sitemap(),
+    // sitemap(),
     react(),
-],
+  ],
   image: {
-    service: squooshImageService(),
     domains: [`cdn.sanity.io`],
   },
   output: `static`,
